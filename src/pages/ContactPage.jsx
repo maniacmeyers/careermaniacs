@@ -79,10 +79,10 @@ const ContactPage = () => {
                 </div>
               )}
 
-              <form 
-                name="contact" 
-                method="POST" 
-                netlify
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
                 onSubmit={handleSubmit}
                 className="space-y-6"
               >
@@ -227,7 +227,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <p className="text-muted-foreground">hello@careermaniacs.com</p>
+                      <p className="text-muted-foreground">jeff@careermaniacs.com</p>
                       <p className="text-sm text-muted-foreground">I'll respond within 24 hours</p>
                     </div>
                   </div>
@@ -296,28 +296,36 @@ const ContactPage = () => {
                   </div>
                 )}
 
-                <form 
-                  name="question" 
-                  method="POST" 
-                  netlify
+                <form
+                  name="question"
+                  method="POST"
+                  data-netlify="true"
                   onSubmit={handleQuestionSubmit}
                   className="space-y-4"
                 >
                   <input type="hidden" name="form-name" value="question" />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your email"
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                  />
-                  <textarea
-                    name="question"
-                    placeholder="Your question..."
-                    required
-                    rows={3}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
-                  ></textarea>
+                  <div>
+                    <label htmlFor="questionEmail" className="sr-only">Your email</label>
+                    <input
+                      type="email"
+                      id="questionEmail"
+                      name="email"
+                      placeholder="Your email"
+                      required
+                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="questionText" className="sr-only">Your question</label>
+                    <textarea
+                      id="questionText"
+                      name="question"
+                      placeholder="Your question..."
+                      required
+                      rows={3}
+                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+                    ></textarea>
+                  </div>
                   <button
                     type="submit"
                     className="btn-secondary w-full py-3 rounded-lg font-semibold"

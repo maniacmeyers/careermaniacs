@@ -129,9 +129,10 @@ const HomePage = () => {
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
               <div className="relative w-1/2 max-w-sm">
                 <div className="gradient-border rounded-2xl p-2">
-                  <img 
-                    src="/coach-photo.png" 
-                    alt="Career Maniacs Coach" 
+                  <img
+                    src="/coach-photo.png"
+                    alt="Jeff Meyers, Career Maniacs Coach"
+                    loading="lazy"
                     className="w-full h-auto rounded-xl"
                   />
                 </div>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import ScrollToHashWrapper from './components/ScrollToHashWrapper'
 import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
@@ -30,6 +30,17 @@ function App() {
               <Route path="/services/gtm-onboarding" element={<ServiceDetailPage service="gtm-onboarding" />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={
+                <div className="min-h-screen pt-20 flex items-center justify-center">
+                  <div className="text-center px-4">
+                    <h1 className="text-6xl font-bold gradient-text mb-4">404</h1>
+                    <p className="text-xl text-muted-foreground mb-8">Page not found</p>
+                    <Link to="/" className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white">
+                      Back to Home
+                    </Link>
+                  </div>
+                </div>
+              } />
             </Routes>
           </main>
           

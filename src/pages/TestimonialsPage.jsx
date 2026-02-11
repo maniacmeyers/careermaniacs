@@ -1,8 +1,34 @@
-import React, { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { X } from 'lucide-react'
 
 const TestimonialsPage = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null)
+  const modalRef = useRef(null)
+  const triggerRef = useRef(null)
+
+  const closeModal = useCallback(() => {
+    setSelectedTestimonial(null)
+    document.body.style.overflow = ''
+    if (triggerRef.current) {
+      triggerRef.current.focus()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!selectedTestimonial) return
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') closeModal()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+
+    if (modalRef.current) {
+      modalRef.current.focus()
+    }
+
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [selectedTestimonial, closeModal])
 
   const testimonials = [
     {
@@ -43,14 +69,10 @@ const TestimonialsPage = () => {
     }
   ]
 
-  const openModal = (testimonial) => {
+  const openModal = (testimonial, triggerElement) => {
+    triggerRef.current = triggerElement
     setSelectedTestimonial(testimonial)
     document.body.style.overflow = 'hidden'
-  }
-
-  const closeModal = () => {
-    setSelectedTestimonial(null)
-    document.body.style.overflow = ''
   }
 
   return (
@@ -75,14 +97,14 @@ const TestimonialsPage = () => {
               <article
                 key={testimonial.id}
                 className="glass rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl tilt-card min-h-[200px] flex flex-col justify-between"
-                onClick={() => openModal(testimonial)}
+                onClick={(e) => openModal(testimonial, e.currentTarget)}
                 tabIndex={0}
                 role="button"
                 aria-label={`Open testimonial by ${testimonial.author}`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
-                    openModal(testimonial)
+                    openModal(testimonial, e.currentTarget)
                   }
                 }}
               >
@@ -108,26 +130,36 @@ const TestimonialsPage = () => {
             Stop blending in with the crowd. Let's weaponize your career and dominate your market.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/services#services-section"
+            <Link
+              to="/services#services-section"
               className="btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg"
             >
               View Services
-            </a>
-            <a
-              href="/contact#contact-form"
+            </Link>
+            <Link
+              to="/contact#contact-form"
               className="btn-secondary px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg"
             >
               Apply Now
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Modal */}
       {selectedTestimonial && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={(e) => { if (e.target === e.currentTarget) closeModal() }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Testimonial by ${selectedTestimonial.author}`}
+        >
+          <div
+            ref={modalRef}
+            tabIndex={-1}
+            className="glass rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto outline-none"
+          >
             <div className="p-6 sm:p-8">
               <div className="flex justify-between items-start mb-6">
                 <h3 className="text-lg sm:text-xl font-bold text-foreground">

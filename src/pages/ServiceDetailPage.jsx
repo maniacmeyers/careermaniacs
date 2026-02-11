@@ -94,6 +94,21 @@ const ServiceDetailPage = ({ service }) => {
 
   const data = serviceData[service]
 
+  const colorMap = {
+    primary: {
+      bgLight: 'bg-primary/20',
+      text: 'text-primary',
+      bg: 'bg-primary',
+    },
+    secondary: {
+      bgLight: 'bg-secondary/20',
+      text: 'text-secondary',
+      bg: 'bg-secondary',
+    },
+  }
+
+  const colors = data ? colorMap[data.color] : null
+
   if (!data) {
     return (
       <div className="min-h-screen pt-20 flex items-center justify-center">
@@ -112,7 +127,7 @@ const ServiceDetailPage = ({ service }) => {
       {/* Hero Section */}
       <section className="py-20 relative" id="service-detail">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className={`w-16 h-16 mx-auto mb-6 bg-${data.color}/20 rounded-2xl flex items-center justify-center text-${data.color}`}>
+          <div className={`w-16 h-16 mx-auto mb-6 ${colors.bgLight} rounded-2xl flex items-center justify-center ${colors.text}`}>
             {data.icon}
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -134,7 +149,7 @@ const ServiceDetailPage = ({ service }) => {
             {data.features.map((feature, index) => (
               <div key={index} className="glass rounded-lg p-6 tilt-card">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className={`w-6 h-6 text-${data.color} mt-1 flex-shrink-0`} />
+                  <CheckCircle className={`w-6 h-6 ${colors.text} mt-1 flex-shrink-0`} />
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
                     <p className="text-muted-foreground">{feature.description}</p>
@@ -153,7 +168,7 @@ const ServiceDetailPage = ({ service }) => {
           <div className="space-y-4">
             {data.process.map((step, index) => (
               <div key={index} className="flex items-center space-x-4">
-                <div className={`w-8 h-8 bg-${data.color} text-white rounded-full flex items-center justify-center text-center font-bold text-sm min-w-[2rem] min-h-[2rem] flex-shrink-0`}>
+                <div className={`w-8 h-8 ${colors.bg} text-white rounded-full flex items-center justify-center text-center font-bold text-sm min-w-[2rem] min-h-[2rem] flex-shrink-0`}>
                   <span className="block text-center leading-none">{index + 1}</span>
                 </div>
                 <p className="text-muted-foreground">{step}</p>

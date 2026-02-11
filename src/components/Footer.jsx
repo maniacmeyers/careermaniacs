@@ -23,10 +23,10 @@ const Footer = () => {
               Stop blending in—go Maniac.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/jeffadammeyers/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -103,12 +103,12 @@ const Footer = () => {
             © {currentYear} Career Maniacs. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            <Link to="/privacy" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+            </Link>
+            <Link to="/terms" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
