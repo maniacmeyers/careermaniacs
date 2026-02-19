@@ -30,6 +30,28 @@ function App() {
               <Route path="/services/gtm-onboarding" element={<ServiceDetailPage service="gtm-onboarding" />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={
+                <div className="min-h-screen pt-20 flex items-center justify-center">
+                  <div className="text-center px-4">
+                    <h1 className="text-4xl font-bold gradient-text mb-4">Privacy Policy</h1>
+                    <p className="text-xl text-muted-foreground mb-8">Available upon request.</p>
+                    <Link to="/" className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white">
+                      Back to Home
+                    </Link>
+                  </div>
+                </div>
+              } />
+              <Route path="/terms" element={
+                <div className="min-h-screen pt-20 flex items-center justify-center">
+                  <div className="text-center px-4">
+                    <h1 className="text-4xl font-bold gradient-text mb-4">Terms of Service</h1>
+                    <p className="text-xl text-muted-foreground mb-8">Available upon request.</p>
+                    <Link to="/" className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white">
+                      Back to Home
+                    </Link>
+                  </div>
+                </div>
+              } />
               <Route path="*" element={
                 <div className="min-h-screen pt-20 flex items-center justify-center">
                   <div className="text-center px-4">
