@@ -7,6 +7,8 @@ import ServicesPage from './pages/ServicesPage'
 import ServiceDetailPage from './pages/ServiceDetailPage'
 import TestimonialsPage from './pages/TestimonialsPage'
 import ContactPage from './pages/ContactPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -30,28 +32,8 @@ function App() {
               <Route path="/services/gtm-onboarding" element={<ServiceDetailPage service="gtm-onboarding" />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/privacy" element={
-                <div className="min-h-screen pt-20 flex items-center justify-center">
-                  <div className="text-center px-4">
-                    <h1 className="text-4xl font-bold gradient-text mb-4">Privacy Policy</h1>
-                    <p className="text-xl text-muted-foreground mb-8">Available upon request.</p>
-                    <Link to="/" className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white">
-                      Back to Home
-                    </Link>
-                  </div>
-                </div>
-              } />
-              <Route path="/terms" element={
-                <div className="min-h-screen pt-20 flex items-center justify-center">
-                  <div className="text-center px-4">
-                    <h1 className="text-4xl font-bold gradient-text mb-4">Terms of Service</h1>
-                    <p className="text-xl text-muted-foreground mb-8">Available upon request.</p>
-                    <Link to="/" className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white">
-                      Back to Home
-                    </Link>
-                  </div>
-                </div>
-              } />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
               <Route path="*" element={
                 <div className="min-h-screen pt-20 flex items-center justify-center">
                   <div className="text-center px-4">

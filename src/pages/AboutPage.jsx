@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Zap, Target, Brain, Users } from 'lucide-react'
+import { ArrowRight, Zap, Target, Brain, Users, MessageSquare } from 'lucide-react'
 
 const AboutPage = () => {
   return (
@@ -60,6 +60,70 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Meet the Coach */}
+      <section className="py-16 relative">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
+            <div className="md:col-span-2 flex justify-center md:justify-start">
+              <div className="relative w-full max-w-xs">
+                <div className="gradient-border rounded-2xl p-2">
+                  <img
+                    src="/coach-photo.jpg"
+                    alt="Jeff Meyers, founder of Career Maniacs"
+                    loading="lazy"
+                    width="800"
+                    height="800"
+                    className="w-full h-auto rounded-xl"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="md:col-span-3">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="gradient-text">Jeff Meyers</span>
+              </h2>
+              <p className="text-lg text-primary font-semibold mb-6">
+                Founder, Career Maniacs · Ponte Vedra Beach, FL
+              </p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  I spent 20 years in enterprise sales — Palantir, Salesforce, Oracle, expert.ai, [24]7.ai,
+                  ADP — before I walked away to build Career Maniacs. Twelve President's Club wins. Four
+                  AE of the Year trophies. Two Rookie of the Year awards. I sold the largest cloud deal
+                  in Oracle's history by license count in FY13. MIT Sloan–trained on AI and business
+                  strategy. I've sat on both sides of the interview table, usually in the same year.
+                </p>
+                <p>
+                  I built Career Maniacs in 2025 because I watched too many sharp operators lose offers
+                  they should have won — not because they weren't good, but because nobody taught them
+                  to tell their story or use AI the way the best do. That's the gap I close. Neuroscience-backed
+                  mindset work, narrative precision, and AI-powered job strategy. No recycled LinkedIn hacks.
+                </p>
+                <p>
+                  When I'm not coaching, you'll find me rolling jiu-jitsu, surfing, kitesurfing, or
+                  racing a OneWheel. How you do anything is how you do everything.
+                </p>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  12× President's Club
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  4× AE of the Year
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  MIT Sloan · AI Strategy
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  Palantir · Salesforce · Oracle alum
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mindset Coaching Section */}
       <section className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,7 +174,7 @@ const AboutPage = () => {
 
             <div className="glass rounded-xl p-8 text-center tilt-card">
               <div className="text-primary mb-4 flex justify-center">
-                <Users className="w-12 h-12" />
+                <MessageSquare className="w-12 h-12" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-foreground">Career Storytelling</h3>
               <p className="text-muted-foreground">

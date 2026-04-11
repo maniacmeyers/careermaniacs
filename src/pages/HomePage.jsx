@@ -49,32 +49,53 @@ const HomePage = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight mt-8 sm:mt-0">
+            <p className="text-sm sm:text-base uppercase tracking-widest text-primary font-semibold mb-4 mt-8 sm:mt-0">
+              Stop f***ing around with your career.
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="text-foreground">Executive Career & </span>
               <span className="gradient-text">AI Coaching</span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed">
-              Most candidates blend in. You? You're about to become unforgettable. I coach ambitious professionals with 
-              <span className="text-primary font-semibold"> The Maniac Method</span>—a fusion of storytelling, job acquisition strategy, 
+              Most candidates blend in. You? You're about to become unforgettable. I coach ambitious professionals with
+              <span className="text-primary font-semibold"> The Maniac Method</span>—a fusion of storytelling, job acquisition strategy,
               AI mastery, and GTM architecture—to weaponize your career and dominate.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <Link
-                to="/contact"
+                to="/contact#contact-form"
                 className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white flex items-center space-x-2 group"
               >
-                <span>Stop F***ing Around With Your Career</span>
+                <span>Apply Now</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              
+
               <Link
                 to="/about"
                 className="btn-secondary px-8 py-4 rounded-lg font-bold text-lg flex items-center space-x-2"
               >
                 <span>Meet Your Coach</span>
               </Link>
+            </div>
+
+            {/* Social proof bar */}
+            <div className="mb-12">
+              <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                Trusted by sales leaders at
+              </p>
+              <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-foreground/70 font-semibold text-sm sm:text-base">
+                <span>VBRICK</span>
+                <span className="hidden sm:inline text-border">•</span>
+                <span>TitanX</span>
+                <span className="hidden sm:inline text-border">•</span>
+                <span>Neuron7.ai</span>
+                <span className="hidden sm:inline text-border">•</span>
+                <span>Kumo</span>
+                <span className="hidden sm:inline text-border">•</span>
+                <span>Vibes</span>
+              </div>
             </div>
 
             {/* What Hiring Teams Actually Want */}
@@ -127,12 +148,14 @@ const HomePage = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative w-1/2 max-w-sm">
+              <div className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0">
                 <div className="gradient-border rounded-2xl p-2">
                   <img
-                    src="/coach-photo.png"
+                    src="/coach-photo.jpg"
                     alt="Jeff Meyers, Career Maniacs Coach"
                     loading="lazy"
+                    width="800"
+                    height="800"
                     className="w-full h-auto rounded-xl"
                   />
                 </div>

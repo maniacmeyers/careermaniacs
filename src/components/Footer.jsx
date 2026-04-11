@@ -11,10 +11,12 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="/career-maniacs-logo.png" 
-                alt="Career Maniacs" 
-                className="h-10 w-auto"
+              <img
+                src="/career-maniacs-logo.png"
+                alt="Career Maniacs"
+                width="40"
+                height="40"
+                className="h-10 w-10"
               />
               <span className="gradient-text font-bold text-xl">Career Maniacs</span>
             </div>
@@ -26,7 +28,7 @@ const Footer = () => {
               <a href="https://www.linkedin.com/in/jeffadammeyers/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+              <a href="https://x.com/Jeffforgetime" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="X (Twitter)">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>

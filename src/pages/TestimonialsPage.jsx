@@ -96,7 +96,7 @@ const TestimonialsPage = () => {
             {testimonials.map((testimonial) => (
               <article
                 key={testimonial.id}
-                className="glass rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl tilt-card min-h-[200px] flex flex-col justify-between"
+                className="glass rounded-xl p-4 sm:p-6 cursor-pointer tilt-card min-h-[200px] flex flex-col justify-between"
                 onClick={(e) => openModal(testimonial, e.currentTarget)}
                 tabIndex={0}
                 role="button"

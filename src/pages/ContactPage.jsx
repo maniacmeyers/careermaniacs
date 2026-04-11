@@ -3,28 +3,16 @@ import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 
 const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [questionSubmitted, setQuestionSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
-    // Allow Netlify to handle form submission in production
-    // Only prevent default in development for testing
+    // Allow Netlify to handle form submission in production.
+    // Only prevent default in development for testing. Success state is
+    // intentionally persistent — no auto-dismiss — so users on slow
+    // connections or mobile don't miss the confirmation.
     if (window.location.hostname === 'localhost') {
       e.preventDefault()
       setIsSubmitted(true)
-      setTimeout(() => setIsSubmitted(false), 5000)
     }
-    // In production, form will submit normally to Netlify
-  }
-
-  const handleQuestionSubmit = (e) => {
-    // Allow Netlify to handle form submission in production
-    // Only prevent default in development for testing
-    if (window.location.hostname === 'localhost') {
-      e.preventDefault()
-      setQuestionSubmitted(true)
-      setTimeout(() => setQuestionSubmitted(false), 5000)
-    }
-    // In production, form will submit normally to Netlify
   }
 
   return (
@@ -59,9 +47,9 @@ const ContactPage = () => {
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
+
             {/* Contact Form */}
-            <div className="glass rounded-2xl p-8">
+            <div className="glass rounded-2xl p-8 order-2 lg:order-1">
               <h2 className="text-3xl font-bold mb-6 gradient-text" id="contact-form">Apply Now</h2>
               <p className="text-muted-foreground mb-8">
                 Ready to transform your career? Fill out the form below and let's discuss how The Maniac Method can weaponize your career story.
@@ -183,8 +171,8 @@ const ContactPage = () => {
                     id="goals"
                     name="goals"
                     required
-                    rows={4}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+                    rows={7}
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-y min-h-[160px]"
                     placeholder="Tell me about your career goals, current challenges, and what you're looking to achieve..."
                   ></textarea>
                 </div>
@@ -217,7 +205,7 @@ const ContactPage = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div className="space-y-8 order-1 lg:order-2">
               <div className="glass rounded-2xl p-8">
                 <h3 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h3>
                 <div className="space-y-6">
@@ -279,60 +267,16 @@ const ContactPage = () => {
               </div>
 
               <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8">
-                <h3 className="text-xl font-bold mb-4 gradient-text">Ask a Question</h3>
+                <h3 className="text-xl font-bold mb-3 gradient-text">Just Have a Question?</h3>
                 <p className="text-muted-foreground mb-4">
-                  Not ready to apply but have questions? Send me a quick message and I'll get back to you.
+                  Not ready to apply but want to chat? Email me directly and I'll get back to you within 24 hours.
                 </p>
-                
-                {questionSubmitted && (
-                  <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-6">
-                    <div className="flex items-center space-x-2 text-primary">
-                      <CheckCircle className="w-5 h-5" />
-                      <span className="font-semibold">Question sent successfully!</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      I'll get back to you within 24 hours.
-                    </p>
-                  </div>
-                )}
-
-                <form
-                  name="question"
-                  method="POST"
-                  data-netlify="true"
-                  onSubmit={handleQuestionSubmit}
-                  className="space-y-4"
+                <a
+                  href="mailto:jeff@careermaniacs.com"
+                  className="btn-secondary inline-block px-6 py-3 rounded-lg font-semibold"
                 >
-                  <input type="hidden" name="form-name" value="question" />
-                  <div>
-                    <label htmlFor="questionEmail" className="sr-only">Your email</label>
-                    <input
-                      type="email"
-                      id="questionEmail"
-                      name="email"
-                      placeholder="Your email"
-                      required
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="questionText" className="sr-only">Your question</label>
-                    <textarea
-                      id="questionText"
-                      name="question"
-                      placeholder="Your question..."
-                      required
-                      rows={3}
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn-secondary w-full py-3 rounded-lg font-semibold"
-                  >
-                    Send Question
-                  </button>
-                </form>
+                  jeff@careermaniacs.com
+                </a>
               </div>
             </div>
           </div>

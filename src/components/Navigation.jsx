@@ -62,10 +62,12 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/career-maniacs-logo.png" 
-              alt="Career Maniacs" 
-              className="h-10 w-auto"
+            <img
+              src="/career-maniacs-logo.png"
+              alt="Career Maniacs"
+              width="40"
+              height="40"
+              className="h-10 w-10"
             />
             <span className="gradient-text font-bold text-xl hidden sm:block">Career Maniacs</span>
           </Link>
