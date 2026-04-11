@@ -1,0 +1,4 @@
+# SPA fallback: serve index.html for any path that doesn't match a real file.
+# Vite copies this file from public/ into dist/ at build time, so it also
+# applies to drag-and-drop deploys (not just git-integrated builds).
+/*    /index.html   200
