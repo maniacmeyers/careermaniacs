@@ -10,15 +10,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center">
               <img
                 src="/career-maniacs-logo.png"
                 alt="Career Maniacs"
-                width="40"
-                height="40"
-                className="h-10 w-10"
+                width="96"
+                height="96"
+                className="h-24 w-24"
               />
-              <span className="gradient-text font-bold text-xl">Career Maniacs</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               AI-powered career storytelling, job acquisition strategy, mindset, and GTM coaching. 

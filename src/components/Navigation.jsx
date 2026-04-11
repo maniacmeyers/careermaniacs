@@ -60,16 +60,15 @@ const Navigation = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          {/* Logo (wordmark is baked into the image, no adjacent text needed) */}
+          <Link to="/" className="flex items-center" aria-label="Career Maniacs home">
             <img
               src="/career-maniacs-logo.png"
               alt="Career Maniacs"
-              width="40"
-              height="40"
-              className="h-10 w-10"
+              width="56"
+              height="56"
+              className="h-14 w-14"
             />
-            <span className="gradient-text font-bold text-xl hidden sm:block">Career Maniacs</span>
           </Link>
 
           {/* Desktop Navigation */}
