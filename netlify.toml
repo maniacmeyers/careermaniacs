@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# SPA fallback: serve index.html for any path that doesn't match a real file.
+# SPA fallback — serve index.html for any path that doesn't match a real file.
 # React Router's BrowserRouter then handles the route client-side.
 # Without this rule, direct visits to /about, /services, /privacy, etc. 404
 # at the Netlify edge before React ever loads.
