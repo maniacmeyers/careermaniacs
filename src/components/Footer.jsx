@@ -14,9 +14,9 @@ const Footer = () => {
               <img
                 src="/career-maniacs-logo.png"
                 alt="Career Maniacs"
-                width="96"
-                height="96"
-                className="h-24 w-24"
+                width="128"
+                height="128"
+                className="h-32 w-32"
               />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">

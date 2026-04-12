@@ -59,15 +59,15 @@ const Navigation = () => {
       isScrolled ? 'glass shadow-lg' : 'glass'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo (wordmark is baked into the image, no adjacent text needed) */}
           <Link to="/" className="flex items-center" aria-label="Career Maniacs home">
             <img
               src="/career-maniacs-logo.png"
               alt="Career Maniacs"
-              width="56"
-              height="56"
-              className="h-14 w-14"
+              width="64"
+              height="64"
+              className="h-16 w-16"
             />
           </Link>
 

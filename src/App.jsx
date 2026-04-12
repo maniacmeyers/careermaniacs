@@ -35,7 +35,7 @@ function App() {
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="*" element={
-                <div className="min-h-screen pt-20 flex items-center justify-center">
+                <div className="min-h-screen pt-24 flex items-center justify-center">
                   <div className="text-center px-4">
                     <h1 className="text-6xl font-bold gradient-text mb-4">404</h1>
                     <p className="text-xl text-muted-foreground mb-8">Page not found</p>

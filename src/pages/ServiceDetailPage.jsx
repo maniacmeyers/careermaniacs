@@ -111,7 +111,7 @@ const ServiceDetailPage = ({ service }) => {
 
   if (!data) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center">
+      <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>
           <Link to="/services" className="btn-primary px-6 py-3 rounded-lg">
@@ -123,7 +123,7 @@ const ServiceDetailPage = ({ service }) => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-24">
       {/* Hero Section */}
       <section className="py-20 relative" id="service-detail">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
