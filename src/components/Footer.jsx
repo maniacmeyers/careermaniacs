@@ -48,6 +48,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/services/ai-workshop#service-detail" className="text-muted-foreground hover:text-primary transition-colors">
+                  AI Workshop
+                </Link>
+              </li>
+              <li>
                 <Link to="/services#services-section" className="text-muted-foreground hover:text-primary transition-colors">
                   All Services
                 </Link>

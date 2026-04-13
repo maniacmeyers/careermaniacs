@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Zap, Target } from 'lucide-react'
+import { ArrowRight, CheckCircle, Zap, Target, Cpu } from 'lucide-react'
 
 const ServicesPage = () => {
   return (
@@ -8,7 +8,7 @@ const ServicesPage = () => {
       <section className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Two Programs. One Outcome: <span className="gradient-text">Undeniable.</span>
+            Your Arsenal. One Outcome: <span className="gradient-text">Undeniable.</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             If you want babysitting and platitudes, look elsewhere. If you want offers, impact, and acceleration, 
@@ -166,6 +166,117 @@ const ServicesPage = () => {
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
+
+            {/* AI Workshop — Add-On / Standalone */}
+            <div className="relative rounded-2xl p-8 tilt-card lg:col-span-2" style={{ background: 'rgba(30, 41, 59, 0.8)', border: '2px solid #f59e0b', boxShadow: '0 0 20px rgba(245, 158, 7, 0.2)' }}>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
+                Add-On / Standalone
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+                {/* Left: Info + Features */}
+                <div>
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center">
+                      <Cpu className="w-6 h-6 text-amber-500" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-amber-400">Maniac AI Workshop</h2>
+                    </div>
+                  </div>
+
+                  <p className="text-xl font-semibold text-foreground mb-2">Outcome: You walk away with working AI you built yourself.</p>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    <strong className="text-foreground">Best for:</strong> Anyone who wants to stop watching AI demos and start building their own apps, automations, and workflows — with Jeff as your coach.
+                  </p>
+
+                  <div className="space-y-4 mb-8">
+                    <h3 className="text-lg font-semibold text-foreground">What You Build</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          <strong>Digital Twin Setup & Orchestration:</strong> your AI alter ego that works while you sleep
+                        </span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          <strong>Prospecting & Outreach Automation:</strong> stop manual grunt work, build the machine
+                        </span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          <strong>Research & Intelligence Workflows:</strong> pull signal from noise at scale
+                        </span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          <strong>Personal Brand Content Engines:</strong> automate the flywheel, keep the voice
+                        </span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          <strong>GTM Dashboards & Reporting:</strong> real-time visibility into what matters
+                        </span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          <strong>Deliverable:</strong> working & tested app, automation, workflow — or all three as a fully agentic system
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Right: Pricing + CTA */}
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <div className="glass rounded-xl p-6 mb-6">
+                      <h3 className="text-lg font-semibold text-foreground mb-4">Pricing</h3>
+                      <div className="space-y-4">
+                        <div className="flex items-baseline justify-between">
+                          <span className="text-muted-foreground">Standalone</span>
+                          <span className="text-2xl font-bold text-amber-400">$3,000/mo</span>
+                        </div>
+                        <div className="border-t border-border/30 pt-4">
+                          <div className="flex items-baseline justify-between">
+                            <span className="text-muted-foreground">Bundled with any plan</span>
+                            <span className="text-2xl font-bold text-amber-400">$7,000/mo</span>
+                          </div>
+                          <span className="inline-block mt-2 text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 px-2 py-1 rounded">Save $1,000/mo</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-amber-500/10 rounded-lg p-4 mb-6">
+                      <p className="text-sm text-muted-foreground">
+                        <strong className="text-foreground">How bundling works:</strong> You pick which elements of your base coaching plan get condensed to make room for Workshop sessions. Your call, your priorities.
+                      </p>
+                    </div>
+
+                    <div className="bg-amber-500/10 rounded-lg p-4 mb-6">
+                      <p className="text-sm text-muted-foreground">
+                        <strong className="text-foreground">Note:</strong> AI Workshop is available only while in active contract. What you build is yours — what we teach stays under NDA.
+                      </p>
+                    </div>
+                  </div>
+
+                  <Link
+                    to="/services/ai-workshop"
+                    className="w-full py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2 transition-all duration-200 hover:shadow-lg"
+                    style={{ background: 'linear-gradient(135deg, #f59e0b, #ea580c)' }}
+                  >
+                    <span>Start Building</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -207,6 +318,18 @@ const ServicesPage = () => {
                 q: 'Who is this NOT for?',
                 a: 'People looking for a resume tweaker or a pep talk. People who want someone to do the work for them. People who are not willing to be coached hard. If "daily accountability" sounds exhausting rather than exciting, this is not the right fit — and that is fine.',
               },
+              {
+                q: 'What is the Maniac AI Workshop and who is it for?',
+                a: 'It is a hands-on coaching program where Jeff teaches you to build your own AI apps, automations, and workflows. No slides, no theory — you get your hands dirty and walk away with working systems. Available standalone ($3,000/mo) or bundled with either coaching plan ($7,000/mo total — saves you $1,000/mo). It is for anyone who wants to weaponize AI for their career, whether you are job hunting, ramping in a new role, or just ready to build.',
+              },
+              {
+                q: 'How does the AI Workshop bundle pricing work?',
+                a: 'Standalone is $3,000/month. Add it to either the Job Acquisition Plan or the GTM Onboarding Plan for $7,000/month total instead of $8,000 separately — you save $1,000 a month. When bundled, you choose which elements of your base coaching plan get condensed to make room for Workshop sessions. Your priorities, your call.',
+              },
+              {
+                q: 'What do I actually walk away with from the AI Workshop?',
+                a: 'A working, tested app, automation, workflow — or all three wired together as a fully agentic system. Examples: Digital Twin setup, prospecting and outreach automation, research and intelligence workflows, personal brand content engines, GTM dashboards. Everything you build is yours to keep and use. The Workshop is available while you are in active contract.',
+              },
             ].map((item, i) => (
               <details
                 key={i}
@@ -233,7 +356,7 @@ const ServicesPage = () => {
             Ready to Stop Playing <span className="gradient-text">Small</span>?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Choose your path to career domination. Both programs include AI precision, GTM clarity, and daily accountability.
+            Choose your path to career domination. Coaching, AI building, or both — every program includes Jeff in your corner daily.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

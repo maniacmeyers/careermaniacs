@@ -46,7 +46,8 @@ const Navigation = () => {
       submenu: [
         { name: 'All Services', path: '/services' },
         { name: 'Job Acquisition Plan', path: '/services/job-acquisition' },
-        { name: 'GTM Onboarding Plan', path: '/services/gtm-onboarding' }
+        { name: 'GTM Onboarding Plan', path: '/services/gtm-onboarding' },
+        { name: 'Maniac AI Workshop', path: '/services/ai-workshop' }
       ]
     },
     { name: 'About', path: '/about' },

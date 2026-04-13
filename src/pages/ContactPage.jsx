@@ -157,8 +157,13 @@ const ContactPage = () => {
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                   >
                     <option value="">Select a service</option>
-                    <option value="job-acquisition">Full Maniac Job Acquisition Plan</option>
-                    <option value="gtm-onboarding">Maniac GTM Onboarding Plan</option>
+                    <option value="job-acquisition">Full Maniac Job Acquisition Plan — $5,000/mo</option>
+                    <option value="gtm-onboarding">Maniac GTM Onboarding Plan — $5,000/mo</option>
+                    <option value="ai-workshop">Maniac AI Workshop — $3,000/mo</option>
+                    <optgroup label="Bundle & Save $1,000/mo">
+                      <option value="job-acquisition-ai-workshop">Job Acquisition + AI Workshop — $7,000/mo</option>
+                      <option value="gtm-onboarding-ai-workshop">GTM Onboarding + AI Workshop — $7,000/mo</option>
+                    </optgroup>
                     <option value="consultation">Initial Consultation</option>
                   </select>
                 </div>
