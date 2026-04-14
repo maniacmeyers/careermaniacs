@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Target, Zap, Cpu, Clock, Users, Star, Wrench, DollarSign } from 'lucide-react'
+import CalendlyButton from '../components/CalendlyButton'
 
 const ServiceDetailPage = ({ service }) => {
   const serviceData = {
@@ -106,7 +107,7 @@ const ServiceDetailPage = ({ service }) => {
       outcome: 'You walk away with working AI you built yourself.',
       icon: <Cpu className="w-8 h-8" />,
       color: 'tertiary',
-      description: 'Stop watching AI demos. Start building your own apps, automations, and workflows — hands-on, with Jeff as your coach and co-builder.',
+      description: 'Stop watching AI demos. Start building your own apps, automations, and workflows — hands-on, with a coach who\'s shipped AI since Salesforce Einstein in 2017 and builds daily at Forgetime.ai.',
       features: [
         {
           title: 'Digital Twin Setup & Orchestration',
@@ -281,6 +282,21 @@ const ServiceDetailPage = ({ service }) => {
                 <div className="text-muted-foreground">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Current Client Booking */}
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="glass rounded-2xl p-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Already a <span className="gradient-text">Maniac</span>?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+              Book your next session directly. No back-and-forth.
+            </p>
+            <CalendlyButton />
           </div>
         </div>
       </section>

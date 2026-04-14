@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import CalendlyButton from '../components/CalendlyButton'
 
 const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -269,6 +270,14 @@ const ContactPage = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="glass rounded-2xl p-8 text-center">
+                <h3 className="text-2xl font-bold mb-3 gradient-text">Already a Maniac?</h3>
+                <p className="text-muted-foreground mb-6">
+                  Current clients — book your next session here.
+                </p>
+                <CalendlyButton />
               </div>
 
               <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8">

@@ -20,8 +20,9 @@ const AboutPage = () => {
             </p>
             
             <p className="text-lg">
-              My unfair advantage: I don't just use AI—I coach you to wield it. Together we deploy human-validated 
-              AI workflows to:
+              My unfair advantage: I've been selling, building, and deploying AI since 2017 — Salesforce
+              Einstein, AI startups, Palantir, and now my own AI apps at Forgetime.ai. I don't just
+              use AI — I coach you to wield it. Together we deploy human-validated AI workflows to:
             </p>
             
             <ul className="text-left max-w-2xl mx-auto space-y-3 text-lg">
@@ -88,16 +89,20 @@ const AboutPage = () => {
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   I spent 20 years in enterprise sales — Palantir, Salesforce, Oracle, expert.ai, [24]7.ai,
-                  ADP — before I walked away to build Career Maniacs. Twelve President's Club wins. Four
-                  AE of the Year trophies. Two Rookie of the Year awards. I sold the largest cloud deal
-                  in Oracle's history by license count in FY13. MIT Sloan–trained on AI and business
-                  strategy. I've sat on both sides of the interview table, usually in the same year.
+                  ADP — before I walked away to build Career Maniacs. I joined Salesforce's Einstein AI
+                  team in 2017 and closed one of the company's first pure AI deals. From there I went
+                  deeper: led sales motions for multiple AI startups, went back to MIT specifically for
+                  a degree in AI and business strategy, and performed at Palantir — where data and AI
+                  are the product. Twelve President's Club wins. Four AE of the Year trophies. Two
+                  Rookie of the Year awards. Largest cloud deal in Oracle history by license count, FY13.
                 </p>
                 <p>
-                  I built Career Maniacs in 2025 because I watched too many sharp operators lose offers
-                  they should have won — not because they weren't good, but because nobody taught them
-                  to tell their story or use AI the way the best do. That's the gap I close. Neuroscience-backed
-                  mindset work, narrative precision, and AI-powered job strategy. No recycled LinkedIn hacks.
+                  I built Career Maniacs in 2025 — and Forgetime.ai, where I build AI apps and automations
+                  for clients — because I watched too many sharp operators lose offers they should have
+                  won. Not because they weren't good, but because nobody taught them to tell their story
+                  or use AI the way someone who's actually built it can. That's the gap I close.
+                  Neuroscience-backed mindset work, narrative precision, and AI-powered job strategy.
+                  No recycled LinkedIn hacks.
                 </p>
                 <p>
                   When I'm not coaching, you'll find me rolling jiu-jitsu, surfing, kitesurfing, or
@@ -113,10 +118,16 @@ const AboutPage = () => {
                   4× AE of the Year
                 </span>
                 <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                  MIT Sloan · AI Strategy
+                  MIT · AI Strategy
                 </span>
                 <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                  Palantir · Salesforce · Oracle alum
+                  Salesforce Einstein AI · 2017
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  Palantir · AI/Data
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  Founder, Forgetime.ai
                 </span>
               </div>
             </div>
@@ -188,7 +199,7 @@ const AboutPage = () => {
               </div>
               <h3 className="text-xl font-bold mb-4 text-foreground">AI Mastery</h3>
               <p className="text-muted-foreground">
-                Use the right tools to out-research and out-position the field. AI workflows that actually work.
+                Built by someone who's shipped AI since 2017 — not borrowed from a YouTube tutorial. Workflows that out-research and out-position the field.
               </p>
             </div>
 

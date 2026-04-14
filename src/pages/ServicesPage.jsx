@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Zap, Target, Cpu } from 'lucide-react'
+import CalendlyButton from '../components/CalendlyButton'
 
 const ServicesPage = () => {
   return (
@@ -187,7 +188,7 @@ const ServicesPage = () => {
 
                   <p className="text-xl font-semibold text-foreground mb-2">Outcome: You walk away with working AI you built yourself.</p>
                   <p className="text-sm text-muted-foreground mb-6">
-                    <strong className="text-foreground">Best for:</strong> Anyone who wants to stop watching AI demos and start building their own apps, automations, and workflows — with Jeff as your coach.
+                    <strong className="text-foreground">Best for:</strong> Anyone who wants to stop watching AI demos and start building their own apps, automations, and workflows — coached by someone who's been shipping AI since Salesforce Einstein in 2017 and builds them daily at Forgetime.ai.
                   </p>
 
                   <div className="space-y-4 mb-8">
@@ -281,6 +282,21 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* Current Client Booking */}
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="glass rounded-2xl p-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Already a <span className="gradient-text">Maniac</span>?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+              Book your next session directly. No back-and-forth.
+            </p>
+            <CalendlyButton />
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-20" id="faq">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -320,7 +336,7 @@ const ServicesPage = () => {
               },
               {
                 q: 'What is the Maniac AI Workshop and who is it for?',
-                a: 'It is a hands-on coaching program where Jeff teaches you to build your own AI apps, automations, and workflows. No slides, no theory — you get your hands dirty and walk away with working systems. Available standalone ($3,000/mo) or bundled with either coaching plan ($7,000/mo total — saves you $1,000/mo). It is for anyone who wants to weaponize AI for their career, whether you are job hunting, ramping in a new role, or just ready to build.',
+                a: 'It is a hands-on coaching program where Jeff — who\'s been building and selling AI since 2017 (Salesforce Einstein, AI startups, Palantir) and ships AI apps at Forgetime.ai — teaches you to build your own apps, automations, and workflows. No slides, no theory — you get your hands dirty and walk away with working systems. Available standalone ($3,000/mo) or bundled with either coaching plan ($7,000/mo total — saves you $1,000/mo). It is for anyone who wants to weaponize AI for their career, whether you are job hunting, ramping in a new role, or just ready to build.',
               },
               {
                 q: 'How does the AI Workshop bundle pricing work?',

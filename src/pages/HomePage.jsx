@@ -28,7 +28,7 @@ const HomePage = () => {
     {
       icon: <Zap className="w-8 h-8" />,
       title: "AI Coaching & Workflows",
-      description: "Use the right tools to out-research and out-position the field"
+      description: "From a coach who's shipped AI since 2017 — not just a power user"
     }
   ]
 
@@ -125,12 +125,14 @@ const HomePage = () => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  I'm not just another career coach throwing around buzzwords. I'm a career architect who's built 
-                  a system that turns talented professionals into undeniable candidates.
+                  I'm not just another career coach throwing around buzzwords. I've been in AI since 2017 —
+                  Salesforce Einstein, multiple AI startups, Palantir, MIT for AI strategy — and I
+                  build AI apps and automations at Forgetime.ai. That's the difference between coaching
+                  theory and coaching from the trenches.
                 </p>
                 <p>
-                  My approach combines neuroscience-backed mindset conditioning, AI-powered research workflows, 
-                  and GTM strategy that makes leadership take notice from day one.
+                  My approach combines neuroscience-backed mindset conditioning, AI workflows I've built
+                  myself, and GTM strategy that makes leadership take notice from day one.
                 </p>
                 <p>
                   I don't stop when you get the job. I coach you from onboarding to President's Club, because 
