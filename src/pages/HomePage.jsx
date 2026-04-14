@@ -274,6 +274,49 @@ const HomePage = () => {
             </div>
           </div>
 
+          {/* AI Workshop */}
+          <div className="mt-8 rounded-2xl p-8 tilt-card" style={{ background: 'rgba(30, 41, 59, 0.8)', border: '2px solid #f59e0b', boxShadow: '0 0 20px rgba(245, 158, 7, 0.2)' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                  Add-On / Standalone
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-amber-400">Maniac AI Workshop</h3>
+                <p className="text-muted-foreground mb-6">
+                  Stop watching demos. Start building your own AI apps, automations, and workflows — coached by someone who's been shipping AI since Salesforce Einstein in 2017.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-muted-foreground">Digital Twins, Prospecting Automation, Research Workflows</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-muted-foreground">Content Engines, GTM Dashboards, Fully Agentic Systems</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-muted-foreground">You build it, you own it — hands on keyboard, not slides</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-center lg:text-right">
+                <p className="text-3xl font-bold text-amber-400 mb-1">$3,000/mo <span className="text-lg font-normal text-muted-foreground">standalone</span></p>
+                <p className="text-3xl font-bold text-amber-400 mb-1">$7,000/mo <span className="text-lg font-normal text-muted-foreground">bundled</span></p>
+                <span className="inline-block mt-1 mb-6 text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 px-2 py-1 rounded">Save $1,000/mo when bundled</span>
+                <div>
+                  <Link
+                    to="/services/ai-workshop"
+                    className="w-full lg:w-auto py-3 px-8 rounded-lg font-semibold text-white text-center inline-block"
+                    style={{ background: 'linear-gradient(135deg, #f59e0b, #ea580c)' }}
+                  >
+                    Start Building
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mt-12">
             <Link
               to="/contact#contact-form"
