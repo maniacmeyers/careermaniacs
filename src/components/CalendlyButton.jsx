@@ -1,6 +1,6 @@
 import { Calendar } from 'lucide-react'
 
-const CALENDLY_URL = 'https://calendly.com/jeff-careermaniacs/current_client?hide_gdpr_banner=1&primary_color=ff0007'
+const CALENDLY_URL = 'https://calendly.com/jeff-careermaniacs/current_client?hide_gdpr_banner=1&primary_color=06b6d4'
 
 const CalendlyButton = ({ className = '' }) => {
   const openCalendly = (e) => {

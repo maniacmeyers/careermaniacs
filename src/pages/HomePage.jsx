@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Target, Brain, TrendingUp, Star, Users, Award } from 'lucide-react'
+import CalendlyButton from '../components/CalendlyButton'
+import ShinyText from '../components/ShinyText'
 
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -125,14 +127,15 @@ const HomePage = () => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  I'm not just another career coach throwing around buzzwords. I've been in AI since 2017 —
-                  Salesforce Einstein, multiple AI startups, Palantir, MIT for AI strategy — and I
-                  build AI apps and automations at Forgetime.ai. That's the difference between coaching
-                  theory and coaching from the trenches.
+                  I'm not just another career coach throwing around buzzwords. I'm a career architect —
+                  20 years in enterprise sales, 12 President's Club wins, and deep roots in AI since
+                  Salesforce Einstein in 2017. I've built the system that turns talented professionals
+                  into undeniable candidates.
                 </p>
                 <p>
-                  My approach combines neuroscience-backed mindset conditioning, AI workflows I've built
-                  myself, and GTM strategy that makes leadership take notice from day one.
+                  My approach combines neuroscience-backed mindset conditioning, career storytelling
+                  that rewires how you show up, AI workflows I've built myself, and GTM strategy that
+                  makes leadership take notice from day one.
                 </p>
                 <p>
                   I don't stop when you get the job. I coach you from onboarding to President's Club, because 
@@ -352,6 +355,12 @@ const HomePage = () => {
             >
               See Client Results
             </Link>
+          </div>
+          <div className="mt-8">
+            <p className="text-sm uppercase tracking-wider mb-3">
+              <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-sm uppercase tracking-wider font-semibold" />
+            </p>
+            <CalendlyButton />
           </div>
         </div>
       </section>

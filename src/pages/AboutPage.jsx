@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Target, Brain, Users, MessageSquare } from 'lucide-react'
+import CalendlyButton from '../components/CalendlyButton'
+import ShinyText from '../components/ShinyText'
 
 const AboutPage = () => {
   return (
@@ -20,9 +22,10 @@ const AboutPage = () => {
             </p>
             
             <p className="text-lg">
-              My unfair advantage: I've been selling, building, and deploying AI since 2017 — Salesforce
-              Einstein, AI startups, Palantir, and now my own AI apps at Forgetime.ai. I don't just
-              use AI — I coach you to wield it. Together we deploy human-validated AI workflows to:
+              My unfair advantage: I teach the storytelling and mindset work that gets you in the room —
+              and I've been building and deploying AI since 2017 (Salesforce Einstein, Palantir,
+              Forgetime.ai), so I coach you to wield it once you're there. Together we deploy
+              human-validated AI workflows to:
             </p>
             
             <ul className="text-left max-w-2xl mx-auto space-y-3 text-lg">
@@ -89,20 +92,20 @@ const AboutPage = () => {
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   I spent 20 years in enterprise sales — Palantir, Salesforce, Oracle, expert.ai, [24]7.ai,
-                  ADP — before I walked away to build Career Maniacs. I joined Salesforce's Einstein AI
-                  team in 2017 and closed one of the company's first pure AI deals. From there I went
-                  deeper: led sales motions for multiple AI startups, went back to MIT specifically for
-                  a degree in AI and business strategy, and performed at Palantir — where data and AI
-                  are the product. Twelve President's Club wins. Four AE of the Year trophies. Two
-                  Rookie of the Year awards. Largest cloud deal in Oracle history by license count, FY13.
+                  ADP — before I walked away to build Career Maniacs. Twelve President's Club wins. Four
+                  AE of the Year trophies. Two Rookie of the Year awards. Largest cloud deal in Oracle
+                  history by license count, FY13. I've sat on both sides of the interview table, usually
+                  in the same year. I joined Salesforce's Einstein AI team in 2017, closed one of the
+                  company's first pure AI deals, then led sales motions for multiple AI startups before
+                  going back to MIT specifically for a degree in AI and business strategy.
                 </p>
                 <p>
-                  I built Career Maniacs in 2025 — and Forgetime.ai, where I build AI apps and automations
-                  for clients — because I watched too many sharp operators lose offers they should have
-                  won. Not because they weren't good, but because nobody taught them to tell their story
-                  or use AI the way someone who's actually built it can. That's the gap I close.
-                  Neuroscience-backed mindset work, narrative precision, and AI-powered job strategy.
-                  No recycled LinkedIn hacks.
+                  I built Career Maniacs in 2025 because I watched too many sharp operators lose offers
+                  they should have won — not because they weren't good, but because nobody taught them
+                  to tell their story, condition their mindset, or wield AI the way someone who's actually
+                  built it can. I also founded Forgetime.ai, where I build AI apps and automations for
+                  clients. That's the gap I close: narrative precision, neuroscience-backed mindset work,
+                  and AI-powered job strategy. No recycled LinkedIn hacks.
                 </p>
                 <p>
                   When I'm not coaching, you'll find me rolling jiu-jitsu, surfing, kitesurfing, or
@@ -118,13 +121,13 @@ const AboutPage = () => {
                   4× AE of the Year
                 </span>
                 <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  2× Rookie of the Year
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                  Palantir · Salesforce · Oracle
+                </span>
+                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
                   MIT · AI Strategy
-                </span>
-                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                  Salesforce Einstein AI · 2017
-                </span>
-                <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                  Palantir · AI/Data
                 </span>
                 <span className="inline-block bg-primary/10 border border-primary/30 text-primary text-xs font-semibold px-3 py-1 rounded-full">
                   Founder, Forgetime.ai
@@ -199,7 +202,7 @@ const AboutPage = () => {
               </div>
               <h3 className="text-xl font-bold mb-4 text-foreground">AI Mastery</h3>
               <p className="text-muted-foreground">
-                Built by someone who's shipped AI since 2017 — not borrowed from a YouTube tutorial. Workflows that out-research and out-position the field.
+                AI workflows built by a practitioner, not borrowed from a tutorial. Out-research, out-position, and out-prepare the field.
               </p>
             </div>
 
@@ -239,6 +242,12 @@ const AboutPage = () => {
             >
               View Services
             </Link>
+          </div>
+          <div className="mt-8">
+            <p className="mb-3">
+              <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-sm uppercase tracking-wider font-semibold" />
+            </p>
+            <CalendlyButton />
           </div>
         </div>
       </section>

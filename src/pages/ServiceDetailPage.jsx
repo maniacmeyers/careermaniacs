@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Target, Zap, Cpu, Clock, Users, Star, Wrench, DollarSign } from 'lucide-react'
 import CalendlyButton from '../components/CalendlyButton'
+import ShinyText from '../components/ShinyText'
 
 const ServiceDetailPage = ({ service }) => {
   const serviceData = {
@@ -291,7 +292,7 @@ const ServiceDetailPage = ({ service }) => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="glass rounded-2xl p-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Already a <span className="gradient-text">Maniac</span>?
+              <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-3xl md:text-4xl font-bold" />
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
               Book your next session directly. No back-and-forth.

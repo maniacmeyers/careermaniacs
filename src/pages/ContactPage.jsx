@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 import CalendlyButton from '../components/CalendlyButton'
+import ShinyText from '../components/ShinyText'
 
 const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -273,7 +274,9 @@ const ContactPage = () => {
               </div>
 
               <div className="glass rounded-2xl p-8 text-center">
-                <h3 className="text-2xl font-bold mb-3 gradient-text">Already a Maniac?</h3>
+                <h3 className="text-2xl font-bold mb-3">
+                  <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-2xl font-bold" />
+                </h3>
                 <p className="text-muted-foreground mb-6">
                   Current clients — book your next session here.
                 </p>

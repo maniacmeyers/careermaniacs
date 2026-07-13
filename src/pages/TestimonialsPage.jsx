@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { X } from 'lucide-react'
+import CalendlyButton from '../components/CalendlyButton'
+import ShinyText from '../components/ShinyText'
 
 const TestimonialsPage = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null)
@@ -142,6 +144,12 @@ const TestimonialsPage = () => {
             >
               Apply Now
             </Link>
+          </div>
+          <div className="mt-8">
+            <p className="mb-3">
+              <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-sm uppercase tracking-wider font-semibold" />
+            </p>
+            <CalendlyButton />
           </div>
         </div>
       </section>
