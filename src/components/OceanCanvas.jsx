@@ -6,6 +6,7 @@
 // gates those systems on. Scroll position drives uRise: pre-dawn at the top
 // of the page, full sunrise at the bottom.
 import { useEffect, useRef, useState } from 'react'
+import WaveScene from './WaveScene'
 
 /* ==================== begin verbatim v35 port ==================== */
 // ---------- ocean shader (production scene, celebration-break driver) ----------
@@ -1162,7 +1163,14 @@ const OceanCanvas = () => {
     }
   }, [])
 
-  if (failed) return null
+  // No WebGL → static SVG wave scene instead of empty darkness
+  if (failed) {
+    return (
+      <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+        <WaveScene variant="night" />
+      </div>
+    )
+  }
   return (
     <canvas
       ref={ref}
