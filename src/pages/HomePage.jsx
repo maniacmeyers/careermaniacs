@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion as Motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import WaveScene from '../components/WaveScene'
+import OceanCanvas from '../components/OceanCanvas'
 
 const rise = {
   initial: { y: 24 },
@@ -60,9 +60,20 @@ const results = [
 const HomePage = () => {
   return (
     <div className="overflow-x-clip">
-      {/* ============ HERO — night water ============ */}
-      <section className="relative min-h-[92vh] flex items-center bg-[var(--bg-deep)]">
-        <WaveScene variant="night" />
+      {/* Fixed WebGL ocean behind everything; scroll raises the sun */}
+      <OceanCanvas />
+
+      {/* ============ HERO — pre-dawn water (transparent over the ocean) ============ */}
+      <section className="relative min-h-[92vh] flex items-center">
+        {/* left-side scrim for text legibility over the animated water */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
+          }}
+        />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 w-full">
           <Motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -73,7 +84,7 @@ const HomePage = () => {
             <h1 className="display">
               Your interview is a sales call.
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground prose-body">
+            <p className="mt-6 text-lg sm:text-xl text-foreground/95 prose-body">
               You've run discovery, built champions, and closed millions for other
               people's companies. But the one product you've never had to pitch is
               you. Jeff Meyers coaches GTM executives to run the interview like a
@@ -112,7 +123,7 @@ const HomePage = () => {
       </section>
 
       {/* ============ WHERE JEFF SOLD ============ */}
-      <section aria-label="Companies where Jeff carried the bag" className="border-y border-border">
+      <section aria-label="Companies where Jeff carried the bag" className="relative bg-background border-y border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-wrap items-baseline gap-x-10 gap-y-3">
           <p className="text-sm text-muted-foreground shrink-0">
             Two decades carrying the bag at
@@ -132,8 +143,9 @@ const HomePage = () => {
       </section>
 
       {/* ============ THE STORY (ABT — the method demonstrating itself) ============ */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
-        <div className="max-w-3xl space-y-12">
+      <section className="relative bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+          <div className="max-w-3xl space-y-12">
           <Motion.p {...rise} className="story-voice">
             <span className="label-condensed not-italic text-[var(--teal)] block mb-3">And</span>
             You know how to run a deal. Discovery. Champion. Business case.
@@ -151,11 +163,12 @@ const HomePage = () => {
             product. Build stories like collateral. Close like a rep at 264% of
             plan — because your coach was one.
           </Motion.p>
+          </div>
         </div>
       </section>
 
       {/* ============ THE METHOD (a real sequence) ============ */}
-      <section className="bg-[var(--bg-deep)] border-y border-border">
+      <section className="relative bg-[var(--bg-deep)] border-y border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <Motion.h2 {...rise} className="headline max-w-2xl">
             Run the interview like a deal.
@@ -179,7 +192,8 @@ const HomePage = () => {
       </section>
 
       {/* ============ OFFERS — flagship first, asymmetric ============ */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+      <section className="relative bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
         <Motion.h2 {...rise} className="headline max-w-2xl">
           Pick your wave.
         </Motion.h2>
@@ -258,10 +272,11 @@ const HomePage = () => {
             </Link>
           </Motion.div>
         </div>
+        </div>
       </section>
 
       {/* ============ RESULTS ============ */}
-      <section className="bg-[var(--bg-deep)] border-y border-border">
+      <section className="relative bg-[var(--bg-deep)] border-y border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <Motion.h2 {...rise} className="headline max-w-2xl">
             The people who rode it in.
@@ -287,9 +302,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ============ INTERVIEW MANIAC TEASER — dawn ============ */}
-      <section className="relative overflow-hidden bg-[var(--bg-deep)]">
-        <WaveScene variant="dawn" />
+      {/* ============ INTERVIEW MANIAC TEASER — transparent: the sun is nearly up ============ */}
+      <section className="relative overflow-hidden">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
           <Motion.div {...rise} className="max-w-2xl mx-auto">
             <p className="label-condensed text-[var(--gold)]">Coming up on the horizon</p>
@@ -310,7 +324,8 @@ const HomePage = () => {
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+      <section className="relative bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
         <Motion.div {...rise} className="max-w-3xl">
           <h2 className="headline">
             You already have interviews on the calendar. Walk in with a process.
@@ -326,6 +341,7 @@ const HomePage = () => {
             </Link>
           </div>
         </Motion.div>
+        </div>
       </section>
     </div>
   )
