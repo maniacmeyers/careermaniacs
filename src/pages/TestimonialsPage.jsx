@@ -122,10 +122,12 @@ const TestimonialsPage = () => {
           <Motion.div {...rise}>
             <h2 className="headline mb-6">The next quote on this page could be yours.</h2>
             <p className="prose-body mx-auto mb-10" style={{ color: 'var(--muted-foreground)' }}>
-              Fifteen minutes on the phone. If I can't help, I'll tell you that too.
+              Fifteen minutes on the phone. You&apos;ll leave with one fix you can
+              use in your next interview &mdash; whether or not we ever work
+              together. And if I can&apos;t help, I&apos;ll tell you that too.
             </p>
             <Link to="/contact#book" className="btn-gold">
-              <span>Book a 15-minute call</span>
+              <span>Get your straight answer</span>
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
             <div className="mt-12">

@@ -14,7 +14,7 @@ const serviceData = {
     price: '$5,000/month',
     outcome: 'From ignored to undeniable.',
     description:
-      'An interview is a sales call. Most candidates show up to answer questions — you will show up to run the room. Built for senior operators who are done getting filtered out by people they would outperform.',
+      'An interview is a sales call. Most candidates show up to answer questions — you will show up to run the room and be the one they remember after it clears. Built for senior operators who are done getting filtered out by people they would outperform.',
     features: [
       {
         title: 'Maniac Method coaching',
@@ -200,6 +200,10 @@ const ServiceDetailPage = ({ service }) => {
               <Link to="/contact#book" className="btn-gold">
                 Book a 15-minute call
               </Link>
+              <p className="mt-4 text-sm text-muted-foreground max-w-md">
+                You&apos;ll leave with one fix you can use in your next interview
+                &mdash; whether or not we ever work together.
+              </p>
             </div>
           </Motion.div>
         </div>
@@ -350,7 +354,7 @@ const ServiceDetailPage = ({ service }) => {
             <h2 className="headline">Paddle out.</h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
               Fifteen minutes. You talk, Jeff listens, and you both decide if
-              this is the right ride.
+              this is the right fit.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#book" className="btn-gold">
@@ -363,6 +367,10 @@ const ServiceDetailPage = ({ service }) => {
                 See client results
               </Link>
             </div>
+            <p className="mt-5 text-sm text-muted-foreground max-w-md mx-auto">
+              You&apos;ll leave with one fix you can use in your next interview
+              &mdash; whether or not we ever work together.
+            </p>
           </Motion.div>
         </div>
       </section>

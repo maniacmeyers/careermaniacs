@@ -134,6 +134,18 @@ const AboutPage = () => {
                   <div className="label-condensed" style={{ color: 'var(--muted-foreground)' }}>Rookie of the Year</div>
                 </div>
               </div>
+              <div
+                className="mt-8 panel p-6"
+                style={{ borderColor: 'var(--border)' }}
+              >
+                <div className="font-bold" style={{ color: 'var(--foreground)' }}>
+                  MIT degree in AI &amp; business strategy
+                </div>
+                <p className="text-sm mt-1.5" style={{ color: 'var(--muted-foreground)' }}>
+                  And I build AI every day &mdash; I run Forgetime.ai. The research
+                  systems I teach are the ones I use, not slideware.
+                </p>
+              </div>
             </Motion.div>
 
             <Motion.div {...rise} className="lg:col-span-8">

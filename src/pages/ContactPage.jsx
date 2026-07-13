@@ -106,7 +106,10 @@ const ContactPage = () => {
               <div className="panel p-8 sm:p-10">
                 <h2 className="headline-sm mb-2">Book a 15-minute call</h2>
                 <p className="mb-8 text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                  Fill this out and I'll reply with times. No pitch deck, no pressure.
+                  Fill this out and I&apos;ll reply with times. Fifteen minutes,
+                  and you leave with one fix you can use in your next interview
+                  &mdash; whether or not we ever work together. No pitch deck, no
+                  pressure.
                 </p>
 
                 {status === 'success' ? (
@@ -266,24 +269,27 @@ const ContactPage = () => {
 
             {/* What happens next */}
             <Motion.div {...rise} className="lg:col-span-5">
-              <h2 className="headline-sm mb-6">What happens next</h2>
+              <h2 className="headline-sm mb-6">What you get out of it</h2>
               <ol className="space-y-6 list-decimal list-inside" style={{ color: 'var(--foreground)' }}>
                 <li>
-                  <span className="font-bold">I read it.</span>{' '}
+                  <span className="font-bold">One fix you can use right away.</span>{' '}
                   <span style={{ color: 'var(--muted-foreground)' }}>
-                    Every message, personally, within 24 hours.
+                    Something you can take into your next interview — whether or
+                    not we ever work together.
                   </span>
                 </li>
                 <li>
-                  <span className="font-bold">We talk for 15 minutes.</span>{' '}
+                  <span className="font-bold">The real reason you&apos;re getting filtered out.</span>{' '}
                   <span style={{ color: 'var(--muted-foreground)' }}>
-                    You tell me the target, I tell you what's between you and it.
+                    You tell me the target. I tell you what&apos;s actually
+                    standing between you and it.
                   </span>
                 </li>
                 <li>
-                  <span className="font-bold">You get a straight answer.</span>{' '}
+                  <span className="font-bold">A straight answer, either way.</span>{' '}
                   <span style={{ color: 'var(--muted-foreground)' }}>
-                    If I'm the right coach, I'll say so. If I'm not, I'll say that too.
+                    If I&apos;m the right coach, I&apos;ll say so. If I&apos;m not,
+                    I&apos;ll say that too. No pitch, no chase.
                   </span>
                 </li>
               </ol>

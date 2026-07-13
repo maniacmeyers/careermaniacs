@@ -47,11 +47,15 @@ const faqs = [
   },
   {
     q: 'Do you guarantee a job offer?',
-    a: 'No. Be suspicious of anyone in this space who does. Jeff brings 20 years of closing at Palantir, Salesforce, and Oracle, the frameworks, and relentless accountability. You bring the work. What you will leave with: a sharper story, a real strategy, and the AI workflows to run it.',
+    a: 'No — on purpose. Anyone promising you an offer is either lying or planning to do the work for you, and a hiring manager can smell both. Jeff brings 20 years of closing at Palantir, Salesforce, and Oracle, the frameworks, and daily accountability. You bring the reps. That is the only version of this that actually works. What you will leave with: a sharper story, a real strategy, and the AI workflows to run it.',
+  },
+  {
+    q: 'How is this different from interview coaching?',
+    a: 'Resume polish, STAR drills, and pep talks all do one thing — make you more prepared. But hiring managers do not hire the most prepared candidate. They hire the one they remember. The Maniac Method is a system for becoming that person: position yourself like a product, build your wins into stories that stick, and close like a rep at 264% of plan. Preparation gets you in the room. Being unforgettable gets you the offer.',
   },
   {
     q: 'Who is this NOT for?',
-    a: 'People shopping for a resume tweak or a pep talk. People who want someone to do the work for them. If daily accountability sounds exhausting instead of exciting, this is not the right fit — no hard feelings.',
+    a: 'People shopping for a resume tweak or a pep talk. People who want someone to do the work for them. If daily accountability sounds exhausting instead of exciting, this is not the right fit — no hard feelings. This is for accomplished operators who keep losing offers to weaker candidates and are done letting it happen.',
   },
   {
     q: 'I am still employed. Is this confidential?',
@@ -82,10 +86,11 @@ const ServicesPage = () => {
       <section className="pb-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise}>
-            <h1 className="display">Pick your wave.</h1>
+            <h1 className="display">Three ways to stop losing offers you should win.</h1>
             <p className="prose-body text-lg text-muted-foreground mt-6">
-              Three ways to work with Jeff. Every one of them treats your career
-              like a deal to close — because that is exactly what it is.
+              Every one of them treats your career like a deal to close &mdash;
+              because that is exactly what it is. Pick the one that fits where you
+              are.
             </p>
           </Motion.div>
         </div>
@@ -122,6 +127,11 @@ const ServicesPage = () => {
                   <Link to="/contact#book" className="btn-gold">
                     Book a 15-minute call
                   </Link>
+                  <p className="mt-4 text-sm text-muted-foreground">
+                    In 15 minutes you&apos;ll leave with one fix you can use in
+                    your next interview &mdash; whether or not we ever work
+                    together.
+                  </p>
                 </div>
                 <p className="mt-5 text-sm">
                   <Link
@@ -275,15 +285,19 @@ const ServicesPage = () => {
       <section className="py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="text-center">
-            <h2 className="headline">The next set is already forming.</h2>
+            <h2 className="headline">Stop losing offers you should win.</h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
               Fifteen minutes. You talk, Jeff listens, and you both decide if
-              this is the right ride.
+              this is the right fit.
             </p>
             <div className="mt-9">
               <Link to="/contact#book" className="btn-gold">
                 Book a 15-minute call
               </Link>
+              <p className="mt-4 text-sm text-muted-foreground max-w-md mx-auto">
+                You&apos;ll leave with one fix you can use in your next interview
+                &mdash; whether or not we ever work together.
+              </p>
             </div>
           </Motion.div>
         </div>
