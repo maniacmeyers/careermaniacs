@@ -18,9 +18,6 @@ function App() {
     <Router>
       <ScrollToHashWrapper>
         <div className="min-h-screen bg-background text-foreground">
-          {/* Morphing border at top */}
-          <div className="morphing-border h-1 w-full"></div>
-          
           <Navigation />
           
           <main className="relative">
@@ -38,10 +35,10 @@ function App() {
               <Route path="*" element={
                 <div className="min-h-screen pt-24 flex items-center justify-center">
                   <div className="text-center px-4">
-                    <h1 className="text-6xl font-bold gradient-text mb-4">404</h1>
-                    <p className="text-xl text-muted-foreground mb-8">Page not found</p>
-                    <Link to="/" className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white">
-                      Back to Home
+                    <h1 className="display mb-4">404</h1>
+                    <p className="text-xl text-muted-foreground mb-8">That set rolled through. This page doesn't exist.</p>
+                    <Link to="/" className="btn-gold">
+                      Back to shore
                     </Link>
                   </div>
                 </div>

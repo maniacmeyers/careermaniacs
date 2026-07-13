@@ -1,6 +1,8 @@
 import { Calendar } from 'lucide-react'
 
-const CALENDLY_URL = 'https://calendly.com/jeff-careermaniacs/current_client?hide_gdpr_banner=1&primary_color=06b6d4'
+// This Calendly event is for existing clients only — new prospects go to
+// the contact form (/contact#book).
+const CALENDLY_URL = 'https://calendly.com/jeff-careermaniacs/current_client?hide_gdpr_banner=1&primary_color=efc257'
 
 const CalendlyButton = ({ className = '' }) => {
   const openCalendly = (e) => {
@@ -11,12 +13,9 @@ const CalendlyButton = ({ className = '' }) => {
   }
 
   return (
-    <button
-      onClick={openCalendly}
-      className={`btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white inline-flex items-center space-x-2 group ${className}`}
-    >
-      <Calendar className="w-5 h-5" />
-      <span>Book Your Session</span>
+    <button onClick={openCalendly} className={`btn-ghost ${className}`}>
+      <Calendar className="w-5 h-5" aria-hidden="true" />
+      <span>Current client? Book your session</span>
     </button>
   )
 }

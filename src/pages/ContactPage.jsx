@@ -1,301 +1,309 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { motion as Motion } from 'framer-motion'
 import CalendlyButton from '../components/CalendlyButton'
-import ShinyText from '../components/ShinyText'
+
+const rise = {
+  initial: { y: 24 },
+  whileInView: { y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+}
+
+const NEED_OPTIONS = [
+  'Interview & Job Acquisition',
+  'GTM Onboarding',
+  'AI Workshop',
+  'Corporate GTM & AI',
+  'Interview Maniac early access',
+  'Something else',
+]
+
+const inputStyle = {
+  background: 'var(--input)',
+  border: '1px solid var(--border)',
+  color: 'var(--foreground)',
+}
+
+const inputClass =
+  'w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gold)] transition-shadow'
 
 const ContactPage = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // status: 'idle' | 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState('idle')
+  const [errors, setErrors] = useState({})
 
-  const handleSubmit = (e) => {
-    // Allow Netlify to handle form submission in production.
-    // Only prevent default in development for testing. Success state is
-    // intentionally persistent — no auto-dismiss — so users on slow
-    // connections or mobile don't miss the confirmation.
-    if (window.location.hostname === 'localhost') {
-      e.preventDefault()
-      setIsSubmitted(true)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = Object.fromEntries(new FormData(form))
+
+    // Honeypot: bots fill it, humans never see it.
+    if (data._honey) return
+
+    const newErrors = {}
+    if (!data.name?.trim()) newErrors.name = 'Tell me your name.'
+    if (!data.email?.trim()) newErrors.email = 'I need an email to reply to.'
+    if (!data.message?.trim()) newErrors.message = 'Give me at least a sentence.'
+    setErrors(newErrors)
+    if (Object.keys(newErrors).length > 0) return
+
+    setStatus('sending')
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/jeff@careermaniacs.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: 'New Career Maniacs inquiry',
+          name: data.name,
+          email: data.email,
+          currentRole: data.currentRole,
+          need: data.need,
+          message: data.message,
+        }),
+      })
+      if (!res.ok) throw new Error(`FormSubmit responded ${res.status}`)
+      setStatus('success')
+      form.reset()
+    } catch {
+      setStatus('error')
     }
   }
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero Section */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Ready to Go <span className="gradient-text">Maniac</span>?
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Stop blending in. Stop guessing. Stop chasing scraps. I'll coach you—with AI precision and GTM clarity—to land the role and dominate it.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <div className="flex items-center space-x-2 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span>2×/week coaching</span>
-            </div>
-            <div className="flex items-center space-x-2 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span>Daily accountability</span>
-            </div>
-            <div className="flex items-center space-x-2 text-primary">
-              <CheckCircle className="w-5 h-5" />
-              <span>AI workflows you will actually use</span>
-            </div>
-          </div>
+    <div className="min-h-screen pt-32">
+      {/* Hero */}
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Motion.div {...rise} className="max-w-3xl">
+            <h1 className="display mb-6">Fifteen minutes. Straight answers.</h1>
+            <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
+              Tell me where you are and where you're trying to land. I read every
+              message myself — no assistant, no autoresponder — and I'll tell you
+              plainly whether I can help. You can also email me directly at{' '}
+              <a
+                href="mailto:jeff@careermaniacs.com"
+                className="underline underline-offset-4"
+                style={{ color: 'var(--foreground)' }}
+              >
+                jeff@careermaniacs.com
+              </a>
+              .
+            </p>
+          </Motion.div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Form + next steps */}
+      <section id="book" className="py-24 scroll-mt-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Form */}
+            <Motion.div {...rise} className="lg:col-span-7">
+              <div className="panel p-8 sm:p-10">
+                <h2 className="headline-sm mb-2">Book a 15-minute call</h2>
+                <p className="mb-8 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                  Fill this out and I'll reply with times. No pitch deck, no pressure.
+                </p>
 
-            {/* Contact Form */}
-            <div className="glass rounded-2xl p-8 order-2 lg:order-1">
-              <h2 className="text-3xl font-bold mb-6 gradient-text" id="contact-form">Apply Now</h2>
-              <p className="text-muted-foreground mb-8">
-                Ready to transform your career? Fill out the form below and let's discuss how The Maniac Method can weaponize your career story.
-              </p>
-              
-              {isSubmitted && (
-                <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-6">
-                  <div className="flex items-center space-x-2 text-primary">
-                    <CheckCircle className="w-5 h-5" />
-                    <span className="font-semibold">Application submitted successfully!</span>
+                {status === 'success' ? (
+                  <div
+                    role="status"
+                    className="rounded-lg p-6"
+                    style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+                  >
+                    <p className="font-bold mb-1" style={{ color: 'var(--foreground)' }}>
+                      Got it. Jeff reads every one — expect a reply within 24 hours.
+                    </p>
+                    <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                      Watch your inbox (and spam folder, just in case).
+                    </p>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    I'll review your application and get back to you within 24 hours.
-                  </p>
-                </div>
-              )}
-
-              <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
-                      First Name *
-                    </label>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                    {/* FormSubmit conventions */}
+                    <input type="hidden" name="_subject" value="New Career Maniacs inquiry" />
                     <input
                       type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                      placeholder="John"
+                      name="_honey"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{ display: 'none' }}
                     />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                    placeholder="john@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="currentRole" className="block text-sm font-medium text-foreground mb-2">
-                    Current Role/Title *
-                  </label>
-                  <input
-                    type="text"
-                    id="currentRole"
-                    name="currentRole"
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                    placeholder="Senior Sales Manager"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
-                    Service Interest *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="job-acquisition">Full Maniac Job Acquisition Plan — $5,000/mo</option>
-                    <option value="gtm-onboarding">Maniac GTM Onboarding Plan — $5,000/mo</option>
-                    <option value="ai-workshop">Maniac AI Workshop — $3,000/mo</option>
-                    <optgroup label="Bundle & Save $1,000/mo">
-                      <option value="job-acquisition-ai-workshop">Job Acquisition + AI Workshop — $7,000/mo</option>
-                      <option value="gtm-onboarding-ai-workshop">GTM Onboarding + AI Workshop — $7,000/mo</option>
-                    </optgroup>
-                    <option value="consultation">Initial Consultation</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="goals" className="block text-sm font-medium text-foreground mb-2">
-                    Career Goals & Challenges *
-                  </label>
-                  <textarea
-                    id="goals"
-                    name="goals"
-                    required
-                    rows={7}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-y min-h-[160px]"
-                    placeholder="Tell me about your career goals, current challenges, and what you're looking to achieve..."
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label htmlFor="timeline" className="block text-sm font-medium text-foreground mb-2">
-                    Timeline
-                  </label>
-                  <select
-                    id="timeline"
-                    name="timeline"
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                  >
-                    <option value="">Select timeline</option>
-                    <option value="immediate">Ready to start immediately</option>
-                    <option value="1-month">Within 1 month</option>
-                    <option value="3-months">Within 3 months</option>
-                    <option value="exploring">Just exploring options</option>
-                  </select>
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn-primary w-full py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2 group"
-                >
-                  <span>Submit Application</span>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </form>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-8 order-1 lg:order-2">
-              <div className="glass rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-primary" />
-                    </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <p className="text-muted-foreground">jeff@careermaniacs.com</p>
-                      <p className="text-sm text-muted-foreground">I'll respond within 24 hours</p>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-2"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        autoComplete="name"
+                        aria-invalid={errors.name ? 'true' : undefined}
+                        className={inputClass}
+                        style={inputStyle}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.name}</p>
+                      )}
                     </div>
-                  </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-primary" />
-                    </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Schedule a Call</h4>
-                      <p className="text-muted-foreground">Book a discovery call</p>
-                      <p className="text-sm text-muted-foreground">15-minute career assessment</p>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-2"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autoComplete="email"
+                        aria-invalid={errors.email ? 'true' : undefined}
+                        className={inputClass}
+                        style={inputStyle}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.email}</p>
+                      )}
                     </div>
-                  </div>
-                </div>
+
+                    <div>
+                      <label
+                        htmlFor="currentRole"
+                        className="block text-sm font-medium mb-2"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        Current role
+                      </label>
+                      <input
+                        type="text"
+                        id="currentRole"
+                        name="currentRole"
+                        autoComplete="organization-title"
+                        className={inputClass}
+                        style={inputStyle}
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="need"
+                        className="block text-sm font-medium mb-2"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        What do you need?
+                      </label>
+                      <select id="need" name="need" className={inputClass} style={inputStyle}>
+                        {NEED_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt}>
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium mb-2"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={6}
+                        aria-invalid={errors.message ? 'true' : undefined}
+                        className={`${inputClass} resize-y min-h-[140px]`}
+                        style={inputStyle}
+                        placeholder="Where are you now, and where are you trying to land?"
+                      ></textarea>
+                      {errors.message && (
+                        <p className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.message}</p>
+                      )}
+                    </div>
+
+                    {status === 'error' && (
+                      <div
+                        role="alert"
+                        className="rounded-lg p-4 text-sm"
+                        style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
+                      >
+                        Something broke on the send. Email me directly instead:{' '}
+                        <a
+                          href="mailto:jeff@careermaniacs.com"
+                          className="underline underline-offset-4 font-semibold"
+                        >
+                          jeff@careermaniacs.com
+                        </a>
+                      </div>
+                    )}
+
+                    <button type="submit" className="btn-gold w-full" disabled={status === 'sending'}>
+                      <span>{status === 'sending' ? 'Sending…' : 'Book a 15-minute call'}</span>
+                      <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                    </button>
+                  </form>
+                )}
               </div>
+            </Motion.div>
 
-              <div className="glass rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-6 text-foreground">What Happens Next?</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-center text-sm font-bold flex-shrink-0 mt-0.5">
-                      1
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Application Review</h4>
-                      <p className="text-sm text-muted-foreground">I'll review your application and career goals</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-center text-sm font-bold flex-shrink-0 mt-0.5">
-                      2
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Discovery Call</h4>
-                      <p className="text-sm text-muted-foreground">15-minute call to assess fit and answer questions</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-center text-sm font-bold flex-shrink-0 mt-0.5">
-                      3
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Program Start</h4>
-                      <p className="text-sm text-muted-foreground">Begin your transformation with The Maniac Method</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* What happens next */}
+            <Motion.div {...rise} className="lg:col-span-5">
+              <h2 className="headline-sm mb-6">What happens next</h2>
+              <ol className="space-y-6 list-decimal list-inside" style={{ color: 'var(--foreground)' }}>
+                <li>
+                  <span className="font-bold">I read it.</span>{' '}
+                  <span style={{ color: 'var(--muted-foreground)' }}>
+                    Every message, personally, within 24 hours.
+                  </span>
+                </li>
+                <li>
+                  <span className="font-bold">We talk for 15 minutes.</span>{' '}
+                  <span style={{ color: 'var(--muted-foreground)' }}>
+                    You tell me the target, I tell you what's between you and it.
+                  </span>
+                </li>
+                <li>
+                  <span className="font-bold">You get a straight answer.</span>{' '}
+                  <span style={{ color: 'var(--muted-foreground)' }}>
+                    If I'm the right coach, I'll say so. If I'm not, I'll say that too.
+                  </span>
+                </li>
+              </ol>
 
-              <div className="glass rounded-2xl p-8 text-center">
-                <h3 className="text-2xl font-bold mb-3">
-                  <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-2xl font-bold" />
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Current clients — book your next session here.
-                </p>
-                <CalendlyButton />
-              </div>
-
-              <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8">
-                <h3 className="text-xl font-bold mb-3 gradient-text">Just Have a Question?</h3>
-                <p className="text-muted-foreground mb-4">
-                  Not ready to apply but want to chat? Email me directly and I'll get back to you within 24 hours.
-                </p>
+              <p className="mt-10 prose-body text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                Prefer email? Write me at{' '}
                 <a
                   href="mailto:jeff@careermaniacs.com"
-                  className="btn-secondary inline-block px-6 py-3 rounded-lg font-semibold"
+                  className="underline underline-offset-4"
+                  style={{ color: 'var(--foreground)' }}
                 >
                   jeff@careermaniacs.com
                 </a>
+                . Based in Ponte Vedra Beach, Florida — Eastern time.
+              </p>
+
+              <div className="mt-10">
+                <CalendlyButton />
               </div>
-            </div>
+            </Motion.div>
           </div>
         </div>
       </section>

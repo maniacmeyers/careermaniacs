@@ -1,368 +1,331 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Zap, Target, Brain, TrendingUp, Star, Users, Award } from 'lucide-react'
-import CalendlyButton from '../components/CalendlyButton'
-import ShinyText from '../components/ShinyText'
+import { motion as Motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import WaveScene from '../components/WaveScene'
+
+const rise = {
+  initial: { y: 24 },
+  whileInView: { y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+}
+
+const companies = ['Palantir', 'Salesforce', 'Oracle', 'ADP', 'expert.ai', '[24]7.ai']
+
+const stats = [
+  { value: '12×', label: "President's Club" },
+  { value: '#1', label: 'Nationally, at 264% of plan' },
+  { value: '20 yrs', label: 'Closing enterprise deals' },
+]
+
+const methodSteps = [
+  {
+    n: '1',
+    title: 'Position',
+    body: "You're the product now. We build your positioning: the throughline of your career, the proof that backs it, and the fit map for the exact role you want — the same way you'd build a business case for a seven-figure deal.",
+  },
+  {
+    n: '2',
+    title: 'Story',
+    body: 'Your wins become stories with teeth — And, But, Therefore. Not STAR nursery rhymes. Collateral that makes a hiring panel lean in and remember you three candidates later.',
+  },
+  {
+    n: '3',
+    title: 'Close',
+    body: "Deal-run the interview: discovery on their pain, objection handling on your gaps, and an actual ask at the end. You practice under pressure until pressure feels like home turf.",
+  },
+]
+
+const results = [
+  {
+    quote:
+      'Jeff helped me up my storytelling game and land an awesome role. The way he reframes your experience changes how the room hears you.',
+    name: 'John Macpherson',
+    title: 'Data & Analytics Leader',
+  },
+  {
+    quote:
+      'A transformative journey that redefined how I view my career. This is not resume polish — it is a different operating system for selling yourself.',
+    name: 'Justin P. H.',
+    title: 'Director of Strategic Sales, Neuron7.ai',
+  },
+  {
+    quote:
+      'An extraordinary master class in goal setting and positioning. Jeff coaches you the way a top closer runs a deal — nothing is left to chance.',
+    name: 'Charles N.',
+    title: 'Account Executive, TitanX',
+  },
+]
 
 const HomePage = () => {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  const features = [
-    {
-      icon: <Brain className="w-8 h-8" />,
-      title: "Career Storytelling",
-      description: "Answers with teeth—not STAR nursery rhymes"
-    },
-    {
-      icon: <Target className="w-8 h-8" />,
-      title: "Job Acquisition Strategy", 
-      description: "Research, precision, execution"
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "GTM Architect Coaching",
-      description: "Operate like a strategist leadership trusts"
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: "AI Coaching & Workflows",
-      description: "From a coach who's shipped AI since 2017 — not just a power user"
-    }
-  ]
-
-  const stats = [
-    { number: "Clarity", label: "A point of view on the business and the role", icon: <Brain className="w-6 h-6" /> },
-    { number: "Proof", label: "Specific wins, receipts, and relevant signals", icon: <Award className="w-6 h-6" /> },
-    { number: "Fit", label: "How you reduce risk and create near-term impact", icon: <Target className="w-6 h-6" /> }
-  ]
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <p className="text-sm sm:text-base uppercase tracking-widest text-primary font-semibold mb-4 mt-8 sm:mt-0">
-              Stop f***ing around with your career.
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-foreground">Executive Career & </span>
-              <span className="gradient-text">AI Coaching</span>
+    <div className="overflow-x-clip">
+      {/* ============ HERO — night water ============ */}
+      <section className="relative min-h-[92vh] flex items-center bg-[var(--bg-deep)]">
+        <WaveScene variant="night" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 w-full">
+          <Motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
+          >
+            <h1 className="display">
+              Your interview is a sales call.
             </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed">
-              Most candidates blend in. You? You're about to become unforgettable. I coach ambitious professionals with
-              <span className="text-primary font-semibold"> The Maniac Method</span>—a fusion of storytelling, job acquisition strategy,
-              AI mastery, and GTM architecture—to weaponize your career and dominate.
+            <p className="mt-6 text-lg sm:text-xl text-muted-foreground prose-body">
+              You've run discovery, built champions, and closed millions for other
+              people's companies. But the one product you've never had to pitch is
+              you. Jeff Meyers coaches GTM executives to run the interview like a
+              deal — and close it.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Link
-                to="/contact#contact-form"
-                className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white flex items-center space-x-2 group"
-              >
-                <span>Apply Now</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-9 flex flex-col sm:flex-row gap-4">
+              <Link to="/contact#book" className="btn-gold">
+                Book a 15-minute call
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
-
-              <Link
-                to="/about"
-                className="btn-secondary px-8 py-4 rounded-lg font-bold text-lg flex items-center space-x-2"
-              >
-                <span>Meet Your Coach</span>
+              <Link to="/testimonials" className="btn-ghost">
+                See client results
               </Link>
             </div>
+          </Motion.div>
 
-            {/* Social proof bar */}
-            <div className="mb-12">
-              <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">
-                Trusted by sales leaders at
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-foreground/70 font-semibold text-sm sm:text-base">
-                <span>VBRICK</span>
-                <span className="hidden sm:inline text-border">•</span>
-                <span>TitanX</span>
-                <span className="hidden sm:inline text-border">•</span>
-                <span>Neuron7.ai</span>
-                <span className="hidden sm:inline text-border">•</span>
-                <span>Kumo</span>
-                <span className="hidden sm:inline text-border">•</span>
-                <span>Vibes</span>
-              </div>
-            </div>
-
-            {/* What Hiring Teams Actually Want */}
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-center text-foreground mb-8">What hiring teams actually want</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {stats.map((stat, index) => (
-                <div key={index} className="glass rounded-lg p-6 text-center tilt-card">
-                  <div className="flex justify-center mb-4 text-primary">
-                    {stat.icon}
-                  </div>
-                  <div className="text-2xl font-bold gradient-text mb-3">{stat.number}</div>
-                  <div className="text-muted-foreground text-sm leading-relaxed">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>      {/* Meet Your Coach */}
-      <section className="py-20 relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Meet Your <span className="gradient-text">Coach</span>
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                <p>
-                  I'm not just another career coach throwing around buzzwords. I'm a career architect —
-                  20 years in enterprise sales, 12 President's Club wins, and deep roots in AI since
-                  Salesforce Einstein in 2017. I've built the system that turns talented professionals
-                  into undeniable candidates.
-                </p>
-                <p>
-                  My approach combines neuroscience-backed mindset conditioning, career storytelling
-                  that rewires how you show up, AI workflows I've built myself, and GTM strategy that
-                  makes leadership take notice from day one.
-                </p>
-                <p>
-                  I don't stop when you get the job. I coach you from onboarding to President's Club, because 
-                  landing the role is just the beginning.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Link
-                  to="/about"
-                  className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white inline-flex items-center space-x-2"
+          <Motion.dl
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.5 }}
+            className="mt-16 flex flex-wrap gap-x-12 gap-y-6"
+          >
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="label-condensed text-muted-foreground order-2">{s.label}</dt>
+                <dd
+                  className="text-3xl sm:text-4xl font-bold"
+                  style={{ fontVariationSettings: '"wdth" 115' }}
                 >
-                  <span>Learn More About The Method</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+                  {s.value}
+                </dd>
               </div>
-            </div>
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0">
-                <div className="gradient-border rounded-2xl p-2">
-                  <img
-                    src="/coach-photo.jpg"
-                    alt="Jeff Meyers, Career Maniacs Coach"
-                    loading="lazy"
-                    width="800"
-                    height="800"
-                    className="w-full h-auto rounded-xl"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+            ))}
+          </Motion.dl>
         </div>
       </section>
 
-      {/* What Makes Career Maniacs Different */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              What Makes Career Maniacs <span className="gradient-text">Different</span>
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-xl text-muted-foreground mb-8">
-                <strong>And:</strong> You've got the skills, the track record, the fire.
-              </p>
-              <p className="text-xl text-muted-foreground mb-8">
-                <strong>But:</strong> Skills alone don't land jobs, build pipelines, or scale careers.
-              </p>
-              <p className="text-xl text-muted-foreground mb-12">
-                <strong>Therefore:</strong> I created The Maniac Method—a high-impact framework that combines:
-              </p>
-            </div>
-          </div>
+      {/* ============ WHERE JEFF SOLD ============ */}
+      <section aria-label="Companies where Jeff carried the bag" className="border-y border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-wrap items-baseline gap-x-10 gap-y-3">
+          <p className="text-sm text-muted-foreground shrink-0">
+            Two decades carrying the bag at
+          </p>
+          <ul className="flex flex-wrap gap-x-10 gap-y-3">
+            {companies.map((c) => (
+              <li
+                key={c}
+                className="text-lg font-semibold tracking-wide text-foreground/80"
+                style={{ fontVariationSettings: '"wdth" 80' }}
+              >
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="glass rounded-xl p-8 text-center tilt-card glow-hover">
-                <div className="text-primary mb-4 flex justify-center">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </div>
+      {/* ============ THE STORY (ABT — the method demonstrating itself) ============ */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <div className="max-w-3xl space-y-12">
+          <Motion.p {...rise} className="story-voice">
+            <span className="label-condensed not-italic text-[var(--teal)] block mb-3">And</span>
+            You know how to run a deal. Discovery. Champion. Business case.
+            The close. It's muscle memory — you've done it a thousand times.
+          </Motion.p>
+          <Motion.p {...rise} className="story-voice">
+            <span className="label-condensed not-italic text-[var(--gold)] block mb-3">But</span>
+            The moment the product is <em>you</em>, the process vanishes. Smart,
+            accomplished sellers walk into the most important sales call of their
+            lives — and wing it.
+          </Motion.p>
+          <Motion.p {...rise} className="story-voice">
+            <span className="label-condensed not-italic text-[var(--primary)] block mb-3">Therefore</span>
+            The Maniac Method puts the process back. Position yourself like a
+            product. Build stories like collateral. Close like a rep at 264% of
+            plan — because your coach was one.
+          </Motion.p>
+        </div>
+      </section>
+
+      {/* ============ THE METHOD (a real sequence) ============ */}
+      <section className="bg-[var(--bg-deep)] border-y border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <Motion.h2 {...rise} className="headline max-w-2xl">
+            Run the interview like a deal.
+          </Motion.h2>
+          <div className="mt-14 grid md:grid-cols-3 gap-x-10 gap-y-12">
+            {methodSteps.map((step) => (
+              <Motion.div key={step.n} {...rise}>
+                <p
+                  className="text-6xl font-bold text-[var(--primary)]"
+                  style={{ fontVariationSettings: '"wdth" 70' }}
+                  aria-hidden="true"
+                >
+                  {step.n}
+                </p>
+                <h3 className="headline-sm mt-4">{step.title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{step.body}</p>
+              </Motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Snapshot */}
-      <section className="py-20 relative" id="services-snapshot">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">Services</span> Snapshot
-            </h2>
-          </div>
+      {/* ============ OFFERS — flagship first, asymmetric ============ */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <Motion.h2 {...rise} className="headline max-w-2xl">
+          Pick your wave.
+        </Motion.h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Job Acquisition Plan */}
-            <div className="gradient-border rounded-xl p-8 tilt-card">
-              <h3 className="text-2xl font-bold mb-4 gradient-text">Full Maniac Job Acquisition Plan</h3>
-              <p className="text-3xl font-bold text-primary mb-4">$5,000/month</p>
-              <p className="text-muted-foreground mb-6">From ignored to undeniable.</p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Maniac Method Coaching: storytelling, communication, mindset</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Job Acquisition Strategy: targeted company/role plans</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">AI-Powered Workflows: research, positioning, branding</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">2×/week coaching + daily accountability</span>
-                </li>
-              </ul>
-              <Link
-                to="/services/job-acquisition"
-                className="btn-primary w-full py-3 rounded-lg font-semibold text-white text-center block"
-              >
-                Make Yourself the Only Choice
+        {/* Flagship */}
+        <Motion.div {...rise} className="mt-14 panel p-8 sm:p-12 md:grid md:grid-cols-[1.4fr_1fr] md:gap-12">
+          <div>
+            <p className="label-condensed text-[var(--gold)]">The flagship</p>
+            <h3 className="headline-sm mt-3">Interview &amp; Job Acquisition Coaching</h3>
+            <p className="mt-4 text-muted-foreground leading-relaxed prose-body">
+              For GTM executives in the hunt. Twice-weekly 1:1 coaching with Jeff,
+              daily accountability, the full positioning build, ABT story
+              development, and deal-run interview practice — from first screen to
+              offer negotiation. From ignored to undeniable.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Link to="/contact#book" className="btn-gold">
+                Book a 15-minute call
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
-            </div>
-
-            {/* GTM Onboarding Plan */}
-            <div className="gradient-border rounded-xl p-8 tilt-card">
-              <h3 className="text-2xl font-bold mb-4 gradient-text">Maniac GTM Onboarding Plan</h3>
-              <p className="text-3xl font-bold text-primary mb-4">$5,000/month</p>
-              <p className="text-muted-foreground mb-6">From day 1 to President's Club.</p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Maniac Strategic Success Plan: onboarding → ramp → domination</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">AI-Powered GTM Workflows: prospecting, intelligence</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Maniac Method Coaching: storytelling, performance</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">2×/week coaching + daily accountability</span>
-                </li>
-              </ul>
-              <Link
-                to="/services/gtm-onboarding"
-                className="btn-primary w-full py-3 rounded-lg font-semibold text-white text-center block"
-              >
-                Engineer Your Rise
+              <Link to="/services/job-acquisition" className="btn-ghost">
+                See the full program
               </Link>
             </div>
           </div>
-
-          {/* AI Workshop */}
-          <div className="mt-8 rounded-2xl p-8 tilt-card" style={{ background: 'rgba(30, 41, 59, 0.8)', border: '2px solid #f59e0b', boxShadow: '0 0 20px rgba(245, 158, 7, 0.2)' }}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-                  Add-On / Standalone
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-amber-400">Maniac AI Workshop</h3>
-                <p className="text-muted-foreground mb-6">
-                  Stop watching demos. Start building your own AI apps, automations, and workflows — coached by someone who's been shipping AI since Salesforce Einstein in 2017.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-muted-foreground">Digital Twins, Prospecting Automation, Research Workflows</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-muted-foreground">Content Engines, GTM Dashboards, Fully Agentic Systems</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-muted-foreground">You build it, you own it — hands on keyboard, not slides</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="text-center lg:text-right">
-                <p className="text-3xl font-bold text-amber-400 mb-1">$3,000/mo <span className="text-lg font-normal text-muted-foreground">standalone</span></p>
-                <p className="text-3xl font-bold text-amber-400 mb-1">$7,000/mo <span className="text-lg font-normal text-muted-foreground">bundled</span></p>
-                <span className="inline-block mt-1 mb-6 text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 px-2 py-1 rounded">Save $1,000/mo when bundled</span>
-                <div>
-                  <Link
-                    to="/services/ai-workshop"
-                    className="w-full lg:w-auto py-3 px-8 rounded-lg font-semibold text-white text-center inline-block"
-                    style={{ background: 'linear-gradient(135deg, #f59e0b, #ea580c)' }}
-                  >
-                    Start Building
-                  </Link>
-                </div>
-              </div>
-            </div>
+          <div className="mt-10 md:mt-0 md:border-l md:border-border md:pl-12 flex flex-col justify-center">
+            <p className="text-4xl font-bold" style={{ fontVariationSettings: '"wdth" 115' }}>
+              $5,000<span className="text-xl text-muted-foreground font-semibold">/month</span>
+            </p>
+            <ul className="mt-6 space-y-2.5 text-sm text-muted-foreground">
+              <li>2× weekly 1:1 sessions — direct access to Jeff</li>
+              <li>Daily accountability, not monthly check-ins</li>
+              <li>Positioning report, story vault, interview reps</li>
+              <li>Typical engagement: 2–4 months</li>
+            </ul>
           </div>
+        </Motion.div>
 
-          <div className="text-center mt-12">
-            <Link
-              to="/contact#contact-form"
-              className="btn-secondary px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg text-center block sm:inline-block"
-            >
-              Ready to Stop Playing Small? Apply Today
+        {/* Supporting offers */}
+        <div className="mt-8 grid md:grid-cols-3 gap-8">
+          <Motion.div {...rise} className="panel p-8 flex flex-col">
+            <h3 className="headline-sm">GTM Onboarding</h3>
+            <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">
+              You landed it. Now dominate it. Ninety-day ramp coaching for the new
+              role — territory plan, first wins, President's Club trajectory.
+            </p>
+            <p className="mt-6 font-bold text-lg">$5,000<span className="text-sm text-muted-foreground font-semibold">/month</span></p>
+            <Link to="/services/gtm-onboarding" className="mt-4 inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
+              The 90-day plan <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
-          </div>
+          </Motion.div>
+
+          <Motion.div {...rise} className="panel p-8 flex flex-col">
+            <h3 className="headline-sm">Maniac AI Workshop</h3>
+            <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">
+              AI skills for sellers who ship — workflows, prospecting systems, and
+              deal support built with you, not slideware. Jeff has sold AI since
+              Salesforce Einstein in 2017.
+            </p>
+            <p className="mt-6 font-bold text-lg">$3,000<span className="text-sm text-muted-foreground font-semibold">/mo · $7,000 bundled</span></p>
+            <Link to="/services/ai-workshop" className="mt-4 inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
+              What you'll build <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </Motion.div>
+
+          <Motion.div {...rise} className="panel p-8 flex flex-col">
+            <h3 className="headline-sm">Corporate GTM &amp; AI</h3>
+            <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">
+              For teams: GTM enablement and AI adoption coaching from someone who
+              carried a bag at Palantir and Salesforce — storytelling, prospecting,
+              and AI workflows for your whole floor.
+            </p>
+            <p className="mt-6 font-bold text-lg">Custom</p>
+            <Link to="/contact#book" className="mt-4 inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
+              Talk to Jeff <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </Motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10"></div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Go <span className="gradient-text">Maniac</span>?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            Stop blending in. Stop guessing. Stop chasing scraps. I'll coach you—with AI precision and GTM clarity—to land the role and dominate it.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact#contact-form"
-              className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2"
-            >
-              <span>Apply Now</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              to="/testimonials#testimonials-section"
-              className="btn-secondary px-8 py-4 rounded-lg font-bold text-lg"
-            >
-              See Client Results
-            </Link>
+      {/* ============ RESULTS ============ */}
+      <section className="bg-[var(--bg-deep)] border-y border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <Motion.h2 {...rise} className="headline max-w-2xl">
+            The people who rode it in.
+          </Motion.h2>
+          <div className="mt-14 grid md:grid-cols-3 gap-10">
+            {results.map((r) => (
+              <Motion.figure key={r.name} {...rise} className="flex flex-col">
+                <blockquote className="story-voice !text-lg flex-1">
+                  &ldquo;{r.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6">
+                  <p className="font-semibold">{r.name}</p>
+                  <p className="text-sm text-muted-foreground">{r.title}</p>
+                </figcaption>
+              </Motion.figure>
+            ))}
           </div>
-          <div className="mt-8">
-            <p className="text-sm uppercase tracking-wider mb-3">
-              <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-sm uppercase tracking-wider font-semibold" />
-            </p>
-            <CalendlyButton />
-          </div>
+          <Motion.div {...rise} className="mt-12">
+            <Link to="/testimonials" className="inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold hover:underline underline-offset-4">
+              All client results <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </Motion.div>
         </div>
+      </section>
+
+      {/* ============ INTERVIEW MANIAC TEASER — dawn ============ */}
+      <section className="relative overflow-hidden bg-[var(--bg-deep)]">
+        <WaveScene variant="dawn" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+          <Motion.div {...rise} className="max-w-2xl mx-auto">
+            <p className="label-condensed text-[var(--gold)]">Coming up on the horizon</p>
+            <h2 className="headline mt-4">Interview Maniac</h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              The Maniac Method, as an app. Build your stories, train them against
+              the clock, and ride the wave until the real interview feels like a
+              practice run. In development now.
+            </p>
+            <a
+              href="mailto:jeff@careermaniacs.com?subject=Interview%20Maniac%20early%20access"
+              className="btn-ghost mt-8"
+            >
+              Get early access
+            </a>
+          </Motion.div>
+        </div>
+      </section>
+
+      {/* ============ FINAL CTA ============ */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <Motion.div {...rise} className="max-w-3xl">
+          <h2 className="headline">
+            You already have interviews on the calendar. Walk in with a process.
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground prose-body">
+            Fifteen minutes with Jeff. He'll tell you honestly whether the Maniac
+            Method fits where you are — and what he'd fix first either way.
+          </p>
+          <div className="mt-9">
+            <Link to="/contact#book" className="btn-gold">
+              Book a 15-minute call
+              <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            </Link>
+          </div>
+        </Motion.div>
       </section>
     </div>
   )

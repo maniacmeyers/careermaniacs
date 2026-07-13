@@ -1,394 +1,291 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Zap, Target, Cpu } from 'lucide-react'
+import { motion as Motion } from 'framer-motion'
 import CalendlyButton from '../components/CalendlyButton'
-import ShinyText from '../components/ShinyText'
+
+const rise = {
+  initial: { y: 24 },
+  whileInView: { y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+}
+
+const flagshipFeatures = [
+  {
+    title: 'Maniac Method coaching',
+    detail: 'Storytelling, communication, mindset. The skills that move a room, drilled twice a week.',
+  },
+  {
+    title: 'Target-company strategy',
+    detail: 'A named list of companies and roles with a plan of attack for each. Not spray-and-pray applications.',
+  },
+  {
+    title: 'Resume & LinkedIn',
+    detail: 'Rebuilt for each target role and kept current as the search moves.',
+  },
+  {
+    title: 'Interview Maniac',
+    detail: 'Early access to Interview Maniac, the training app (in development). Reps between sessions.',
+  },
+  {
+    title: 'AI-powered research',
+    detail: 'Company research, stakeholder maps, and positioning reports built for your specific targets.',
+  },
+  {
+    title: 'GTM coaching elements',
+    detail: 'Walk into the room talking revenue architecture, not job duties.',
+  },
+  {
+    title: 'Cadence',
+    detail: 'Two 1:1 Zoom sessions a week plus daily accountability check-ins.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'What does it cost and what is included?',
+    a: '$5,000 a month, flat. Two 1:1 Zoom sessions a week, daily accountability check-ins, and strategy, positioning, and AI workflows built for your specific targets. No tiers, no upsells. Land the role mid-engagement and remaining sessions roll into GTM Onboarding or credit toward it.',
+  },
+  {
+    q: 'Do you guarantee a job offer?',
+    a: 'No. Be suspicious of anyone in this space who does. Jeff brings 20 years of closing at Palantir, Salesforce, and Oracle, the frameworks, and relentless accountability. You bring the work. What you will leave with: a sharper story, a real strategy, and the AI workflows to run it.',
+  },
+  {
+    q: 'Who is this NOT for?',
+    a: 'People shopping for a resume tweak or a pep talk. People who want someone to do the work for them. If daily accountability sounds exhausting instead of exciting, this is not the right fit — no hard feelings.',
+  },
+  {
+    q: 'I am still employed. Is this confidential?',
+    a: 'Completely. Sessions are scheduled around your calendar, everything runs through personal email, and your employer is never contacted. Most clients start while still in-seat. That is the smart play.',
+  },
+  {
+    q: 'How long does an engagement last?',
+    a: 'Job Acquisition clients typically run 2 to 4 months, until they sign. GTM Onboarding clients run 3 to 6 months, through ramp and the first performance cycle. Month to month, no minimum. You pay while it is working.',
+  },
+  {
+    q: 'Can I switch between programs?',
+    a: 'Yes. Start on Job Acquisition, land the role, and your remaining sessions roll straight into GTM Onboarding or credit toward it. The handoff is built in.',
+  },
+  {
+    q: 'What is the Maniac AI Workshop?',
+    a: 'Hands-on building, not demos. Jeff has sold AI since Salesforce Einstein in 2017 and builds daily at Forgetime.ai. In the Workshop you build your own apps, automations, and workflows with him — $3,000/month standalone, or $7,000/month bundled with either coaching plan, which saves you $1,000 a month.',
+  },
+  {
+    q: 'What do I actually walk away with from the Workshop?',
+    a: 'A working, tested app, automation, or workflow — or all three wired together as one agentic system. Everything you build is yours to keep. When bundled, you choose which parts of your base coaching plan get condensed to make room for build sessions.',
+  },
+]
 
 const ServicesPage = () => {
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero Section */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Your Arsenal. One Outcome: <span className="gradient-text">Undeniable.</span>
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            If you want babysitting and platitudes, look elsewhere. If you want offers, impact, and acceleration, 
-            pick your weapon below.
-          </p>
+    <div className="min-h-screen pt-32">
+      {/* Hero */}
+      <section className="pb-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Motion.div {...rise}>
+            <h1 className="display">Pick your wave.</h1>
+            <p className="prose-body text-lg text-muted-foreground mt-6">
+              Three ways to work with Jeff. Every one of them treats your career
+              like a deal to close — because that is exactly what it is.
+            </p>
+          </Motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20" id="services-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            
-            {/* Job Acquisition Plan */}
-            <div className="relative gradient-border rounded-2xl p-8 tilt-card">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
-                Most Popular
-              </div>
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold gradient-text">Full Maniac Job Acquisition Plan</h2>
-                  <p className="text-3xl font-bold text-primary">$5,000/month</p>
-                </div>
-              </div>
-
-              <p className="text-xl font-semibold text-foreground mb-2">Outcome: From ignored to undeniable.</p>
-              <p className="text-sm text-muted-foreground mb-6">
-                <strong className="text-foreground">Best for:</strong> Senior operators actively looking for their next role and tired of blending in.
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <h3 className="text-lg font-semibold text-foreground">What You Get</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Maniac Method Coaching:</strong> storytelling, communication, mindset, peak performance, paradigm-shifting
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Job Acquisition Strategy:</strong> targeted company/role plans and execution
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Resume & LinkedIn Optimization:</strong> dynamic, ongoing, role-based
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Interview Maniac App:</strong> train like a Navy SEAL for interviews
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>AI-Powered Workflows:</strong> personal branding, company & stakeholder research, custom positioning reports
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>GTM Coaching Elements:</strong> think and present like a revenue architect
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Stealth Differentiators:</strong> my IP (under NDA)
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Cadence:</strong> two Zoom coaching sessions/week + daily accountability check-ins
-                    </span>
-                  </li>
-                </ul>
-                
-                <div className="bg-primary/10 rounded-lg p-4 mt-6">
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Note:</strong> When you land your dream role, remaining sessions roll into Maniac GTM Onboarding or credit toward it.
-                  </p>
-                </div>
-              </div>
-              
-              <Link
-                to="/services/job-acquisition"
-                className="btn-primary w-full py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2"
-              >
-                <span>Make Yourself the Only Choice</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-
-            {/* GTM Onboarding Plan */}
-            <div className="relative gradient-border rounded-2xl p-8 tilt-card">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-secondary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold gradient-text">Maniac GTM Onboarding Plan</h2>
-                  <p className="text-3xl font-bold text-secondary">$5,000/month</p>
-                </div>
-              </div>
-
-              <p className="text-xl font-semibold text-foreground mb-2">Outcome: From day 1 to President's Club.</p>
-              <p className="text-sm text-muted-foreground mb-6">
-                <strong className="text-foreground">Best for:</strong> New hires in GTM roles who want to ramp fast and outperform expectations from day 1.
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <h3 className="text-lg font-semibold text-foreground">What You Get</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Maniac Strategic Success Plan:</strong> onboarding → ramp → domination, by week
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>AI-Powered GTM Workflows:</strong> dynamic prospecting, stakeholder intelligence, personal brand flywheel
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Maniac Method Coaching:</strong> storytelling, communication, mindset, performance
-                    </span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      <strong>Cadence:</strong> two Zoom coaching sessions/week + daily accountability check-ins
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              
-              <Link
-                to="/services/gtm-onboarding"
-                className="btn-primary w-full py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2"
-              >
-                <span>Engineer Your Rise</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-
-            {/* AI Workshop — Add-On / Standalone */}
-            <div className="relative rounded-2xl p-8 tilt-card lg:col-span-2" style={{ background: 'rgba(30, 41, 59, 0.8)', border: '2px solid #f59e0b', boxShadow: '0 0 20px rgba(245, 158, 7, 0.2)' }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
-                Add-On / Standalone
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
-                {/* Left: Info + Features */}
-                <div>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center">
-                      <Cpu className="w-6 h-6 text-amber-500" />
-                    </div>
-                    <div>
-                      <h2 className="text-2xl font-bold text-amber-400">Maniac AI Workshop</h2>
-                    </div>
-                  </div>
-
-                  <p className="text-xl font-semibold text-foreground mb-2">Outcome: You walk away with working AI you built yourself.</p>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    <strong className="text-foreground">Best for:</strong> Anyone who wants to stop watching AI demos and start building their own apps, automations, and workflows — coached by someone who's been shipping AI since Salesforce Einstein in 2017 and builds them daily at Forgetime.ai.
-                  </p>
-
-                  <div className="space-y-4 mb-8">
-                    <h3 className="text-lg font-semibold text-foreground">What You Build</h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>Digital Twin Setup & Orchestration:</strong> your AI alter ego that works while you sleep
-                        </span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>Prospecting & Outreach Automation:</strong> stop manual grunt work, build the machine
-                        </span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>Research & Intelligence Workflows:</strong> pull signal from noise at scale
-                        </span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>Personal Brand Content Engines:</strong> automate the flywheel, keep the voice
-                        </span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>GTM Dashboards & Reporting:</strong> real-time visibility into what matters
-                        </span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>Deliverable:</strong> working & tested app, automation, workflow — or all three as a fully agentic system
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Right: Pricing + CTA */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <div className="glass rounded-xl p-6 mb-6">
-                      <h3 className="text-lg font-semibold text-foreground mb-4">Pricing</h3>
-                      <div className="space-y-4">
-                        <div className="flex items-baseline justify-between">
-                          <span className="text-muted-foreground">Standalone</span>
-                          <span className="text-2xl font-bold text-amber-400">$3,000/mo</span>
-                        </div>
-                        <div className="border-t border-border/30 pt-4">
-                          <div className="flex items-baseline justify-between">
-                            <span className="text-muted-foreground">Bundled with any plan</span>
-                            <span className="text-2xl font-bold text-amber-400">$7,000/mo</span>
-                          </div>
-                          <span className="inline-block mt-2 text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 px-2 py-1 rounded">Save $1,000/mo</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-amber-500/10 rounded-lg p-4 mb-6">
-                      <p className="text-sm text-muted-foreground">
-                        <strong className="text-foreground">How bundling works:</strong> You pick which elements of your base coaching plan get condensed to make room for Workshop sessions. Your call, your priorities.
-                      </p>
-                    </div>
-
-                    <div className="bg-amber-500/10 rounded-lg p-4 mb-6">
-                      <p className="text-sm text-muted-foreground">
-                        <strong className="text-foreground">Note:</strong> AI Workshop is available only while in active contract. What you build is yours — what we teach stays under NDA.
-                      </p>
-                    </div>
-                  </div>
-
-                  <Link
-                    to="/services/ai-workshop"
-                    className="w-full py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2 transition-all duration-200 hover:shadow-lg"
-                    style={{ background: 'linear-gradient(135deg, #f59e0b, #ea580c)' }}
-                  >
-                    <span>Start Building</span>
-                    <ArrowRight className="w-5 h-5" />
+      {/* Flagship */}
+      <section className="pb-6" id="services-section">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Motion.article {...rise} className="panel p-8 md:p-12">
+            <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
+              <div className="lg:col-span-2">
+                <p className="label-condensed" style={{ color: 'var(--gold)' }}>
+                  Most popular
+                </p>
+                <h2 className="headline mt-4">
+                  Interview &amp; Job Acquisition Coaching
+                </h2>
+                <p className="mt-5 text-3xl font-bold">
+                  $5,000
+                  <span className="text-lg font-normal text-muted-foreground">
+                    /month
+                  </span>
+                </p>
+                <p className="story-voice text-xl mt-6">
+                  From ignored to undeniable.
+                </p>
+                <p className="text-muted-foreground mt-4">
+                  An interview is a sales call. Most candidates show up to
+                  answer questions — you will show up to run the room. For
+                  senior operators in an active search who are done getting
+                  filtered out by people they would outperform.
+                </p>
+                <div className="mt-8">
+                  <Link to="/contact#book" className="btn-gold">
+                    Book a 15-minute call
                   </Link>
                 </div>
+                <p className="mt-5 text-sm">
+                  <Link
+                    to="/services/job-acquisition"
+                    className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                  >
+                    See the full plan
+                  </Link>
+                </p>
+              </div>
+
+              <div className="lg:col-span-3">
+                <h3 className="headline-sm">What you get</h3>
+                <ul className="mt-4">
+                  {flagshipFeatures.map((f) => (
+                    <li
+                      key={f.title}
+                      className="py-4 border-t"
+                      style={{ borderColor: 'var(--border)' }}
+                    >
+                      <span className="font-semibold text-foreground">
+                        {f.title}.
+                      </span>{' '}
+                      <span className="text-muted-foreground">{f.detail}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p
+                  className="mt-6 pt-5 border-t text-sm text-muted-foreground"
+                  style={{ borderColor: 'var(--border)' }}
+                >
+                  Land your role mid-engagement? Remaining sessions roll into
+                  GTM Onboarding or credit toward it.
+                </p>
               </div>
             </div>
+          </Motion.article>
+        </div>
+      </section>
+
+      {/* Supporting offers */}
+      <section className="pb-24 pt-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            <Motion.article {...rise} className="panel p-8 flex flex-col">
+              <h2 className="headline-sm">GTM Onboarding</h2>
+              <p className="mt-3 text-2xl font-bold">
+                $5,000
+                <span className="text-base font-normal text-muted-foreground">
+                  /month
+                </span>
+              </p>
+              <p className="text-muted-foreground mt-4 flex-1">
+                You landed the role. Now the first 90 days decide your
+                reputation for the next three years. A week-by-week ramp plan,
+                AI-powered prospecting workflows, and the same coaching cadence:
+                two sessions a week, daily check-ins.
+              </p>
+              <p className="mt-6 text-sm">
+                <Link
+                  to="/services/gtm-onboarding"
+                  className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                >
+                  See the full plan
+                </Link>
+              </p>
+            </Motion.article>
+
+            <Motion.article {...rise} className="panel p-8 flex flex-col">
+              <h2 className="headline-sm">Maniac AI Workshop</h2>
+              <p className="mt-3 text-2xl font-bold">
+                $3,000
+                <span className="text-base font-normal text-muted-foreground">
+                  /month standalone
+                </span>
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                $7,000/month bundled with any plan — save $1,000/month.
+              </p>
+              <p className="text-muted-foreground mt-4 flex-1">
+                Stop watching demos. Build your own apps, automations, and
+                workflows with someone who has sold AI since Salesforce
+                Einstein in 2017. Everything you build is yours.
+              </p>
+              <p className="mt-6 text-sm">
+                <Link
+                  to="/services/ai-workshop"
+                  className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                >
+                  See the full plan
+                </Link>
+              </p>
+            </Motion.article>
+
+            <Motion.article {...rise} className="panel p-8 flex flex-col">
+              <h2 className="headline-sm">Corporate GTM &amp; AI for teams</h2>
+              <p className="mt-3 text-2xl font-bold">Custom</p>
+              <p className="text-muted-foreground mt-4 flex-1">
+                Running a sales org? The Maniac Method and the AI Workshop both
+                scale to teams — training, playbooks, and build sessions scoped
+                to your people and your stack.
+              </p>
+              <div className="mt-6">
+                <Link to="/contact#book" className="btn-ghost">
+                  Book a 15-minute call
+                </Link>
+              </div>
+            </Motion.article>
           </div>
         </div>
       </section>
 
-      {/* Current Client Booking */}
-      <section className="py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="glass rounded-2xl p-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <ShinyText text="Already a Maniac?" speed={3} color="#94a3b8" shineColor="#06b6d4" className="text-3xl md:text-4xl font-bold" />
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Book your next session directly. No back-and-forth.
+      {/* FAQ */}
+      <section className="py-24" id="faq">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Motion.div {...rise}>
+            <h2 className="headline">Straight answers.</h2>
+            <p className="text-muted-foreground mt-4">
+              The questions people actually ask before they commit.
             </p>
+          </Motion.div>
+          <Motion.div {...rise} className="mt-10 space-y-4">
+            {faqs.map((item) => (
+              <details key={item.q} className="panel group">
+                <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+                  <span className="font-semibold text-foreground">
+                    {item.q}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="text-2xl leading-none font-light transition-transform duration-200 group-open:rotate-45"
+                    style={{ color: 'var(--gold)' }}
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </Motion.div>
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
+            <span>Already a client?</span>
             <CalendlyButton />
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20" id="faq">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">Frequently Asked</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Straight answers to the questions people actually ask before committing.
+      {/* Final CTA */}
+      <section className="py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Motion.div {...rise} className="text-center">
+            <h2 className="headline">The next set is already forming.</h2>
+            <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
+              Fifteen minutes. You talk, Jeff listens, and you both decide if
+              this is the right ride.
             </p>
-          </div>
-          <div className="space-y-4">
-            {[
-              {
-                q: 'What does it cost and what is included?',
-                a: '$5,000 a month, flat. That covers two 1:1 Zoom coaching sessions per week, daily async accountability, and bespoke strategy, positioning, and AI workflows built for your specific target roles or territory. No tiered packages, no upsells. If you land the role mid-engagement on Job Acquisition, remaining sessions roll into GTM Onboarding or credit toward it.',
-              },
-              {
-                q: 'How long does a typical engagement last?',
-                a: 'Most Job Acquisition clients engage for 2–4 months until they land their target offer. Most GTM Onboarding clients engage for 3–6 months to cover ramp and the first performance cycle. There is no minimum — we go month to month so you only pay while you are getting value.',
-              },
-              {
-                q: 'What if I am currently employed and need this confidential?',
-                a: 'Everything is confidential by default. We schedule around your calendar, use personal email, and never contact your employer. Most of my clients start this work while still in-seat — that is the smart move.',
-              },
-              {
-                q: 'Can I switch between the two programs?',
-                a: 'Yes. If you start on Job Acquisition and land your role mid-engagement, remaining sessions roll directly into GTM Onboarding or credit toward it. The two programs are designed to hand off cleanly.',
-              },
-              {
-                q: 'Do you guarantee a job offer or a specific result?',
-                a: 'No — and be suspicious of anyone in this space who does. Coaching is a partnership. I bring the strategy, frameworks, and relentless accountability; you bring the effort. What I can promise is that you will leave every engagement with a sharper story, a clearer strategy, and the AI workflows to execute it.',
-              },
-              {
-                q: 'Who is this NOT for?',
-                a: 'People looking for a resume tweaker or a pep talk. People who want someone to do the work for them. People who are not willing to be coached hard. If "daily accountability" sounds exhausting rather than exciting, this is not the right fit — and that is fine.',
-              },
-              {
-                q: 'What is the Maniac AI Workshop and who is it for?',
-                a: 'It is a hands-on coaching program where Jeff — who\'s been building and selling AI since 2017 (Salesforce Einstein, AI startups, Palantir) and ships AI apps at Forgetime.ai — teaches you to build your own apps, automations, and workflows. No slides, no theory — you get your hands dirty and walk away with working systems. Available standalone ($3,000/mo) or bundled with either coaching plan ($7,000/mo total — saves you $1,000/mo). It is for anyone who wants to weaponize AI for their career, whether you are job hunting, ramping in a new role, or just ready to build.',
-              },
-              {
-                q: 'How does the AI Workshop bundle pricing work?',
-                a: 'Standalone is $3,000/month. Add it to either the Job Acquisition Plan or the GTM Onboarding Plan for $7,000/month total instead of $8,000 separately — you save $1,000 a month. When bundled, you choose which elements of your base coaching plan get condensed to make room for Workshop sessions. Your priorities, your call.',
-              },
-              {
-                q: 'What do I actually walk away with from the AI Workshop?',
-                a: 'A working, tested app, automation, workflow — or all three wired together as a fully agentic system. Examples: Digital Twin setup, prospecting and outreach automation, research and intelligence workflows, personal brand content engines, GTM dashboards. Everything you build is yours to keep and use. The Workshop is available while you are in active contract.',
-              },
-            ].map((item, i) => (
-              <details
-                key={i}
-                className="glass rounded-xl p-6 group cursor-pointer transition-colors"
-              >
-                <summary className="flex items-center justify-between font-semibold text-foreground text-lg list-none">
-                  <span>{item.q}</span>
-                  <span className="text-primary text-2xl font-light ml-4 group-open:rotate-45 transition-transform duration-200 leading-none">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-4 text-muted-foreground leading-relaxed">{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10"></div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Stop Playing <span className="gradient-text">Small</span>?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Choose your path to career domination. Coaching, AI building, or both — every program includes Jeff in your corner daily.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact#contact-form"
-              className="btn-primary px-8 py-4 rounded-lg font-bold text-lg text-white"
-            >
-              Apply Now
-            </Link>
-            <Link
-              to="/testimonials#testimonials-section"
-              className="btn-secondary px-8 py-4 rounded-lg font-bold text-lg"
-            >
-              See Results
-            </Link>
-          </div>
+            <div className="mt-9">
+              <Link to="/contact#book" className="btn-gold">
+                Book a 15-minute call
+              </Link>
+            </div>
+          </Motion.div>
         </div>
       </section>
     </div>

@@ -1,119 +1,83 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react'
+import { Linkedin, Twitter } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="glass border-t border-border/30 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <img
-                src="/career-maniacs-logo.png"
-                alt="Career Maniacs"
-                width="128"
-                height="128"
-                className="h-32 w-32"
-              />
-            </div>
+    <footer className="border-t border-border mt-24 bg-[var(--bg-deep)]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10">
+          <div className="space-y-4 max-w-sm">
+            <img
+              src="/career-maniacs-logo.png"
+              alt="Career Maniacs"
+              width="80"
+              height="80"
+              className="h-20 w-20"
+            />
             <p className="text-muted-foreground text-sm leading-relaxed">
-              AI-powered career storytelling, job acquisition strategy, mindset, and GTM coaching. 
-              Stop blending in—go Maniac.
+              Interview coaching for GTM executives, sales and AI coaching, and
+              corporate GTM enablement — from a coach who carried the bag for
+              two decades. Ponte Vedra Beach, Florida.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/in/jeffadammeyers/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+            <div className="flex gap-4 pt-1">
+              <a
+                href="https://www.linkedin.com/in/jeffadammeyers/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Jeff Meyers on LinkedIn"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://x.com/Jeffforgetime" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="X (Twitter)">
+              <a
+                href="https://x.com/Jeffforgetime"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Jeff Meyers on X"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-foreground font-semibold">Services</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/services/job-acquisition#service-detail" className="text-muted-foreground hover:text-primary transition-colors">
-                  Job Acquisition Plan
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/gtm-onboarding#service-detail" className="text-muted-foreground hover:text-primary transition-colors">
-                  GTM Onboarding Plan
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/ai-workshop#service-detail" className="text-muted-foreground hover:text-primary transition-colors">
-                  AI Workshop
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#services-section" className="text-muted-foreground hover:text-primary transition-colors">
-                  All Services
-                </Link>
-              </li>
+          <div className="space-y-3 text-sm">
+            <p className="label-condensed text-muted-foreground">Coaching</p>
+            <ul className="space-y-2">
+              <li><Link to="/services/job-acquisition" className="text-muted-foreground hover:text-foreground transition-colors">Interview &amp; Job Acquisition</Link></li>
+              <li><Link to="/services/gtm-onboarding" className="text-muted-foreground hover:text-foreground transition-colors">GTM Onboarding</Link></li>
+              <li><Link to="/services/ai-workshop" className="text-muted-foreground hover:text-foreground transition-colors">Maniac AI Workshop</Link></li>
+              <li><Link to="/services" className="text-muted-foreground hover:text-foreground transition-colors">All services</Link></li>
             </ul>
           </div>
 
-          {/* Company */}
-          <div className="space-y-4">
-            <h3 className="text-foreground font-semibold">Company</h3>
-            <ul className="space-y-2 text-sm">
+          <div className="space-y-3 text-sm">
+            <p className="label-condensed text-muted-foreground">Career Maniacs</p>
+            <ul className="space-y-2">
+              <li><Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">About Jeff</Link></li>
+              <li><Link to="/testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Client results</Link></li>
+              <li><Link to="/contact#book" className="text-muted-foreground hover:text-foreground transition-colors">Book a call</Link></li>
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/testimonials#testimonials-section" className="text-muted-foreground hover:text-primary transition-colors">
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact#contact-form" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
-                </Link>
+                <a href="mailto:jeff@careermaniacs.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  jeff@careermaniacs.com
+                </a>
               </li>
             </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="text-foreground font-semibold">Get Started</h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Mail className="w-4 h-4" />
-                <span>jeff@careermaniacs.com</span>
-              </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Phone className="w-4 h-4" />
-                <span>Schedule a call</span>
-              </div>
-            </div>
-            <Link
-              to="/contact#contact-form"
-              className="btn-primary inline-block px-4 py-2 rounded-lg font-semibold text-white text-sm transition-all duration-200"
-            >
-              Apply Now
-            </Link>
           </div>
         </div>
 
-        <div className="border-t border-border/30 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-border mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © {currentYear} Career Maniacs. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-              Privacy Policy
+          <div className="flex gap-6">
+            <Link to="/privacy" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
+              Privacy
             </Link>
-            <Link to="/terms" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-              Terms of Service
+            <Link to="/terms" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
+              Terms
             </Link>
           </div>
         </div>
