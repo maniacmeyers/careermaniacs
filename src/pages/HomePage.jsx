@@ -445,8 +445,8 @@ const HomePage = () => {
       {/* ============ INTERVIEW MANIAC TEASER — transparent: the sun is nearly up ============ */}
       <section className="relative overflow-hidden">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-          <Motion.div {...rise} className="max-w-2xl mx-auto">
-            <p className="label-condensed text-[var(--gold)]">Coming up on the horizon</p>
+          <Motion.div {...rise} className="sunlit max-w-2xl mx-auto">
+            <p className="label-condensed">Coming up on the horizon</p>
             <h2 className="headline mt-4">Interview Maniac</h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
               The Maniac Method, as an app. Build your stories, train them against

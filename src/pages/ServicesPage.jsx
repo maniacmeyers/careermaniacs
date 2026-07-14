@@ -292,7 +292,7 @@ const ServicesPage = () => {
       {/* Final CTA — open to the ocean */}
       <section className="relative py-28">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.div {...rise} className="text-center">
+          <Motion.div {...rise} className="sunlit max-w-2xl mx-auto text-center">
             <h2 className="headline">Stop losing offers you should win.</h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
               Fifteen minutes. You talk, Jeff listens, and you both decide if

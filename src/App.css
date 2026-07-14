@@ -219,6 +219,38 @@
     opacity: 0.6;
   }
 
+  /* ---- Sunlit panel: content that sits over the risen sun ----------
+     A pale dawn-haze surface with deep rising-sun ember ink. Guarantees
+     WCAG AA over the animated water regardless of what the shader shows.
+     Worst case (panel over near-black water): effective bg L ≈ 0.84 →
+     ink 0.30 ≈ 7:1, muted 0.35 ≈ 4.6:1. */
+  .sunlit {
+    background: linear-gradient(180deg, oklch(0.94 0.045 80 / 0.95), oklch(0.89 0.06 72 / 0.92));
+    border-radius: calc(var(--radius) + 8px);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    color: oklch(0.30 0.10 35);
+  }
+  .sunlit .headline,
+  .sunlit .headline-sm,
+  .sunlit .display,
+  .sunlit .story-voice { color: oklch(0.30 0.10 35); }
+  .sunlit .text-muted-foreground { color: oklch(0.35 0.08 35); }
+  .sunlit .label-condensed { color: oklch(0.42 0.14 40); }
+  .sunlit .btn-gold {
+    background: oklch(0.30 0.10 35);
+    color: oklch(0.97 0.02 80);
+  }
+  .sunlit .btn-gold:hover { background: oklch(0.37 0.11 35); }
+  .sunlit .btn-ghost {
+    border-color: oklch(0.40 0.08 35 / 0.6);
+    color: oklch(0.30 0.10 35);
+  }
+  .sunlit .btn-ghost:hover {
+    border-color: oklch(0.30 0.10 35);
+    background: oklch(0.92 0.04 80 / 0.5);
+  }
+  .sunlit a:not(.btn-gold):not(.btn-ghost) { color: oklch(0.30 0.10 35); }
+
   /* ---- Legacy aliases (Privacy/Terms and stragglers keep working) -- */
   .gradient-text { color: var(--foreground); }
   .glass { background: var(--card); border: 1px solid var(--border); }

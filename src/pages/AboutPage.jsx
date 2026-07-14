@@ -215,9 +215,9 @@ const AboutPage = () => {
       {/* CTA — open to the ocean */}
       <section className="relative py-28">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Motion.div {...rise}>
+          <Motion.div {...rise} className="sunlit max-w-2xl mx-auto">
             <h2 className="headline mb-6">Your next offer is a deal. Let's go win it.</h2>
-            <p className="prose-body mx-auto mb-10" style={{ color: 'var(--muted-foreground)' }}>
+            <p className="prose-body mx-auto mb-10 text-muted-foreground">
               Fifteen minutes. You talk, I listen, and you leave with at least one
               thing you can use — whether we work together or not.
             </p>
