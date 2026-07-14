@@ -1163,11 +1163,31 @@ const OceanCanvas = () => {
     }
   }, [])
 
-  // No WebGL → static SVG wave scene instead of empty darkness
+  // No WebGL (blocked extension, disabled acceleration) → static CSS ocean:
+  // ember sky over dark water with the SVG dawn scene on top. Not animated,
+  // but unmistakably the same world.
   if (failed) {
     return (
-      <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-        <WaveScene variant="night" />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          background: `
+            radial-gradient(ellipse 90% 42% at 50% 46%, oklch(0.62 0.19 40 / 0.55), transparent 70%),
+            linear-gradient(to bottom,
+              oklch(0.14 0.05 30) 0%,
+              oklch(0.30 0.13 35) 32%,
+              oklch(0.45 0.16 45) 45%,
+              oklch(0.22 0.05 210) 47%,
+              oklch(0.30 0.06 195) 60%,
+              oklch(0.13 0.03 230) 100%)
+          `,
+        }}
+      >
+        <WaveScene variant="dawn" />
       </div>
     )
   }
