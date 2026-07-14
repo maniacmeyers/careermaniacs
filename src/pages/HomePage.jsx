@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion as Motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import OceanCanvas from '../components/OceanCanvas'
 
 const rise = {
   initial: { y: 24 },
@@ -71,9 +70,6 @@ const CtaPromise = () => (
 const HomePage = () => {
   return (
     <div className="overflow-x-clip">
-      {/* Fixed WebGL ocean behind everything; scroll raises the sun */}
-      <OceanCanvas />
-
       {/* ============ HERO — pain-led, pre-dawn water (transparent over the ocean) ============ */}
       <section className="relative min-h-[92vh] flex items-center">
         {/* left-side scrim for text legibility over the animated water */}

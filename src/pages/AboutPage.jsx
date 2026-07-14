@@ -51,9 +51,17 @@ const proofRows = [
 const AboutPage = () => {
   return (
     <div className="min-h-screen pt-32">
-      {/* Hero: photo + story */}
-      <section className="py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero: photo + story — open to the ocean */}
+      <section className="relative py-24">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <Motion.div {...rise} className="lg:col-span-5">
               <img
@@ -111,7 +119,7 @@ const AboutPage = () => {
       </section>
 
       {/* Career proof */}
-      <section className="py-24">
+      <section className="relative py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <Motion.div {...rise} className="lg:col-span-4">
@@ -174,7 +182,7 @@ const AboutPage = () => {
       </section>
 
       {/* Why Maniacs */}
-      <section className="py-24">
+      <section className="relative py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="panel p-10 sm:p-14 lg:p-16">
             <div className="max-w-3xl">
@@ -204,9 +212,9 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* CTA — open to the ocean */}
+      <section className="relative py-28">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Motion.div {...rise}>
             <h2 className="headline mb-6">Your next offer is a deal. Let's go win it.</h2>
             <p className="prose-body mx-auto mb-10" style={{ color: 'var(--muted-foreground)' }}>

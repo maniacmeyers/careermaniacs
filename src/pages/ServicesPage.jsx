@@ -82,9 +82,17 @@ const faqs = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen pt-32">
-      {/* Hero */}
-      <section className="pb-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero — open to the ocean */}
+      <section className="relative pb-24">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise}>
             <h1 className="display">Three ways to stop losing offers you should win.</h1>
             <p className="prose-body text-lg text-muted-foreground mt-6">
@@ -97,7 +105,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Flagship */}
-      <section className="pb-6" id="services-section">
+      <section className="relative pb-6 bg-background" id="services-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.article {...rise} className="panel p-8 md:p-12">
             <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
@@ -173,7 +181,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Supporting offers */}
-      <section className="pb-24 pt-6">
+      <section className="relative pb-24 pt-6 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
             <Motion.article {...rise} className="panel p-8 flex flex-col">
@@ -245,7 +253,7 @@ const ServicesPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24" id="faq">
+      <section className="relative py-24 bg-background" id="faq">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise}>
             <h2 className="headline">Straight answers.</h2>
@@ -281,9 +289,9 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Final CTA — open to the ocean */}
+      <section className="relative py-28">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="text-center">
             <h2 className="headline">Stop losing offers you should win.</h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">

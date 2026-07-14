@@ -59,9 +59,17 @@ const testimonials = [
 const TestimonialsPage = () => {
   return (
     <div className="min-h-screen pt-32">
-      {/* Hero */}
-      <section className="py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero — open to the ocean */}
+      <section className="relative py-24">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="max-w-3xl">
             <h1 className="display mb-6">Client results.</h1>
             <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
@@ -74,7 +82,7 @@ const TestimonialsPage = () => {
       </section>
 
       {/* Featured: the outcome */}
-      <section className="py-12">
+      <section className="relative py-12 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.figure {...rise} className="panel p-10 sm:p-14 lg:p-16">
             <blockquote className="story-voice text-2xl sm:text-3xl leading-relaxed" style={{ color: 'var(--foreground)' }}>
@@ -91,7 +99,7 @@ const TestimonialsPage = () => {
       </section>
 
       {/* The rest, full quotes */}
-      <section className="py-24">
+      <section className="relative py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {testimonials.map((t, i) => (
@@ -116,9 +124,9 @@ const TestimonialsPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* CTA — open to the ocean */}
+      <section className="relative py-28">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Motion.div {...rise}>
             <h2 className="headline mb-6">The next quote on this page could be yours.</h2>
             <p className="prose-body mx-auto mb-10" style={{ color: 'var(--muted-foreground)' }}>

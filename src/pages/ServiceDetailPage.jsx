@@ -186,9 +186,17 @@ const ServiceDetailPage = ({ service }) => {
 
   return (
     <div className="min-h-screen pt-32">
-      {/* Hero */}
-      <section className="pb-24" id="service-detail">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero — open to the ocean */}
+      <section className="relative pb-24" id="service-detail">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="max-w-3xl">
             <h1 className="display">{data.title}</h1>
             <p className="story-voice text-xl mt-6">{data.outcome}</p>
@@ -210,7 +218,7 @@ const ServiceDetailPage = ({ service }) => {
       </section>
 
       {/* What you get */}
-      <section className="py-24">
+      <section className="relative py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.h2 {...rise} className="headline">
             What you get
@@ -244,7 +252,7 @@ const ServiceDetailPage = ({ service }) => {
       </section>
 
       {/* The process */}
-      <section className="py-24">
+      <section className="relative py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.h2 {...rise} className="headline">
             The process
@@ -279,7 +287,7 @@ const ServiceDetailPage = ({ service }) => {
 
       {/* Pricing comparison (AI Workshop only) */}
       {service === 'ai-workshop' && (
-        <section className="py-24">
+        <section className="relative py-24 bg-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <Motion.h2 {...rise} className="headline">
               Standalone or bundled
@@ -327,7 +335,7 @@ const ServiceDetailPage = ({ service }) => {
       )}
 
       {/* Stats */}
-      <section className="py-24">
+      <section className="relative py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div
             {...rise}
@@ -348,7 +356,7 @@ const ServiceDetailPage = ({ service }) => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-28">
+      <section className="relative py-28 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="text-center">
             <h2 className="headline">Paddle out.</h2>

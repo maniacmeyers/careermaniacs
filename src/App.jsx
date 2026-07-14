@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import Footer from './components/Footer'
+import OceanCanvas from './components/OceanCanvas'
 import './App.css'
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
   return (
     <Router>
       <ScrollToHashWrapper>
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen text-foreground">
+          <OceanCanvas />
           <Navigation />
           
           <main className="relative">
@@ -33,7 +35,7 @@ function App() {
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="*" element={
-                <div className="min-h-screen pt-24 flex items-center justify-center">
+                <div className="relative min-h-screen pt-24 flex items-center justify-center">
                   <div className="text-center px-4">
                     <h1 className="display mb-4">404</h1>
                     <p className="text-xl text-muted-foreground mb-8">That set rolled through. This page doesn't exist.</p>

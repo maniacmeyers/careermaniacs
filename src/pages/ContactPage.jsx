@@ -75,9 +75,17 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen pt-32">
-      {/* Hero */}
-      <section className="py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero — open to the ocean */}
+      <section className="relative py-24">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="max-w-3xl">
             <h1 className="display mb-6">Fifteen minutes. Straight answers.</h1>
             <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
@@ -98,7 +106,7 @@ const ContactPage = () => {
       </section>
 
       {/* Form + next steps */}
-      <section id="book" className="py-24 scroll-mt-32">
+      <section id="book" className="relative py-24 scroll-mt-32 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Form */}
