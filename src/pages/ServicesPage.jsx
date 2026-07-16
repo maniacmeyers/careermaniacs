@@ -8,11 +8,12 @@ const ServicesPage = () => {
       {/* Hero Section */}
       <section className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="kicker mb-5">Services</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Your Arsenal. One Outcome: <span className="gradient-text">Undeniable.</span>
+            Your Arsenal. One Outcome: <span className="gradient-text italic">Undeniable.</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            If you want babysitting and platitudes, look elsewhere. If you want offers, impact, and acceleration, 
+            If you want babysitting and platitudes, look elsewhere. If you want offers, impact, and acceleration,
             pick your weapon below.
           </p>
         </div>

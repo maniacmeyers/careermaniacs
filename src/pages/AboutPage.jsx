@@ -7,15 +7,16 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="kicker mb-5">About Career Maniacs</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            I'm Not Just a Coach. <br />
-            <span className="gradient-text">I'm a Career Architect.</span>
+            I&rsquo;m Not Just a Coach. <br />
+            <span className="gradient-text italic">I&rsquo;m a Career Architect.</span>
           </h1>
-          
+
           <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-6">
             <p className="text-xl">
-              I built Career Maniacs because too many talented people get ignored. Companies don't hire "the best"; 
-              they hire the boldest story. I teach you to tell the story that sticks, then I back it up with AI-powered 
+              I built Career Maniacs because too many talented people get ignored. Companies don't hire "the best";
+              they hire the boldest story. I teach you to tell the story that sticks, then I back it up with AI-powered
               research, GTM strategy, and daily accountability.
             </p>
             

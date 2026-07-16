@@ -4,15 +4,38 @@ import CalendlyButton from '../components/CalendlyButton'
 
 const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
-  const handleSubmit = (e) => {
-    // Allow Netlify to handle form submission in production.
-    // Only prevent default in development for testing. Success state is
-    // intentionally persistent — no auto-dismiss — so users on slow
-    // connections or mobile don't miss the confirmation.
+  // Submissions are emailed via FormSubmit.co (host-agnostic — works on
+  // Vercel, Netlify, anywhere). The first-ever submission triggers a
+  // one-time activation email to jeff@careermaniacs.com.
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     if (window.location.hostname === 'localhost') {
-      e.preventDefault()
       setIsSubmitted(true)
+      return
+    }
+    setIsSubmitting(true)
+    setSubmitError(false)
+    try {
+      const data = Object.fromEntries(new FormData(e.target).entries())
+      const res = await fetch('https://formsubmit.co/ajax/jeff@careermaniacs.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          _subject: 'New Career Maniacs application',
+          _template: 'table',
+        }),
+      })
+      if (!res.ok) throw new Error('submit failed')
+      setIsSubmitted(true)
+      e.target.reset()
+    } catch {
+      setSubmitError(true)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -21,8 +44,9 @@ const ContactPage = () => {
       {/* Hero Section */}
       <section className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="kicker mb-5">Apply</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Ready to Go <span className="gradient-text">Maniac</span>?
+            Ready to Go <span className="gradient-text italic">Maniac</span>?
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Stop blending in. Stop guessing. Stop chasing scraps. I'll coach you—with AI precision and GTM clarity—to land the role and dominate it.
@@ -68,15 +92,8 @@ const ContactPage = () => {
                 </div>
               )}
 
-              <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                
+              <form name="contact" onSubmit={handleSubmit} className="space-y-6">
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
@@ -166,6 +183,7 @@ const ContactPage = () => {
                       <option value="gtm-onboarding-ai-workshop">GTM Onboarding + AI Workshop — $7,000/mo</option>
                     </optgroup>
                     <option value="consultation">Initial Consultation</option>
+                    <option value="interview-maniac-early-access">Interview Maniac App — Early Access</option>
                   </select>
                 </div>
 
@@ -200,11 +218,19 @@ const ContactPage = () => {
                   </select>
                 </div>
 
+                {submitError && (
+                  <p className="text-sm text-destructive">
+                    Something went wrong sending your application. Please try again, or email
+                    {' '}<a href="mailto:jeff@careermaniacs.com" className="underline">jeff@careermaniacs.com</a> directly.
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="btn-primary w-full py-4 rounded-lg font-bold text-lg text-white flex items-center justify-center space-x-2 group"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full py-4 rounded-lg font-bold text-lg flex items-center justify-center space-x-2 group disabled:opacity-60"
                 >
-                  <span>Submit Application</span>
+                  <span>{isSubmitting ? 'Sending…' : 'Submit Application'}</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>

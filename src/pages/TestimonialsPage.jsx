@@ -80,11 +80,12 @@ const TestimonialsPage = () => {
       {/* Hero Section */}
       <section className="py-12 sm:py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="kicker mb-5">Client results</p>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Client Results</span>
+            Stories from <span className="gradient-text italic">the other side</span>
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-8">
-            Real clients. Real wins. Each card shows the punchline—click to open the full story.
+            Real clients, in their own words. Each card shows the punchline — click to open the full story.
           </p>
         </div>
       </section>
