@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Target, Brain, TrendingUp, Mic, Waves, Sparkles, Quote } from 'lucide-react'
 import Reveal from '../components/Reveal'
-import OceanWaves from '../components/OceanWaves'
+import OceanSunrise from '../components/OceanSunrise'
 
 const pillars = [
   {
@@ -303,8 +303,14 @@ const HomePage = () => {
       <section className="py-24 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl gradient-border p-10 md:p-16 pb-32 md:pb-40">
-              <OceanWaves />
+            <div className="relative overflow-hidden rounded-3xl gradient-border p-10 md:p-16 min-h-[34rem]">
+              <OceanSunrise className="absolute inset-0 w-full h-full" />
+              {/* scrim keeps copy readable over the bright sunrise */}
+              <div
+                className="absolute inset-0"
+                aria-hidden="true"
+                style={{ background: 'linear-gradient(100deg, rgba(3,11,22,0.92) 0%, rgba(3,11,22,0.78) 42%, rgba(3,11,22,0.25) 72%, rgba(3,11,22,0.05) 100%)' }}
+              ></div>
               <div className="relative z-10 max-w-2xl">
                 <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-4 py-1.5 mb-6">
                   <Waves className="w-4 h-4 text-cyan-300" />
