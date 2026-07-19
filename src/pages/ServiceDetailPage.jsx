@@ -72,13 +72,16 @@ const serviceData = {
       { value: 'Daily', label: 'Accountability check-ins' },
       { value: '1:1', label: 'Direct access to Jeff' },
     ],
+    ctaHeadline: 'Stop losing offers you should win.',
+    ctaPromise:
+      'You’ll leave with one fix you can use in your next interview — whether or not we ever work together.',
   },
   'gtm-onboarding': {
     title: 'GTM Onboarding',
     price: '$5,000/month',
     outcome: 'From day one to President’s Club.',
     description:
-      'The first 90 days decide your reputation for the next three years. This plan turns your ramp into a campaign — stakeholder by stakeholder, week by week — so the first big wave of your tenure is one you catch.',
+      'The first 90 days decide your reputation for the next three years. This plan turns your ramp into a campaign — stakeholder by stakeholder, week by week — so you hit month four with pipeline, champions, and a number the org already respects.',
     features: [
       {
         title: 'Strategic success plan',
@@ -113,6 +116,9 @@ const serviceData = {
       { value: 'Daily', label: 'Accountability check-ins' },
       { value: '1:1', label: 'Direct access to Jeff' },
     ],
+    ctaHeadline: 'Make the first 90 days count.',
+    ctaPromise:
+      'You’ll leave with one move you can make in your first week — whether or not we ever work together.',
   },
   'ai-workshop': {
     title: 'Maniac AI Workshop',
@@ -165,6 +171,9 @@ const serviceData = {
       { value: '$3K', label: 'Per month standalone' },
       { value: '1:1', label: 'Direct access to Jeff' },
     ],
+    ctaHeadline: 'Build the thing you keep putting off.',
+    ctaPromise:
+      'You’ll leave with one automation worth building first — whether or not we ever work together.',
   },
 }
 
@@ -209,8 +218,7 @@ const ServiceDetailPage = ({ service }) => {
                 Book a 15-minute call
               </Link>
               <p className="mt-4 text-sm text-muted-foreground max-w-md">
-                You&apos;ll leave with one fix you can use in your next interview
-                &mdash; whether or not we ever work together.
+                {data.ctaPromise}
               </p>
             </div>
           </Motion.div>
@@ -343,7 +351,7 @@ const ServiceDetailPage = ({ service }) => {
           >
             {data.stats.map((stat) => (
               <div key={stat.label}>
-                <p className="text-5xl font-bold text-foreground">
+                <p className="text-4xl font-bold text-foreground">
                   {stat.value}
                 </p>
                 <p className="label-condensed text-muted-foreground mt-3">
@@ -359,7 +367,7 @@ const ServiceDetailPage = ({ service }) => {
       <section className="relative py-28 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="text-center">
-            <h2 className="headline">Paddle out.</h2>
+            <h2 className="headline">{data.ctaHeadline}</h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
               Fifteen minutes. You talk, Jeff listens, and you both decide if
               this is the right fit.
@@ -376,8 +384,7 @@ const ServiceDetailPage = ({ service }) => {
               </Link>
             </div>
             <p className="mt-5 text-sm text-muted-foreground max-w-md mx-auto">
-              You&apos;ll leave with one fix you can use in your next interview
-              &mdash; whether or not we ever work together.
+              {data.ctaPromise}
             </p>
           </Motion.div>
         </div>

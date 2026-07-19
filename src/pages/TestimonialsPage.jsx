@@ -13,7 +13,7 @@ const rise = {
 // The featured quote closed the deal: John landed the role.
 const featured = {
   author: 'John Macpherson',
-  title: 'Making data move',
+  title: 'Data & Analytics Leader',
   quote:
     "Jeff helped me up my storytelling game, start crushing it in interviews, and land an awesome role. He's a passionate, values-driven professional and person I would recommend to anyone.",
 }
@@ -85,7 +85,7 @@ const TestimonialsPage = () => {
       <section className="relative py-12 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.figure {...rise} className="panel p-10 sm:p-14 lg:p-16">
-            <blockquote className="story-voice text-2xl sm:text-3xl leading-relaxed" style={{ color: 'var(--foreground)' }}>
+            <blockquote className="story-voice text-xl sm:text-2xl leading-relaxed" style={{ color: 'var(--foreground)' }}>
               &ldquo;{featured.quote}&rdquo;
             </blockquote>
             <figcaption className="mt-8">
@@ -135,7 +135,7 @@ const TestimonialsPage = () => {
               together. And if I can&apos;t help, I&apos;ll tell you that too.
             </p>
             <Link to="/contact#book" className="btn-gold">
-              <span>Get your straight answer</span>
+              <span>Book a 15-minute call</span>
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
             <div className="mt-12">

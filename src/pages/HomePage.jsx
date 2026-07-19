@@ -31,7 +31,7 @@ const methodSteps = [
   {
     n: '3',
     title: 'Close',
-    body: 'Deal-run the interview: discovery on their pain, objection handling on your gaps, an actual ask at the end. You rehearse under pressure until pressure feels like home water.',
+    body: 'Deal-run the interview: discovery on their pain, objection handling on your gaps, an actual ask at the end. You rehearse under pressure until pressure stops mattering.',
   },
 ]
 
@@ -230,7 +230,7 @@ const HomePage = () => {
             {methodSteps.map((step) => (
               <Motion.div key={step.n} {...rise}>
                 <p
-                  className="text-6xl font-bold text-[var(--primary)]"
+                  className="text-5xl font-bold text-[var(--primary)]"
                   style={{ fontVariationSettings: '"wdth" 70' }}
                   aria-hidden="true"
                 >
@@ -446,13 +446,12 @@ const HomePage = () => {
       <section className="relative overflow-hidden">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
           <Motion.div {...rise} className="sunlit max-w-2xl mx-auto">
-            <p className="label-condensed">Coming up on the horizon</p>
+            <p className="label-condensed">In development</p>
             <h2 className="headline mt-4">Interview Maniac</h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
               The Maniac Method, as an app. Build your stories, train them against
               the clock, and run the reps until the real interview feels like a
-              rehearsal. In development now &mdash; and like the sun coming up,
-              it&apos;s almost here.
+              rehearsal. Coaching clients get it first.
             </p>
             <a
               href="mailto:jeff@careermaniacs.com?subject=Interview%20Maniac%20early%20access"
