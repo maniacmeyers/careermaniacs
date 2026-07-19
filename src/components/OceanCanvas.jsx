@@ -41,6 +41,7 @@ float ridgeD0(){ return mix(58., 8.0, pow(uProx,.8)) - uBreak*2.8; }
 // no probe notches -> no flickering seam at the foot (owner bug, 5th fix, root one)
 float seaH(vec2 xz);
 float swellRidge(vec2 xz);
+#if !CALMONLY
 float waveHit(vec3 ro, vec3 rd, float tMax){
   float d0 = ridgeD0();
   if(rd.z <= .001) return -1.;
@@ -65,7 +66,17 @@ float waveHit(vec3 ro, vec3 rd, float tMax){
   }
   return -1.;
 }  // leans toward viewer as it breaks
+#endif
 float swellRidge(vec2 xz){
+#if CALMONLY
+  // calm-only build: no swell ever exists (uProx pinned to 0). Returning a
+  // constant lets the compiler fold every caller — seaH runs 10+ times/pixel.
+  return 0.;
+#endif
+  // calm-mode early-out: mirrors the smoothstep(.015,.055,uProx) gate below,
+  // so identical output — but skips ~6 noise evals per call when no swell
+  // exists (this page runs prox=0 always; seaH calls this 10+ times/pixel)
+  if(uProx < .015) return 0.;
   // THE MINI TSUNAMI: born far out as a line across the whole ocean, walls up
   // as it approaches. Asymmetric profile: steep camera-side face, long back.
   float d0 = ridgeD0();
@@ -152,6 +163,7 @@ float foamTex(vec2 xz){ return smoothstep(.60,.98, fbm(xz*2.6 + uTime*.35)
 // swellRidge geometry). Cross-section: r(th) = R*exp(-.075*th), thick at the
 // crest, razor-thin at the pitching lip. Raymarched as its own SDF and
 // composited over the heightfield with proper depth ordering.
+#if !CALMONLY
 float crestHx(float x){
   float und = .70 + .30*noise(vec2(x*.13, 7.3)) + .22*noise(vec2(x*.42, 2.1))
             + .30*pow(noise(vec2(x*.22, 4.7)), 3.);
@@ -193,6 +205,7 @@ float barrelDist(vec3 p){
   gTh=th; gThMax=thMax; gR=R; gRr=rr; gRs=rs; gU=u; gV=v; gHx=Hx;
   return d;
 }
+#endif
 
 void main(){
   vec2 uv = (gl_FragCoord.xy*2. - uRes) / uRes.y;
@@ -208,8 +221,15 @@ void main(){
   if(rd.y < -0.012){
     tPlane = -ro.y/rd.y;
     pos = ro + rd*tPlane;
+#if CALMONLY
+    // calm sea is +-.3 around y=0 seen from y=1.75: refinement converges in
+    // a few taps. 8 iterations is wave-face insurance the calm build never needs.
+    for(int i=0;i<4;i++){ float h=seaH(pos.xz); tPlane = (ro.y-h)/(-rd.y); pos = ro + rd*clamp(tPlane, 1., 80.); }
+#else
     for(int i=0;i<8;i++){ float h=seaH(pos.xz); tPlane = (ro.y-h)/(-rd.y); pos = ro + rd*clamp(tPlane, 1., 80.); }
+#endif
     tPlane = clamp(tPlane, 1., 80.); hit = true;
+#if !CALMONLY
     // ownership partition: if the ray crosses wave-influenced water, the march
     // solver owns the pixel outright \u2014 the two solvers never compete (seam source)
     float dC = ridgeD0(); float tC = dC/max(rd.z,.001);
@@ -219,10 +239,13 @@ void main(){
       float tW = waveHit(ro, rd, 80.);
       if(tW>0.){ tPlane = tW; pos = ro + rd*tW; }
     }
-  } else if(rd.y < 0.34){
-    // upward rays: only the wave can rise above the horizon and occlude the sky
+  } else if(rd.y < 0.34 && uProx >= .015){
+    // upward rays: only the wave can rise above the horizon and occlude the
+    // sky — and only when a swell exists at all. Ungated, this 26-step march
+    // (~500 noise evals) ran for every sky pixel in calm mode, for nothing.
     float tW = waveHit(ro, rd, 90.);
     if(tW>0.){ tPlane = tW; pos = ro + rd*tW; hit = true; }
+#endif
   }
   if(!hit){
     col = skyCol(rd, sunDir);
@@ -399,6 +422,7 @@ void main(){
     float wisps = uCurl * smoothstep(.3,.9,foamTex(pos.xz*1.7 + vec2(0.,uTime*1.2))) * crestZone;
     col = mix(col, vec3(1.,.94,.80), clamp(feather*(.45+.75*foamTex(pos.xz)) + wisps*.8, 0., 1.));
 
+#if !CALMONLY
     // BREAK: whitewater front SURGES from the wall's base toward the viewer
     if(uBreak>0.){
       float front = mix(ridgeD0()+.5, 1.6, pow(smoothstep(.06,.9,uBreak),1.35));
@@ -426,6 +450,7 @@ void main(){
       vec3 surgeCol = mix(vec3(.95,.98,.98), vec3(1.,.80,.48), exp(-pow(pos.x/2.6,2.))*(.30+.55*uGlow));
       col = mix(col, surgeCol, clamp(f,0.,1.)*fade);
     }
+#endif
     // distance haze into dawn — hazes toward the SKY at the horizon, not mud
     vec3 hazeCol = skyBase(vec3(rd.x, .004, max(rd.z,.4)), sunDir);
     col = mix(col, hazeCol, smoothstep(18., 42., dist)*.72);   // far field melts into the sky (no dark horizon strip)
@@ -438,6 +463,7 @@ void main(){
     col = mix(col, skyBase(vec3(rd.x, .002, rd.z), sunDir), grazing*.9*smoothstep(26., 38., dist)*(1.-smoothstep(.3,.45,uProx)));
     hitDist = dist;
   }
+#if !CALMONLY
   // ---------- r3: CURL BARREL PASS (owner priority #1) ----------
   float bGate = smoothstep(.20,.34,uCurl)*(1.-smoothstep(.12,.42,uBreak))*smoothstep(.08,.16,uProx);
   if(bGate>.004 && rd.z>.03 && rd.y<.75){
@@ -627,6 +653,8 @@ void main(){
   // (round-2 lab: the old SPLATTER cell-droplets are gone — drops travelling
   // out of their grid cell were clipped to faint rectangles. The particle
   // layer's impact splash owns near-camera droplets now, properly projected.)
+#endif
+#if !CALMONLY
   // ---------- r3: VOLUMETRIC FOAM BALL (owner priority #2) ----------
   // True participating media replaces the screen-space engulf: raymarched
   // density in a world-space impact ellipsoid, advected+tumbling texture
@@ -731,6 +759,7 @@ void main(){
       }
     }
   }
+#endif
 #if HDRPIPE
   // r4: linear HDR out. Vignette, tonemap, saturation, flash, grain and the
   // temporal blend all live in the composite pass now — this pass only
@@ -857,14 +886,30 @@ const QDEF=q=>q==='full'
 
 const TEMPORAL_A = 0.42 // v35 temporal accumulation weight (foam regions only)
 
+// This page never leaves ambient calm (CALM uniforms below), so the wave
+// systems — waveHit march, swellRidge, curl barrel, break/spray/volumetric
+// foam — are stripped at COMPILE time, not just gated at runtime. Metal/ANGLE
+// allocates registers for the worst-case kernel, and the full shader was so
+// large it ran seconds-per-frame even with every branch dynamically off.
+// Flip to 0 to compile the full v35 scene (active-wave demos).
+const CALMDEF = '#define CALMONLY 1\n'
+
 // Ambient calm: the demo's resting/idle uniform set. Every expensive shader
 // branch (barrel march, volumetric foam ball, spray) is gated off at these
 // values, so the background stays cheap.
 const CALM = { amp: 0.06, prox: 0, curl: 0, bk: 0, peel: 0, glow: 0 }
 
+const oceanLog = (msg) => {
+  ;(window.__oceanLog = window.__oceanLog || []).push(`${performance.now().toFixed(0)}ms ${msg}`)
+  console.log(`[ocean] ${msg}`)
+}
+
 function initOcean(cv) {
+  const T0 = performance.now()
+  const mark = (label) => oceanLog(`${label}: +${(performance.now() - T0).toFixed(0)}ms`)
   const gl = cv.getContext('webgl', { antialias: false, alpha: false })
-  if (!gl || gl.isContextLost()) return null
+  if (!gl || gl.isContextLost()) { oceanLog('initOcean: context null/lost'); return null }
+  mark('context')
   function sh(g, t, s) {
     const x = g.createShader(t)
     g.shaderSource(x, s)
@@ -873,6 +918,7 @@ function initOcean(cv) {
     return x
   }
   const mainTex = uploadFoamTex(gl)
+  mark('foam texture forged+uploaded')
   const buf = gl.createBuffer()
   gl.bindBuffer(gl.ARRAY_BUFFER, buf)
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
@@ -903,6 +949,7 @@ function probeHDR(){
 }
 const HDRFMT=probeHDR();
 const HDRON=!!HDRFMT;
+mark(`HDR probe (${HDRON ? HDRFMT.name : 'unsupported'})`)
 const HDEF=on=>'#define HDRPIPE '+(on?1:0)+'\n';
 function mkTex(w,h,type,filt){
   const t=gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D,t);
@@ -950,7 +997,7 @@ let uRes,uTime,uAmp,uProx,uCurl,uBreak,uGlow,uStatic,uRise,uPeel,mainProg;
 function buildMain(){
   const p=gl.createProgram();
   gl.attachShader(p,sh(gl,gl.VERTEX_SHADER,VS));
-  gl.attachShader(p,sh(gl,gl.FRAGMENT_SHADER,HDEF(HDRON)+QDEF('full')+FS));
+  gl.attachShader(p,sh(gl,gl.FRAGMENT_SHADER,HDEF(HDRON)+QDEF('full')+CALMDEF+FS));
   gl.linkProgram(p);
   if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));
   gl.useProgram(p);
@@ -962,10 +1009,15 @@ function buildMain(){
   mainProg=p;
 }
 buildMain();
-function size(){const r=cv.getBoundingClientRect();const d=Math.min(devicePixelRatio,1.5);
+mark('main shader compiled+linked')
+function size(){const r=cv.getBoundingClientRect();
+  // ponytail: soft-focus background — render at .75x CSS resolution and let the
+  // browser upscale (bilinear). 44% fewer pixels; raise toward 1 if ever coarse.
+  const d=Math.min(devicePixelRatio,1)*.75;
   cv.width=r.width*d;cv.height=r.height*d;gl.viewport(0,0,cv.width,cv.height);
   buildPost(cv.width,cv.height);}
 size();   // resize listener lives in the component effect
+  mark('post targets built — init complete')
 // draw one full-screen pass into target (t=null means the canvas)
 function pass(prog,target){
   gl.useProgram(prog.p);
@@ -1052,15 +1104,22 @@ const OceanCanvas = () => {
   useEffect(() => {
     const cv = ref.current
     if (!cv) return undefined
-    let disposed = false
     let cleanup = null
 
     const start = () => {
-      let ocean = null
-      try {
-        ocean = initOcean(cv)
-      } catch {
-        ocean = null
+      // Cache the built ocean on the canvas: StrictMode/HMR re-runs the effect
+      // on the same element, and rebuilding (or lose/restoring) the GL context
+      // is both wasteful and broken — getExtension() on a lost context returns
+      // null per spec, so the old restore path could never work.
+      let ocean = cv.__ocean
+      if (!ocean) {
+        try {
+          ocean = initOcean(cv)
+        } catch (err) {
+          oceanLog(`init threw: ${err && err.message}`)
+          ocean = null
+        }
+        cv.__ocean = ocean
       }
       if (!ocean) {
         setFailed(true)
@@ -1083,12 +1142,17 @@ const OceanCanvas = () => {
       }
 
       const loop = () => {
+        raf = requestAnimationFrame(loop)
         const now = performance.now()
+        if (now - last < 31) return // 30fps cap: slow ambient water, half the GPU cost
         const dt = Math.min((now - last) / 1000, 0.1)
         last = now
         ocean.state.rise += (ocean.state.riseTarget - ocean.state.rise) * (1 - Math.exp(-dt * 4))
         ocean.renderFrame((now - t0) / 1000)
-        raf = requestAnimationFrame(loop)
+        const st = (window.__oceanStats = window.__oceanStats || { frames: 0, cpuMs: 0 })
+        st.frames++
+        st.cpuMs += performance.now() - now
+        st.at = now
       }
 
       const onScroll = () => {
@@ -1106,6 +1170,11 @@ const OceanCanvas = () => {
       }
 
       const onVis = () => {
+        // mounted while hidden (embedded pane, background tab) → rect was 0×0
+        if (!document.hidden && (cv.width === 0 || cv.height === 0)) {
+          ocean.size()
+          if (reduced) drawStatic()
+        }
         if (reduced) return
         if (document.hidden) {
           cancelAnimationFrame(raf)
@@ -1115,6 +1184,17 @@ const OceanCanvas = () => {
           raf = requestAnimationFrame(loop)
         }
       }
+
+      // runtime GPU reset (driver timeout, sleep/wake): degrade to the CSS
+      // fallback instead of leaving a dead frozen canvas behind the page
+      const onLost = (e) => {
+        e.preventDefault()
+        oceanLog('runtime context lost — falling back to static scene')
+        cv.__ocean = null
+        if (cleanup) cleanup()
+        setFailed(true)
+      }
+      cv.addEventListener('webglcontextlost', onLost)
 
       window.addEventListener('scroll', onScroll, { passive: true })
       window.addEventListener('resize', onResize)
@@ -1129,36 +1209,15 @@ const OceanCanvas = () => {
         window.removeEventListener('scroll', onScroll)
         window.removeEventListener('resize', onResize)
         document.removeEventListener('visibilitychange', onVis)
-        const lose = ocean.gl.getExtension('WEBGL_lose_context')
-        if (lose) lose.loseContext()
+        cv.removeEventListener('webglcontextlost', onLost)
+        // context intentionally NOT lost: it belongs to the canvas element and
+        // survives StrictMode/HMR remounts via cv.__ocean
       }
     }
 
-    // StrictMode re-runs the effect on the same canvas after cleanup lost the
-    // context; restore it first, then init on the restored event.
-    const probe = cv.getContext('webgl', { antialias: false, alpha: false })
-    if (!probe) {
-      setFailed(true)
-    } else if (probe.isContextLost()) {
-      const lose = probe.getExtension('WEBGL_lose_context')
-      if (!lose) {
-        setFailed(true)
-      } else {
-        cv.addEventListener(
-          'webglcontextrestored',
-          () => {
-            if (!disposed) start()
-          },
-          { once: true }
-        )
-        lose.restoreContext()
-      }
-    } else {
-      start()
-    }
+    start()
 
     return () => {
-      disposed = true
       if (cleanup) cleanup()
     }
   }, [])
