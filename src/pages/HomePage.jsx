@@ -13,8 +13,9 @@ const companies = ['Palantir', 'Salesforce', 'Oracle', 'ADP', 'expert.ai', '[24]
 
 const stats = [
   { value: '12×', label: "President's Club" },
-  { value: '#1', label: 'Nationally, at 264% of plan' },
-  { value: '20 yrs', label: 'Closing enterprise deals' },
+  { value: '4×', label: 'AE of the Year' },
+  { value: '2×', label: 'Rookie of the Year' },
+  { value: 'MIT', label: 'Degree in AI & business strategy' },
 ]
 
 const methodSteps = [
@@ -130,6 +131,16 @@ const HomePage = () => {
               </div>
             ))}
           </Motion.dl>
+
+          <Motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.65 }}
+            className="mt-6 text-sm sm:text-base text-muted-foreground max-w-xl"
+          >
+            And I build AI every day &mdash; I run Forgetime.ai. The research
+            systems I teach are the ones I use, not slideware.
+          </Motion.p>
         </div>
       </section>
 
