@@ -138,8 +138,8 @@ const HomePage = () => {
             transition={{ duration: 0.9, delay: 0.65 }}
             className="mt-6 text-sm sm:text-base text-muted-foreground max-w-xl"
           >
-            And I build AI every day &mdash; I run Forgetime.ai. The research
-            systems I teach are the ones I use, not slideware.
+            And I build AI every day &mdash; apps, agents, and automations. The
+            research systems I teach are the ones I use, not slideware.
           </Motion.p>
         </div>
       </section>

@@ -125,7 +125,7 @@ const serviceData = {
     price: '$3,000/month standalone · $7,000/month bundled',
     outcome: 'You walk away with working AI you built yourself.',
     description:
-      'Stop watching demos. You build your own apps, automations, and workflows — hands on keyboard, coached by someone who has sold AI since Salesforce Einstein in 2017 and ships it daily at Forgetime.ai.',
+      'Stop watching demos. You build your own apps, automations, and workflows — hands on keyboard, coached by someone who has sold AI since Salesforce Einstein in 2017 and ships his own apps, agents, and automations every day.',
     features: [
       {
         title: 'Digital twin setup & orchestration',

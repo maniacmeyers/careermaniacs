@@ -98,7 +98,8 @@ const AboutPage = () => {
                   top-1% seller runs a deal — story first, proof stacked, close asked
                   for. Then I hand you the AI research systems I've been building since
                   Salesforce's Einstein push in 2017, sharpened by an MIT degree in AI
-                  and business strategy and my own company, Forgetime.ai.
+                  and business strategy — and by shipping my own apps, agents, and
+                  automations every single day.
                 </p>
                 <p>
                   I live in Ponte Vedra Beach, Florida, a few hundred yards from the
@@ -150,8 +151,8 @@ const AboutPage = () => {
                   MIT degree in AI &amp; business strategy
                 </div>
                 <p className="text-sm mt-1.5" style={{ color: 'var(--muted-foreground)' }}>
-                  And I build AI every day &mdash; I run Forgetime.ai. The research
-                  systems I teach are the ones I use, not slideware.
+                  And I build AI every day &mdash; apps, agents, and automations. The
+                  research systems I teach are the ones I use, not slideware.
                 </p>
               </div>
             </Motion.div>

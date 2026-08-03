@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: 'What is the Maniac AI Workshop?',
-    a: 'Hands-on building, not demos. Jeff has sold AI since Salesforce Einstein in 2017 and builds daily at Forgetime.ai. In the Workshop you build your own apps, automations, and workflows with him — $3,000/month standalone, or $7,000/month bundled with either coaching plan, which saves you $1,000 a month.',
+    a: 'Hands-on building, not demos. Jeff has sold AI since Salesforce Einstein in 2017 and builds his own apps, agents, and automations every day. In the Workshop you build your own apps, automations, and workflows with him — $3,000/month standalone, or $7,000/month bundled with either coaching plan, which saves you $1,000 a month.',
   },
   {
     q: 'What do I actually walk away with from the Workshop?',
