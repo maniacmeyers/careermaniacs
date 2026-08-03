@@ -63,18 +63,18 @@ const AboutPage = () => {
         />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <Motion.div {...rise} className="lg:col-span-5">
+            <Motion.div {...rise} className="lg:col-span-3">
               <img
                 src="/coach-photo.jpg"
                 alt="Jeff Meyers on the beach at Ponte Vedra, the Atlantic behind him"
                 width="800"
                 height="800"
-                className="w-full h-auto rounded-2xl border"
+                className="w-full max-w-[16rem] mx-auto lg:mx-0 h-auto rounded-2xl border grayscale hover:grayscale-0 transition-[filter] duration-700"
                 style={{ borderColor: 'var(--border)' }}
               />
             </Motion.div>
 
-            <Motion.div {...rise} className="lg:col-span-7">
+            <Motion.div {...rise} className="lg:col-span-9">
               <h1 className="display mb-8">
                 I'm not a career coach. I'm a closer who teaches.
               </h1>
