@@ -48,29 +48,27 @@ Tailwind CSS v4 integrated via `@tailwindcss/vite` plugin (not PostCSS). Two CSS
 - `src/index.css` — empty/minimal, imported in `main.jsx`
 - `src/App.css` — **the main stylesheet**: CSS custom properties (design tokens in `:root`), Tailwind theme config (`@theme inline`), and all custom component classes
 
-Key custom CSS classes defined in `src/App.css`:
-- `.gradient-text` — cyan-to-emerald gradient text
-- `.glass` — glassmorphism card/nav backgrounds
-- `.tilt-card` — 3D perspective hover effect
-- `.gradient-border` — cyan border with glow
-- `.morphing-border` — animated gradient top border
-- `.btn-primary` / `.btn-secondary` — button styles
-- `.fade-in` / `.slide-up` — animation classes
-- `.modal-backdrop` / `.modal-content` — modal styles
-- `.glow` / `.glow-hover` — box-shadow utilities
+Key custom CSS classes defined in `src/App.css` (see `DESIGN.md` for the full system):
+- `.display` / `.headline` / `.headline-sm` — Archivo variable-width type voices
+- `.label-condensed` — condensed caps (stat labels + nav only, never section eyebrows)
+- `.story-voice` — Source Serif 4 italic, the storytelling register
+- `.btn-gold` / `.btn-ghost` — the only two buttons; gold is the one CTA color
+- `.panel` — card surface; `.hairline-gradient` — teal→cobalt 1px rule
+- `.sunlit` — ocean-glass panel for content over the risen sun (deliberate exception)
+- `.skip-link` — keyboard skip-to-content, hidden until focused
+- `.gradient-text` / `.glass` / `.tilt-card` / `.btn-primary` etc. — legacy aliases remapped to current tokens; do not use in new code
 
 ### Design Tokens
 
-Dark slate theme with teal/cyan accents. All colors defined as CSS custom properties in `:root` of `src/App.css`:
-- Background: `#0f172a` (dark slate)
-- Primary: `#06b6d4` (cyan)
-- Secondary: `#10b981` (emerald)
-- Foreground: `#ffffff`
-- Muted foreground: `#cbd5e1` (slate-300)
+"Nazaré dawn patrol" — deep ocean-black surface, foam-white ink, one dawn-gold accent. All colors are OKLCH custom properties in `:root` of `src/App.css`; `DESIGN.md` is the authority. Never hard-code hex colors; the old cyan/emerald slate theme is gone.
+
+### Ocean background
+
+`src/components/OceanCanvas.jsx` renders a site-wide WebGL sunrise ocean (fixed, behind everything) with a CSS/SVG fallback when WebGL is unavailable and a static frame under `prefers-reduced-motion`. Framer Motion is wrapped in `<MotionConfig reducedMotion="user">` in `App.jsx` — keep it that way.
 
 ### Static Assets
 
-All in `public/`: `career-maniacs-logo.png`, `coach-photo.png`, favicons. Referenced as absolute paths (e.g., `/coach-photo.png`).
+All in `public/`: `career-maniacs-logo.png`, `coach-photo.jpg`, favicons. Referenced as absolute paths (e.g., `/coach-photo.jpg`).
 
 ### Icons
 
@@ -83,91 +81,34 @@ Flat config in `eslint.config.js`. `no-unused-vars` ignores variables starting w
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **careermaniacswebsite** (539 symbols, 969 relationships, 0 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **careermaniacs** (771 symbols, 1482 relationships, 41 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
-> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
+> Index stale? Run `node .gitnexus/run.cjs analyze` from the project root — it auto-selects an available runner. No `.gitnexus/run.cjs` yet? `npx gitnexus analyze` (npm 11 crash → `npm i -g gitnexus`; #1939).
 
 ## Always Do
 
-- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `gitnexus_impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
-- **MUST run `gitnexus_detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows.
+- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
+- **MUST run `detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows. For regression review, compare against the default branch: `detect_changes({scope: "compare", base_ref: "main"})`.
 - **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
-- When exploring unfamiliar code, use `gitnexus_query({query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
-- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `gitnexus_context({name: "symbolName"})`.
-
-## When Debugging
-
-1. `gitnexus_query({query: "<error or symptom>"})` — find execution flows related to the issue
-2. `gitnexus_context({name: "<suspect function>"})` — see all callers, callees, and process participation
-3. `READ gitnexus://repo/careermaniacswebsite/process/{processName}` — trace the full execution flow step by step
-4. For regressions: `gitnexus_detect_changes({scope: "compare", base_ref: "main"})` — see what your branch changed
-
-## When Refactoring
-
-- **Renaming**: MUST use `gitnexus_rename({symbol_name: "old", new_name: "new", dry_run: true})` first. Review the preview — graph edits are safe, text_search edits need manual review. Then run with `dry_run: false`.
-- **Extracting/Splitting**: MUST run `gitnexus_context({name: "target"})` to see all incoming/outgoing refs, then `gitnexus_impact({target: "target", direction: "upstream"})` to find all external callers before moving code.
-- After any refactor: run `gitnexus_detect_changes({scope: "all"})` to verify only expected files changed.
+- When exploring unfamiliar code, use `query({search_query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
+- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `context({name: "symbolName"})`.
+- For security review, `explain({target: "fileOrSymbol"})` lists taint findings (source→sink flows; needs `analyze --pdg`).
 
 ## Never Do
 
-- NEVER edit a function, class, or method without first running `gitnexus_impact` on it.
+- NEVER edit a function, class, or method without first running `impact` on it.
 - NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
-- NEVER rename symbols with find-and-replace — use `gitnexus_rename` which understands the call graph.
-- NEVER commit changes without running `gitnexus_detect_changes()` to check affected scope.
-
-## Tools Quick Reference
-
-| Tool | When to use | Command |
-|------|-------------|---------|
-| `query` | Find code by concept | `gitnexus_query({query: "auth validation"})` |
-| `context` | 360-degree view of one symbol | `gitnexus_context({name: "validateUser"})` |
-| `impact` | Blast radius before editing | `gitnexus_impact({target: "X", direction: "upstream"})` |
-| `detect_changes` | Pre-commit scope check | `gitnexus_detect_changes({scope: "staged"})` |
-| `rename` | Safe multi-file rename | `gitnexus_rename({symbol_name: "old", new_name: "new", dry_run: true})` |
-| `cypher` | Custom graph queries | `gitnexus_cypher({query: "MATCH ..."})` |
-
-## Impact Risk Levels
-
-| Depth | Meaning | Action |
-|-------|---------|--------|
-| d=1 | WILL BREAK — direct callers/importers | MUST update these |
-| d=2 | LIKELY AFFECTED — indirect deps | Should test |
-| d=3 | MAY NEED TESTING — transitive | Test if critical path |
+- NEVER rename symbols with find-and-replace — use `rename` which understands the call graph.
+- NEVER commit changes without running `detect_changes()` to check affected scope.
 
 ## Resources
 
 | Resource | Use for |
 |----------|---------|
-| `gitnexus://repo/careermaniacswebsite/context` | Codebase overview, check index freshness |
-| `gitnexus://repo/careermaniacswebsite/clusters` | All functional areas |
-| `gitnexus://repo/careermaniacswebsite/processes` | All execution flows |
-| `gitnexus://repo/careermaniacswebsite/process/{name}` | Step-by-step execution trace |
-
-## Self-Check Before Finishing
-
-Before completing any code modification task, verify:
-1. `gitnexus_impact` was run for all modified symbols
-2. No HIGH/CRITICAL risk warnings were ignored
-3. `gitnexus_detect_changes()` confirms changes match expected scope
-4. All d=1 (WILL BREAK) dependents were updated
-
-## Keeping the Index Fresh
-
-After committing code changes, the GitNexus index becomes stale. Re-run analyze to update it:
-
-```bash
-npx gitnexus analyze
-```
-
-If the index previously included embeddings, preserve them by adding `--embeddings`:
-
-```bash
-npx gitnexus analyze --embeddings
-```
-
-To check whether embeddings exist, inspect `.gitnexus/meta.json` — the `stats.embeddings` field shows the count (0 means no embeddings). **Running analyze without `--embeddings` will delete any previously generated embeddings.**
-
-> Claude Code users: A PostToolUse hook handles this automatically after `git commit` and `git merge`.
+| `gitnexus://repo/careermaniacs/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/careermaniacs/clusters` | All functional areas |
+| `gitnexus://repo/careermaniacs/processes` | All execution flows |
+| `gitnexus://repo/careermaniacs/process/{name}` | Step-by-step execution trace |
 
 ## CLI
 

@@ -18,14 +18,14 @@ Career Maniacs is Jeff Meyers' coaching practice. It sells five things, in prior
 
 ## Positioning
 
-The coach who actually carried the bag: 11× President's Club, #1 in the country at 264% of plan, two decades closing for Palantir, Salesforce, Oracle, and ADP — now teaching GTM executives to sell the one product they've never had to pitch: themselves. Every interview is a deal. Run it like one.
+The coach who actually carried the bag: 12× President's Club, #1 in the country at 264% of plan, two decades closing for Palantir, Salesforce, Oracle, and ADP — now teaching GTM executives to sell the one product they've never had to pitch: themselves. Every interview is a deal. Run it like one.
 
 ## Conversion & proof
 
 - Primary CTA: Book a strategy call (Calendly). Secondary: watch/read a story from the Maniac Method, or leave an email for Interview Maniac early access.
 - The line a visitor remembers: "Your interview is a sales call. Jeff has closed thousands of them."
 - Belief ladder: (1) This guy is a real operator, not a LinkedIn guru → (2) interviews ARE sales calls, so a closer is the right coach → (3) his method (ABT storytelling, deal-running) is concrete and learnable → (4) one call is low-risk and high-signal.
-- Proof on hand: résumé facts (11× President's Club; #1 at 264% of plan; #2 at 230%; top 5% five straight years; $8M pipeline in 9 months at Palantir; $3.1M NLU deal at expert.ai; 260% of $5M quota at 247.ai; Palantir/Salesforce/Oracle/ADP/expert.ai/247.ai/ZOLL logos), testimonials in TestimonialsPage.jsx / testimonials-research.md, coach photo public/coach-photo.jpg, wave logo public/career-maniacs-logo.png (built for dark backgrounds).
+- Proof on hand: résumé facts (12× President's Club; #1 at 264% of plan; #2 at 230%; top 5% five straight years; $8M pipeline in 9 months at Palantir; $3.1M NLU deal at expert.ai; 260% of $5M quota at 247.ai; Palantir/Salesforce/Oracle/ADP/expert.ai/247.ai/ZOLL logos), testimonials in TestimonialsPage.jsx / testimonials-research.md, coach photo public/coach-photo.jpg, wave logo public/career-maniacs-logo.png (built for dark backgrounds).
 
 ## Brand Personality
 

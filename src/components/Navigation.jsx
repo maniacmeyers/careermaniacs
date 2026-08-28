@@ -72,7 +72,7 @@ const Navigation = () => {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            className="md:hidden p-2 rounded-md text-foreground"
+            className="md:hidden p-3 -mr-1 rounded-md text-foreground"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

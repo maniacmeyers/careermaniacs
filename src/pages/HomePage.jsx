@@ -298,7 +298,7 @@ const HomePage = () => {
             ))}
           </div>
           <Motion.div {...rise} className="mt-12">
-            <Link to="/testimonials" className="inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold hover:underline underline-offset-4">
+            <Link to="/testimonials" className="inline-flex items-center gap-1.5 py-2 -my-2 text-[var(--primary)] font-semibold hover:underline underline-offset-4">
               All client results <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </Motion.div>
@@ -368,7 +368,7 @@ const HomePage = () => {
               role — territory plan, first wins, President&apos;s Club trajectory.
             </p>
             <p className="mt-6 font-bold text-lg">$5,000<span className="text-sm text-muted-foreground font-semibold">/month</span></p>
-            <Link to="/services/gtm-onboarding" className="mt-4 inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
+            <Link to="/services/gtm-onboarding" className="mt-4 inline-flex items-center gap-1.5 py-2 -mb-2 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
               The 90-day plan <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </Motion.div>
@@ -381,7 +381,7 @@ const HomePage = () => {
               Salesforce Einstein in 2017.
             </p>
             <p className="mt-6 font-bold text-lg">$3,000<span className="text-sm text-muted-foreground font-semibold">/mo · $7,000 bundled</span></p>
-            <Link to="/services/ai-workshop" className="mt-4 inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
+            <Link to="/services/ai-workshop" className="mt-4 inline-flex items-center gap-1.5 py-2 -mb-2 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
               What you&apos;ll build <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </Motion.div>
@@ -394,7 +394,7 @@ const HomePage = () => {
               prospecting, and AI workflows for your whole floor.
             </p>
             <p className="mt-6 font-bold text-lg">Custom</p>
-            <Link to="/contact#book" className="mt-4 inline-flex items-center gap-1.5 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
+            <Link to="/contact#book" className="mt-4 inline-flex items-center gap-1.5 py-2 -mb-2 text-[var(--primary)] font-semibold text-sm hover:underline underline-offset-4">
               Talk to Jeff <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </Motion.div>

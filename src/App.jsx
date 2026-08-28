@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import ScrollToHashWrapper from './components/ScrollToHashWrapper'
 import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
@@ -17,12 +18,14 @@ function App() {
 
   return (
     <Router>
+      <MotionConfig reducedMotion="user">
       <ScrollToHashWrapper>
         <div className="min-h-screen text-foreground">
+          <a href="#main" className="skip-link">Skip to content</a>
           <OceanCanvas />
           <Navigation />
-          
-          <main className="relative">
+
+          <main id="main" className="relative">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -51,6 +54,7 @@ function App() {
           <Footer />
         </div>
       </ScrollToHashWrapper>
+      </MotionConfig>
     </Router>
   )
 }

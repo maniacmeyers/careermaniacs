@@ -46,7 +46,11 @@ const ContactPage = () => {
     if (!data.email?.trim()) newErrors.email = 'I need an email to reply to.'
     if (!data.message?.trim()) newErrors.message = 'Give me at least a sentence.'
     setErrors(newErrors)
-    if (Object.keys(newErrors).length > 0) return
+    if (Object.keys(newErrors).length > 0) {
+      // Send keyboard/screen-reader users straight to the first problem
+      form.querySelector(`#${Object.keys(newErrors)[0]}`)?.focus()
+      return
+    }
 
     setStatus('sending')
     try {
@@ -161,11 +165,12 @@ const ContactPage = () => {
                         required
                         autoComplete="name"
                         aria-invalid={errors.name ? 'true' : undefined}
+                        aria-describedby={errors.name ? 'name-error' : undefined}
                         className={inputClass}
                         style={inputStyle}
                       />
                       {errors.name && (
-                        <p className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.name}</p>
+                        <p id="name-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.name}</p>
                       )}
                     </div>
 
@@ -184,11 +189,12 @@ const ContactPage = () => {
                         required
                         autoComplete="email"
                         aria-invalid={errors.email ? 'true' : undefined}
+                        aria-describedby={errors.email ? 'email-error' : undefined}
                         className={inputClass}
                         style={inputStyle}
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.email}</p>
+                        <p id="email-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.email}</p>
                       )}
                     </div>
 
@@ -241,12 +247,13 @@ const ContactPage = () => {
                         required
                         rows={6}
                         aria-invalid={errors.message ? 'true' : undefined}
+                        aria-describedby={errors.message ? 'message-error' : undefined}
                         className={`${inputClass} resize-y min-h-[140px]`}
                         style={inputStyle}
                         placeholder="Where are you now, and where are you trying to land?"
                       ></textarea>
                       {errors.message && (
-                        <p className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.message}</p>
+                        <p id="message-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.message}</p>
                       )}
                     </div>
 
