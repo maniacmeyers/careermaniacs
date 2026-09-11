@@ -1,3 +1,4 @@
+import BrandLogo from './BrandLogo'
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
@@ -7,7 +8,7 @@ import { Menu, X } from 'lucide-react'
 const navItems = [
   { name: 'Services', path: '/services' },
   { name: 'About', path: '/about' },
-  { name: 'Results', path: '/testimonials' },
+  { name: 'Client stories', path: '/testimonials' },
   { name: 'Contact', path: '/contact' },
 ]
 
@@ -27,7 +28,7 @@ const Navigation = () => {
   }, [location])
 
   return (
-    <nav
+    <nav aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') { setIsOpen(false); event.currentTarget.querySelector('[aria-controls="mobile-navigation"]')?.focus() } }}
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         isScrolled || isOpen
           ? 'bg-[var(--bg-deep)]/95 backdrop-blur-sm border-b border-border'
@@ -35,19 +36,11 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link to="/" className="flex items-center shrink-0" aria-label="Career Maniacs home">
-            <img
-              src="/career-maniacs-logo.png"
-              alt="Career Maniacs"
-              width="56"
-              height="56"
-              className="h-14 w-14 scale-[1.8] origin-left"
-            />
-          </Link>
+        <div className="flex items-center gap-2 h-20">
+          <Link to="/" className="shrink-0 mr-auto" aria-label="Career Maniacs home"><BrandLogo /></Link>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -63,16 +56,17 @@ const Navigation = () => {
               </Link>
             ))}
             <Link to="/contact#book" className="btn-gold ml-4 !px-5 !py-2.5 !text-sm">
-              Book a call
+              Talk to Jeff
             </Link>
           </div>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-controls="mobile-navigation"
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            className="md:hidden p-3 -mr-1 rounded-md text-foreground"
+            className="lg:hidden p-3 -mr-1 rounded-md text-foreground"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -80,7 +74,7 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden pb-6 pt-2">
+          <div id="mobile-navigation" className="lg:hidden pb-6 pt-2">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <Link
@@ -97,7 +91,7 @@ const Navigation = () => {
                 </Link>
               ))}
               <Link to="/contact#book" className="btn-gold mt-3 !py-3">
-                Book a call
+                Talk to Jeff
               </Link>
             </div>
           </div>

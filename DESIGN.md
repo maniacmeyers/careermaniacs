@@ -1,55 +1,193 @@
-# Design
+---
+name: "Career Maniacs"
+description: "An ocean world. A steady hand. A clear next move."
+colors:
+  action: "#6ee8bd"
+  action-hover: "#99f0d0"
+  on-action: "#102b29"
+  primary: "#69d6dd"
+  teal: "#00c9bb"
+  green: "#00e68b"
+  blue: "#00a5eb"
+  bg-deep: "#101a22"
+  background: "#15232c"
+  foreground: "#f3f7f5"
+  card: "#1b2d37"
+  secondary: "#243a44"
+  muted-foreground: "#bacbd0"
+  border: "#3e535d"
+  input: "#14242e"
+  navigation: "#242730"
+typography:
+  hero:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(3.2rem, 6.6vw, 6rem)"
+    fontWeight: 750
+    lineHeight: 1.04
+    letterSpacing: "-0.035em"
+    fontVariation: "\"wdth\" 108"
+  display:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.6rem, 5vw, 4.75rem)"
+    fontWeight: 800
+    lineHeight: 1.02
+    letterSpacing: "-0.02em"
+    fontVariation: "\"wdth\" 118"
+  headline:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2rem, 3.8vw, 3.25rem)"
+    fontWeight: 750
+    lineHeight: 1.05
+    letterSpacing: "-0.015em"
+    fontVariation: "\"wdth\" 112"
+  title:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.25rem, 2vw, 1.55rem)"
+    fontWeight: 700
+    lineHeight: 1.1
+    fontVariation: "\"wdth\" 110"
+  body:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    lineHeight: 1.65
+  story:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.2rem, 2.1vw, 1.5rem)"
+    fontWeight: 450
+    lineHeight: 1.45
+    letterSpacing: "0.002em"
+  navigation:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.9rem"
+    fontWeight: 600
+    letterSpacing: "0"
+    fontVariation: "\"wdth\" 100"
+rounded:
+  control: "6px"
+  surface: "12px"
+  panel: "16px"
+spacing:
+  mobile-gutter: "20px"
+  desktop-gutter: "40px"
+  field-x: "16px"
+  field-y: "12px"
+  action-x: "1.5rem"
+  action-y: "0.95rem"
+components:
+  button-primary:
+    backgroundColor: "{colors.action}"
+    textColor: "{colors.on-action}"
+    rounded: "{rounded.surface}"
+    padding: "0.95rem 1.5rem"
+  button-primary-hover:
+    backgroundColor: "{colors.action-hover}"
+  button-ghost:
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.surface}"
+    padding: "0.95rem 1.5rem"
+  input:
+    backgroundColor: "{colors.input}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.surface}"
+    padding: "12px 16px"
+  panel:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.panel}"
+---
 
-Career Maniacs visual system — "Nazaré dawn patrol." The brand environment is
-literal open water (the logo is a wave): deep ocean-black surface, foam-white
-ink, one dawn-gold accent reserved for the ask. Aesthetic lane: big-wave
-surf-documentary title card. Not SaaS-cyan, not editorial-serif, not terminal.
+# Design System: Career Maniacs
 
-## Color (OKLCH, defined in src/App.css)
+## Overview
 
-| Role | Value | Use |
-|---|---|---|
-| bg-deep | oklch(0.10 0.016 250) | hero/footer, heavy sections |
-| background | oklch(0.135 0.018 250) | page body |
-| card | oklch(0.17 0.022 250) | `.panel` surfaces |
-| foreground | oklch(0.965 0.004 250) | ink |
-| muted-foreground | oklch(0.77 0.022 250) | secondary text (≥4.5:1 on bg) |
-| primary | oklch(0.62 0.13 245) | cobalt — links, method numbers, wave strokes |
-| teal | oklch(0.74 0.115 175) | logo teal — decorative gradients only, never text |
-| gold | oklch(0.85 0.145 84) | THE CTA color; `.btn-gold` with --on-gold text; also focus ring + selection |
-| border | oklch(0.28 0.024 250) | neutral hairlines (never cyan) |
+**Creative North Star: "An ocean world. A steady hand. A clear next move."**
 
-Strategy: Committed dark drench. Gold appears only where action or dawn lives
-(CTAs, the "But" story beat, Interview Maniac teaser). One CTA verb site-wide:
-"Book a 15-minute call" → /contact#book.
+Career Maniacs uses open water, wide Archivo headlines and direct human language. The original wave logo anchors a teal, green and blue identity; sea-glass green identifies the next action. Opaque ocean surfaces carry reading-heavy content.
+
+The homepage moves from calm animated sunrise water to an illustrative breaking wave for Position, Story and Close, then returns to calm water with a higher sun. This is the implemented expression of the owner-approved direction, not a new shader animation. The public /style-guide page shares the live site tokens.
+
+**Key Characteristics:**
+- Original wave identity, preserved without redrawing.
+- Wide headlines and readable all-sans body copy.
+- Ocean imagery around opaque reading surfaces.
+- Visible native controls, ordinary scrolling and reduced-motion alternatives.
+
+This document records the current cascade in src/App.css and the implemented HomePage, StyleGuidePage, Navigation, ContactPage and OceanCanvas components. PRODUCT.md supplies durable brand commitments; .impeccable/ASSETS.md records asset provenance. The former gold/serif document is superseded.
+
+## Colors
+
+Primary action is Sea glass (action), with a lighter hover and dark water ink (on-action). The CSS token named primary is the supporting light cyan; it is not the main filled CTA color. Secondary identity colors are the original logo teal, green and blue. Neutrals are Ocean (background), Deep water (bg-deep), Foam (foreground), Supporting text (muted-foreground), the card/secondary surfaces, hairline border and input surface. Navigation uses the logo's charcoal backdrop.
+
+**The Sea Glass Rule.** Use the action token for the main next step. Sunrise warmth belongs to the ocean imagery.
+
+Compatibility remains intentional: --gold resolves to --action, --gold-hot to --action-hover, and --on-gold to --on-action. The legacy .btn-gold class is green, including in navigation and the inquiry form; neither its name nor older comments describe a gold palette. Selection and the global focus ring inherit these aliases too.
 
 ## Typography
 
-- **Archivo** (variable: wdth 62–125, wght 300–900) — everything.
-  - `.display` hero: wdth 118, wght 800, clamp(2.6rem→5.25rem)
-  - `.headline` h2: wdth 112, wght 750
-  - `.headline-sm` h3: wdth 110, wght 700
-  - `.label-condensed`: wdth 76, caps, tracked — echoes the logo wordmark.
-    Stat labels and nav only. NEVER a section eyebrow.
-- **Source Serif 4 italic** — `.story-voice`, the storytelling register:
-  ABT beats, testimonial quotes, pull lines. This serif is Jeff's spoken voice.
+**The One Family Rule.** Use self-hosted Archivo throughout; the story voice is normal sans-serif, not serif italic.
+
+The font is public/fonts/Archivo.ttf, with SIL Open Font License in public/fonts/OFL.txt and font-display: swap. The registered weight range is 100–900 and width range 62%–125%. Hero and closing headings have their own larger role, separate from the reusable display class. On small screens their size becomes clamp(2.8rem, 8vw, 4.5rem). Prose uses a 68ch measure; introductory/deck copy uses narrower measures. Body sizes vary by component rather than following a single invented scale. Most long copy uses line heights 1.65–1.8.
+
+Navigation overrides the condensed-label utility to mixed case, normal tracking and width 100. Condensed uppercase labels remain available outside navigation. Preserve real client quotations and owner-approved MIT degree and call-takeaway wording; these content commitments do not justify inventing employment guarantees.
+
+## Layout
+
+The shared wrap is min(1184px, 100% minus 80px), with centered margins. At 800px and below it becomes 100% minus 40px: 20px gutters. Main content alternates generous full-width image chapters with opaque sections; reading layouts use asymmetric two-column grids that collapse to one column at this breakpoint. Method steps change from three columns to a vertical sequence. The public style-guide swatches change from four columns to two.
+
+Navigation remains fixed, 80px tall; its desktop links appear at the existing Tailwind lg breakpoint (1024px). Some inherited pages and navigation use max-w-6xl and responsive Tailwind gutters rather than the newer wrap. Preserve this actual distinction when extending them. Image chapter copy has local overlays for legibility. The method anchor accounts for navigation height.
+
+**The Reading Surface Rule.** Put dense copy on opaque ocean surfaces and let the ocean carry the opening, method and closing chapters.
+
+All ten original routes remain: /, /about, /services, /services/job-acquisition, /services/gtm-onboarding, /services/ai-workshop, /testimonials, /contact, /privacy and /terms. /style-guide is an additional public route.
+
+## Elevation & Depth
+
+Depth comes primarily from darker and lighter ocean surfaces, hairlines, image overlays and spacing, not floating cards or glow shadows. The method heading has a local text shadow (0 2px 25px #081c32) to read against the image. Navigation is charcoal even though older conditional utility classes still mention transparent backgrounds and blur.
+
+Legacy sunlit blur rules remain in the stylesheet, but the interior-page cascade replaces them with an opaque card background, no backdrop blur and no text shadow. Do not treat those older rules as the default material. Flat panels and offer surfaces are the active pattern.
+
+## Shapes
+
+Buttons and recurring new surfaces use gently rounded 12px corners. The inherited panel uses 16px. Navigation actions and the ocean control use 6px. The original logo is cropped only with CSS: artwork pixels are preserved. Hairline borders separate content and identify fields; avoid turning every prose block into a box.
 
 ## Components
 
-`.btn-gold` / `.btn-ghost` (only two buttons) · `.panel` · `.hairline-gradient`
-(teal→cobalt 1px rule) · `WaveScene` (src/components/WaveScene.jsx — SVG wave
-strokes echoing the logo curl; variant="night" hero, variant="dawn" for the
-Interview Maniac teaser; aria-hidden, reduced-motion safe).
+**The Native Action Rule.** Use links for destinations and buttons for state changes or submission; keep labels and focus states visible.
 
-## Motion
+Primary actions are green filled links or buttons, with a lighter hover, 46px minimum height and weight 700. The homepage primary variant only changes background on hover; the legacy gold-named variant also rises 1px and returns on press. Ghost actions use a hairline outline, foam text and a secondary-surface hover. Text links underline on hover and move their arrow 3px. Global keyboard focus is a 2px action-colored outline with 2px offset. Disabled buttons use 0.65 opacity and a waiting cursor.
 
-Framer Motion. One orchestrated hero load (wave draws in ~2.4s, copy rises);
-scroll sections use the shared `rise` pattern (opacity+24px translate,
-ease [0.22,1,0.36,1], once). Everything honors prefers-reduced-motion via the
-global media query + WaveScene's own fallback.
+Contact fields are native input, select and textarea elements with labels, required semantics, input-colored backgrounds, hairline borders and a two-pixel action focus ring. Errors attach to fields with aria-invalid/aria-describedby. Submission has pending, accepted and error states. “Talk to Jeff” navigates to /contact#book; “Send request” submits an inquiry. Acceptance does not schedule a call. Current-client Calendly scheduling remains a link.
 
-## Bans (enforced)
+The fixed navigation uses the original logo, flat links, a contact action and a reserved 44px ocean pause/play control. Mobile uses a native menu button with aria-expanded/aria-controls; Escape closes it and restores button focus. The ocean control uses aria-pressed and an updated accessible label, and is hidden when reduced motion is preferred.
 
-Gradient text · glassmorphism · glow shadows · cyan borders on everything ·
-icon-card grids · eyebrow kickers per section · more than one CTA verb ·
-banned copy words (leverage, utilize, unlock, seamless, game-changer...).
+The answer comparison uses two aria-pressed buttons in a labeled group and a polite live region. Testimonials and FAQs use native details/summary. Neither requires a custom dialog or tab library. No chip/tag primitive is established in these inspected surfaces.
+
+OceanCanvas is decorative, fixed behind content and pointer-inert. App owns paused state; a native matchMedia change listener tracks reduced-motion changes. Either mode freezes ambient time while still drawing scroll-position sun changes. The existing calm-only WebGL shader stays calm: the breaking wave chapter is public/maniac-wave.webp, an AI-generated illustrative image. Missing WebGL, initialization failure or context loss switches to the canvas-only static dawn capture; the closing section uses the static day capture. These are public/ocean-dawn.webp and public/ocean-day.webp, not screenshots containing site copy.
+
+Ambient rendering is capped around 30fps and pauses in hidden tabs. Global reduced-motion CSS minimizes animation and transitions and disables smooth scrolling; MotionConfig uses the user preference. The homepage content itself does not wait for reveal animations to become readable.
+
+## Do's and Don'ts
+
+### Do:
+- Do preserve the original logo artwork and its teal, green and blue palette.
+- Do use sea-glass action color for the main next step and keep sunrise warmth in imagery.
+- Do keep native links, labeled form controls, visible focus and motion alternatives.
+- Do label the generated wave and example interview answer as illustrative where provenance or meaning is explained.
+- Do keep Career Maniacs and GTM Maniacs distinct.
+
+### Don't:
+- Don't reintroduce gold primary actions or a decorative serif voice.
+- Don't redraw the logo, convert whole-page navigation to scripted buttons, or trap scrolling.
+- Don't make dense reading sections transparent over the sun.
+- Don't describe an accepted inquiry as a scheduled call or a generated wave as documentary photography.
+
+
+## Owner copy and logo revisions — September 6, 2026
+- Bold headline: “Stop blending in. Start closing.” Carry a direct, differentiated voice through the home, service and contact pages.
+- A Maniac prepares relentlessly, stays curious and commits fully. About connects Jeff’s surfing and kitesurfing to reading conditions and committing.
+- Shared BrandLogo places the original wave before the original wordmark on one horizontal line using CSS crops.
+- Career record: Palantir two new logos worth $7.63M ARR; expert.ai ML & NLU; ADP adds 2× MVP. Remove dates from the Oracle and Salesforce rows.
+- Preserve MIT degree, guaranteed call takeaways, original testimonials and all prices and terms.
+
+
+## 2026-09-10 — Still ocean mockup
+Replaced active WebGL background with a coordinated still-first photographic direction: generated editorial sunrise, existing illustrative barrel, generated calm ocean. These are illustrative AI assets, not Jeff’s original sunrise or a verified Teahupoo photograph. Removed playback control while stills are active. Preserved all copy, MIT degree and guaranteed call takeaway. Navy overlay #0b1d2c with opacity variants keeps white text legible. No deployment or additional Higgsfield credit spend.

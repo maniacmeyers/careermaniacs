@@ -1,14 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
-import { motion as Motion } from 'framer-motion'
 import CalendlyButton from '../components/CalendlyButton'
-
-const rise = {
-  initial: { y: 24 },
-  whileInView: { y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-}
 
 // The featured quote closed the deal: John landed the role.
 const featured = {
@@ -56,96 +48,12 @@ const testimonials = [
   },
 ]
 
-const TestimonialsPage = () => {
-  return (
-    <div className="min-h-screen pt-32">
-      {/* Hero — open to the ocean */}
-      <section className="relative py-24">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
-          }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.div {...rise} className="max-w-3xl">
-            <h1 className="display mb-6">Client results.</h1>
-            <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
-              No composites, no first-name-only ghosts. Real clients, real titles,
-              full quotes — because a closer shows you the signed deal, not the
-              brochure.
-            </p>
-          </Motion.div>
-        </div>
-      </section>
-
-      {/* Featured: the outcome */}
-      <section className="relative py-12 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.figure {...rise} className="panel p-10 sm:p-14 lg:p-16">
-            <blockquote className="story-voice text-xl sm:text-2xl leading-relaxed" style={{ color: 'var(--foreground)' }}>
-              &ldquo;{featured.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-8">
-              <div className="font-bold" style={{ color: 'var(--foreground)' }}>{featured.author}</div>
-              <div className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                {featured.title} &middot; Landed the role
-              </div>
-            </figcaption>
-          </Motion.figure>
-        </div>
-      </section>
-
-      {/* The rest, full quotes */}
-      <section className="relative py-24 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {testimonials.map((t, i) => (
-              <Motion.figure
-                key={t.id}
-                {...rise}
-                className={`panel p-8 sm:p-10 ${i === 0 ? 'lg:col-span-2' : ''}`}
-              >
-                <blockquote
-                  className={`story-voice leading-relaxed ${i === 0 ? 'text-xl sm:text-2xl' : 'text-lg'}`}
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6">
-                  <div className="font-bold" style={{ color: 'var(--foreground)' }}>{t.author}</div>
-                  <div className="text-sm" style={{ color: 'var(--muted-foreground)' }}>{t.title}</div>
-                </figcaption>
-              </Motion.figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA — open to the ocean */}
-      <section className="relative py-28">
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Motion.div {...rise} className="sunlit max-w-2xl mx-auto">
-            <h2 className="headline mb-6">The next quote on this page could be yours.</h2>
-            <p className="prose-body mx-auto mb-10 text-muted-foreground">
-              Fifteen minutes on the phone. You&apos;ll leave with one fix you can
-              use in your next interview &mdash; whether or not we ever work
-              together. And if I can&apos;t help, I&apos;ll tell you that too.
-            </p>
-            <Link to="/contact#book" className="btn-gold">
-              <span>Book a 15-minute call</span>
-              <ArrowRight className="w-5 h-5" aria-hidden="true" />
-            </Link>
-            <div className="mt-12">
-              <CalendlyButton />
-            </div>
-          </Motion.div>
-        </div>
-      </section>
-    </div>
-  )
-}
-
+const TestimonialsPage = () => (
+  <div className="min-h-screen pt-32">
+    <section className="wrap"><h1 className="display">In their words.</h1><p className="section-deck">The work is personal. Here’s how clients describe it.</p></section>
+    <section id="testimonials-section" className="quote-section solid-section"><figure className="wrap"><blockquote>“{featured.quote}”</blockquote><figcaption><span><strong>{featured.author}</strong><br /><span className="muted">{featured.title}</span></span></figcaption></figure></section>
+    <section className="solid-section section-space"><div className="wrap testimonial-list">{testimonials.map(t => <details key={t.id}><summary><span><strong>{t.author}</strong><span className="muted">{t.title}</span></span><span className="read-story">Read their story</span></summary><blockquote>“{t.quote}”</blockquote></details>)}</div></section>
+    <section className="section-space solid-section"><div className="wrap"><h2 className="headline">Your story is worth working on.</h2><p className="section-deck">You’ll leave our 15-minute call with one fix you can use in your next interview, whether or not we work together.</p><div className="actions"><Link to="/contact#book" className="btn-primary">Talk to Jeff <ArrowRight size={18} aria-hidden="true" /></Link><CalendlyButton /></div></div></section>
+  </div>
+)
 export default TestimonialsPage

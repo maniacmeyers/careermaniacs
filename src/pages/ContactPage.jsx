@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { motion as Motion } from 'framer-motion'
 import CalendlyButton from '../components/CalendlyButton'
@@ -32,9 +32,11 @@ const ContactPage = () => {
   // status: 'idle' | 'sending' | 'success' | 'error'
   const [status, setStatus] = useState('idle')
   const [errors, setErrors] = useState({})
+  const sending = useRef(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (sending.current) return
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form))
 
@@ -43,7 +45,7 @@ const ContactPage = () => {
 
     const newErrors = {}
     if (!data.name?.trim()) newErrors.name = 'Tell me your name.'
-    if (!data.email?.trim()) newErrors.email = 'I need an email to reply to.'
+    if (!data.email?.trim() || !form.elements.email.validity.valid) newErrors.email = 'Enter a valid email so I can reply.'
     if (!data.message?.trim()) newErrors.message = 'Give me at least a sentence.'
     setErrors(newErrors)
     if (Object.keys(newErrors).length > 0) {
@@ -52,6 +54,7 @@ const ContactPage = () => {
       return
     }
 
+    sending.current = true
     setStatus('sending')
     try {
       const res = await fetch('https://formsubmit.co/ajax/jeff@careermaniacs.com', {
@@ -70,15 +73,19 @@ const ContactPage = () => {
         }),
       })
       if (!res.ok) throw new Error(`FormSubmit responded ${res.status}`)
+      const result = await res.json()
+      if (result.success !== true && result.success !== 'true') throw new Error('Submission not accepted')
       setStatus('success')
       form.reset()
     } catch {
       setStatus('error')
+    } finally {
+      sending.current = false
     }
   }
 
   return (
-    <div className="min-h-screen pt-32">
+    <div className="min-h-screen pt-32 contact-page">
       {/* Hero — open to the ocean */}
       <section className="relative py-24">
         <div
@@ -91,7 +98,7 @@ const ContactPage = () => {
         />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="max-w-3xl">
-            <h1 className="display mb-6">Fifteen minutes. Straight answers.</h1>
+            <h1 className="display mb-6">Bring your toughest career question.</h1>
             <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
               Tell me where you are and where you're trying to land. I read every
               message myself — no assistant, no autoresponder — and I'll tell you
@@ -116,7 +123,7 @@ const ContactPage = () => {
             {/* Form */}
             <Motion.div {...rise} className="lg:col-span-7">
               <div className="panel p-8 sm:p-10">
-                <h2 className="headline-sm mb-2">Book a 15-minute call</h2>
+                <h2 className="headline-sm mb-2">Request a 15-minute call</h2>
                 <p className="mb-8 text-sm" style={{ color: 'var(--muted-foreground)' }}>
                   Fill this out and I&apos;ll reply with times. Fifteen minutes,
                   and you leave with one fix you can use in your next interview
@@ -131,14 +138,14 @@ const ContactPage = () => {
                     style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
                   >
                     <p className="font-bold mb-1" style={{ color: 'var(--foreground)' }}>
-                      Got it. Jeff reads every one — expect a reply within 24 hours.
+                      Your request has been accepted.
                     </p>
                     <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                      Watch your inbox (and spam folder, just in case).
+                      Jeff will reply with times. Your call is not scheduled yet.
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                  <form aria-busy={status === 'sending'} onSubmit={handleSubmit} className="space-y-6">
                     {/* FormSubmit conventions */}
                     <input type="hidden" name="_subject" value="New Career Maniacs inquiry" />
                     <input
@@ -263,7 +270,7 @@ const ContactPage = () => {
                         className="rounded-lg p-4 text-sm"
                         style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
                       >
-                        Something broke on the send. Email me directly instead:{' '}
+                        Your request could not be confirmed. Your message is still here. Try again, or email me directly:{' '}
                         <a
                           href="mailto:jeff@careermaniacs.com"
                           className="underline underline-offset-4 font-semibold"
@@ -274,7 +281,7 @@ const ContactPage = () => {
                     )}
 
                     <button type="submit" className="btn-gold w-full" disabled={status === 'sending'}>
-                      <span>{status === 'sending' ? 'Sending…' : 'Book a 15-minute call'}</span>
+                      <span>{status === 'sending' ? 'Sending…' : 'Send request'}</span>
                       <ArrowRight className="w-5 h-5" aria-hidden="true" />
                     </button>
                   </form>

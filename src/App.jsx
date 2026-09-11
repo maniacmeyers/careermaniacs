@@ -11,7 +11,7 @@ import ContactPage from './pages/ContactPage'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import Footer from './components/Footer'
-import OceanCanvas from './components/OceanCanvas'
+import StyleGuidePage from './pages/StyleGuidePage'
 import './App.css'
 
 function App() {
@@ -22,7 +22,6 @@ function App() {
       <ScrollToHashWrapper>
         <div className="min-h-screen text-foreground">
           <a href="#main" className="skip-link">Skip to content</a>
-          <OceanCanvas />
           <Navigation />
 
           <main id="main" className="relative">
@@ -35,6 +34,7 @@ function App() {
               <Route path="/services/ai-workshop" element={<ServiceDetailPage service="ai-workshop" />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/style-guide" element={<StyleGuidePage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="*" element={

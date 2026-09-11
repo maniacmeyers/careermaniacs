@@ -1,3 +1,4 @@
+import BrandLogo from './BrandLogo'
 import { Link } from 'react-router-dom'
 import { Linkedin, Twitter } from 'lucide-react'
 
@@ -5,20 +6,14 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-border mt-24 bg-[var(--bg-deep)]">
+    <footer className="relative border-t border-border bg-[var(--bg-deep)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10">
           <div className="space-y-4 max-w-sm">
-            <img
-              src="/career-maniacs-logo.png"
-              alt="Career Maniacs"
-              width="80"
-              height="80"
-              className="h-20 w-20"
-            />
+            <BrandLogo />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Interview coaching for GTM executives, sales and AI coaching, and
-              corporate GTM enablement — from a coach who carried the bag for
+              corporate GTM enablement from a coach who carried the bag for
               two decades. Ponte Vedra Beach, Florida.
             </p>
             <div className="flex pt-1">
@@ -57,8 +52,8 @@ const Footer = () => {
             <p className="label-condensed text-muted-foreground">Career Maniacs</p>
             <ul>
               <li><Link to="/about" className="inline-block py-1.5 text-muted-foreground hover:text-foreground transition-colors">About Jeff</Link></li>
-              <li><Link to="/testimonials" className="inline-block py-1.5 text-muted-foreground hover:text-foreground transition-colors">Client results</Link></li>
-              <li><Link to="/contact#book" className="inline-block py-1.5 text-muted-foreground hover:text-foreground transition-colors">Book a call</Link></li>
+              <li><Link to="/testimonials" className="inline-block py-1.5 text-muted-foreground hover:text-foreground transition-colors">Client stories</Link></li>
+              <li><Link to="/contact#book" className="inline-block py-1.5 text-muted-foreground hover:text-foreground transition-colors">Talk to Jeff</Link></li>
               <li>
                 <a href="mailto:jeff@careermaniacs.com" className="inline-block py-1.5 text-muted-foreground hover:text-foreground transition-colors">
                   jeff@careermaniacs.com
@@ -67,6 +62,8 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+
+
 
         <div className="border-t border-border mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">

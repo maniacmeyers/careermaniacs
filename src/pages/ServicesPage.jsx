@@ -1,13 +1,5 @@
 import { Link } from 'react-router-dom'
-import { motion as Motion } from 'framer-motion'
 import CalendlyButton from '../components/CalendlyButton'
-
-const rise = {
-  initial: { y: 24 },
-  whileInView: { y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-}
 
 const flagshipFeatures = [
   {
@@ -47,15 +39,15 @@ const faqs = [
   },
   {
     q: 'Do you guarantee a job offer?',
-    a: 'No — on purpose. Anyone promising you an offer is either lying or planning to do the work for you, and a hiring manager can smell both. Jeff brings 20 years of closing at Palantir, Salesforce, and Oracle, the frameworks, and daily accountability. You bring the reps. That is the only version of this that actually works. What you will leave with: a sharper story, a real strategy, and the AI workflows to run it.',
+    a: 'No. Hiring decisions belong to employers. Jeff brings 20 years of closing at Palantir, Salesforce, and Oracle, the frameworks, and daily accountability. You bring the reps. That is the only version of this that actually works. What you will leave with: a sharper story, a real strategy, and the AI workflows to run it.',
   },
   {
     q: 'How is this different from interview coaching?',
-    a: 'Resume polish, STAR drills, and pep talks all do one thing — make you more prepared. But hiring managers do not hire the most prepared candidate. They hire the one they remember. The Maniac Method is a system for becoming that person: position yourself like a product, build your wins into stories that stick, and close like a rep at 264% of plan. Preparation gets you in the room. Being unforgettable gets you the offer.',
+    a: 'The Maniac Method connects your experience to a specific role, turns your wins into stories and helps you practice the conversation. We work on positioning, storytelling and the close together.',
   },
   {
     q: 'Who is this NOT for?',
-    a: 'People shopping for a resume tweak or a pep talk. People who want someone to do the work for them. If daily accountability sounds exhausting instead of exciting, this is not the right fit — no hard feelings. This is for accomplished operators who keep losing offers to weaker candidates and are done letting it happen.',
+    a: 'People shopping for a resume tweak or a pep talk. People who want someone to do the work for them. If daily accountability sounds exhausting instead of exciting, this is not the right fit — no hard feelings. This is for experienced professionals ready to put time into preparation and practice.',
   },
   {
     q: 'I am still employed. Is this confidential?',
@@ -79,239 +71,16 @@ const faqs = [
   },
 ]
 
-const ServicesPage = () => {
-  return (
-    <div className="min-h-screen pt-32">
-      {/* Hero — open to the ocean */}
-      <section className="relative pb-24">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
-          }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.div {...rise}>
-            <h1 className="display">Three ways to stop losing offers you should win.</h1>
-            <p className="prose-body text-lg text-muted-foreground mt-6">
-              Every one of them treats your career like a deal to close &mdash;
-              because that is exactly what it is. Pick the one that fits where you
-              are.
-            </p>
-          </Motion.div>
-        </div>
-      </section>
-
-      {/* Flagship */}
-      <section className="relative pb-6 bg-background" id="services-section">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.article {...rise} className="panel p-8 md:p-12">
-            <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
-              <div className="lg:col-span-2">
-                <p className="label-condensed" style={{ color: 'var(--gold)' }}>
-                  Most popular
-                </p>
-                <h2 className="headline mt-4">
-                  Interview &amp; Job Acquisition Coaching
-                </h2>
-                <p className="mt-5 text-3xl font-bold">
-                  $5,000
-                  <span className="text-lg font-normal text-muted-foreground">
-                    /month
-                  </span>
-                </p>
-                <p className="story-voice text-xl mt-6">
-                  From ignored to undeniable.
-                </p>
-                <p className="text-muted-foreground mt-4">
-                  An interview is a sales call. Most candidates show up to
-                  answer questions — you will show up to run the room. For
-                  senior operators in an active search who are done getting
-                  filtered out by people they would outperform.
-                </p>
-                <div className="mt-8">
-                  <Link to="/contact#book" className="btn-gold">
-                    Book a 15-minute call
-                  </Link>
-                  <p className="mt-4 text-sm text-muted-foreground">
-                    In 15 minutes you&apos;ll leave with one fix you can use in
-                    your next interview &mdash; whether or not we ever work
-                    together.
-                  </p>
-                </div>
-                <p className="mt-5 text-sm">
-                  <Link
-                    to="/services/job-acquisition"
-                    className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                  >
-                    See the full plan
-                  </Link>
-                </p>
-              </div>
-
-              <div className="lg:col-span-3">
-                <h3 className="headline-sm">What you get</h3>
-                <ul className="mt-4">
-                  {flagshipFeatures.map((f) => (
-                    <li
-                      key={f.title}
-                      className="py-4 border-t"
-                      style={{ borderColor: 'var(--border)' }}
-                    >
-                      <span className="font-semibold text-foreground">
-                        {f.title}.
-                      </span>{' '}
-                      <span className="text-muted-foreground">{f.detail}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p
-                  className="mt-6 pt-5 border-t text-sm text-muted-foreground"
-                  style={{ borderColor: 'var(--border)' }}
-                >
-                  Land your role mid-engagement? Remaining sessions roll into
-                  GTM Onboarding or credit toward it.
-                </p>
-              </div>
-            </div>
-          </Motion.article>
-        </div>
-      </section>
-
-      {/* Supporting offers */}
-      <section className="relative pb-24 pt-6 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            <Motion.article {...rise} className="panel p-8 flex flex-col">
-              <h2 className="headline-sm">GTM Onboarding</h2>
-              <p className="mt-3 text-2xl font-bold">
-                $5,000
-                <span className="text-base font-normal text-muted-foreground">
-                  /month
-                </span>
-              </p>
-              <p className="text-muted-foreground mt-4 flex-1">
-                You landed the role. Now the first 90 days decide your
-                reputation for the next three years. A week-by-week ramp plan,
-                AI-powered prospecting workflows, and the same coaching cadence:
-                two sessions a week, daily check-ins.
-              </p>
-              <p className="mt-6 text-sm">
-                <Link
-                  to="/services/gtm-onboarding"
-                  className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                >
-                  See the full plan
-                </Link>
-              </p>
-            </Motion.article>
-
-            <Motion.article {...rise} className="panel p-8 flex flex-col">
-              <h2 className="headline-sm">Maniac AI Workshop</h2>
-              <p className="mt-3 text-2xl font-bold">
-                $3,000
-                <span className="text-base font-normal text-muted-foreground">
-                  /month standalone
-                </span>
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                $7,000/month bundled with any plan — save $1,000/month.
-              </p>
-              <p className="text-muted-foreground mt-4 flex-1">
-                Stop watching demos. Build your own apps, automations, and
-                workflows with someone who has sold AI since Salesforce
-                Einstein in 2017. Everything you build is yours.
-              </p>
-              <p className="mt-6 text-sm">
-                <Link
-                  to="/services/ai-workshop"
-                  className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                >
-                  See the full plan
-                </Link>
-              </p>
-            </Motion.article>
-
-            <Motion.article {...rise} className="panel p-8 flex flex-col">
-              <h2 className="headline-sm">Corporate GTM &amp; AI for teams</h2>
-              <p className="mt-3 text-2xl font-bold">Custom</p>
-              <p className="text-muted-foreground mt-4 flex-1">
-                Running a sales org? The Maniac Method and the AI Workshop both
-                scale to teams — training, playbooks, and build sessions scoped
-                to your people and your stack.
-              </p>
-              <div className="mt-6">
-                <Link to="/contact#book" className="btn-ghost">
-                  Book a 15-minute call
-                </Link>
-              </div>
-            </Motion.article>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="relative py-24 bg-background" id="faq">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.div {...rise}>
-            <h2 className="headline">Straight answers.</h2>
-            <p className="text-muted-foreground mt-4">
-              The questions people actually ask before they commit.
-            </p>
-          </Motion.div>
-          <Motion.div {...rise} className="mt-10 space-y-4">
-            {faqs.map((item) => (
-              <details key={item.q} className="panel group">
-                <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
-                  <span className="font-semibold text-foreground">
-                    {item.q}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="text-2xl leading-none font-light transition-transform duration-200 group-open:rotate-45"
-                    style={{ color: 'var(--gold)' }}
-                  >
-                    +
-                  </span>
-                </summary>
-                <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </Motion.div>
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
-            <span>Already a client?</span>
-            <CalendlyButton />
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA — open to the ocean */}
-      <section className="relative py-28">
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.div {...rise} className="sunlit max-w-2xl mx-auto text-center">
-            <h2 className="headline">Stop losing offers you should win.</h2>
-            <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
-              Fifteen minutes. You talk, Jeff listens, and you both decide if
-              this is the right fit.
-            </p>
-            <div className="mt-9">
-              <Link to="/contact#book" className="btn-gold">
-                Book a 15-minute call
-              </Link>
-              <p className="mt-4 text-sm text-muted-foreground max-w-md mx-auto">
-                You&apos;ll leave with one fix you can use in your next interview
-                &mdash; whether or not we ever work together.
-              </p>
-            </div>
-          </Motion.div>
-        </div>
-      </section>
-    </div>
-  )
-}
-
+const ServicesPage = () => (
+  <div className="min-h-screen pt-32">
+    <section className="wrap"><h1 className="display">Big ambitions.<br />Do the work.</h1><p className="section-deck">A Maniac brings the ambition and does the reps. Bring your next role, your new territory or the AI workflow you’re ready to build.</p></section>
+    <section id="services-section" className="solid-section section-space"><div className="wrap">
+      <article className="service-flagship"><div><h2 className="headline">Interview &amp;<br />Job Acquisition</h2><p className="price">$5,000<span>/month</span></p><p>Positioning, storytelling and interview practice for experienced sales professionals in an active search.</p><Link className="btn-primary" to="/services/job-acquisition">Explore the program</Link></div><div><h3 className="headline-sm">We work on your actual search.</h3><ul>{flagshipFeatures.map(f => <li key={f.title}><strong>{f.title}.</strong> {f.detail}</li>)}</ul><p className="record-note">Land your role mid-engagement? Remaining sessions roll into GTM Onboarding or credit toward it.</p></div></article>
+      <div className="offer-secondary"><Link to="/services/gtm-onboarding"><h3>GTM Onboarding</h3><p className="muted">Build your ramp plan, stakeholder map and prospecting workflows. Two sessions a week, plus daily accountability.</p><span>$5,000/month →</span></Link><Link to="/services/ai-workshop"><h3>Maniac AI Workshop</h3><p className="muted">Build your own apps, automations and workflows with Jeff. Keep what you build.</p><span>$3,000/month standalone →</span><p className="record-note">$7,000/month with Job Acquisition or GTM Onboarding. Save $1,000/month compared with buying separately.</p></Link></div>
+      <div className="corporate-offer"><h2 className="headline-sm">Corporate GTM &amp; AI</h2><p className="muted">Training, playbooks and build sessions scoped to your team and your tools. Custom pricing.</p><Link className="text-link" to="/contact#book">Talk to Jeff about your team →</Link></div>
+    </div></section>
+    <section id="faq" className="solid-section section-space"><div className="wrap faq-layout"><h2 className="headline">Straight answers.</h2><div className="faq-list">{faqs.map(item => <details key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
+    <section className="solid-section section-space"><div className="wrap"><h2 className="headline">Bring your ambition. I’ll bring the hard questions.</h2><p className="section-deck">In 15 minutes, you’ll leave with one fix you can use in your next interview, whether or not we ever work together.</p><div className="actions"><Link className="btn-primary" to="/contact#book">Talk to Jeff</Link><CalendlyButton /></div></div></section>
+  </div>
+)
 export default ServicesPage

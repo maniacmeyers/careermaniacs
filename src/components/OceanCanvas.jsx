@@ -6,7 +6,6 @@
 // gates those systems on. Scroll position drives uRise: pre-dawn at the top
 // of the page, full sunrise at the bottom.
 import { useEffect, useRef, useState } from 'react'
-import WaveScene from './WaveScene'
 
 /* ==================== begin verbatim v35 port ==================== */
 // ---------- ocean shader (production scene, celebration-break driver) ----------
@@ -1097,9 +1096,17 @@ function riseFromScroll() {
 
 const FROZEN_T = 7 // fixed shader time for the reduced-motion static frame
 
-const OceanCanvas = () => {
+const OceanCanvas = ({ paused }) => {
   const ref = useRef(null)
   const [failed, setFailed] = useState(false)
+  const [prefersReduced, setPrefersReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setPrefersReduced(preference.matches)
+    preference.addEventListener('change', update)
+    return () => preference.removeEventListener('change', update)
+  }, [])
+  const still = paused || prefersReduced
 
   useEffect(() => {
     const cv = ref.current
@@ -1126,7 +1133,7 @@ const OceanCanvas = () => {
         return
       }
 
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const reduced = still
       ocean.state.reduced = reduced
       ocean.state.riseTarget = riseFromScroll()
       ocean.state.rise = ocean.state.riseTarget
@@ -1220,50 +1227,13 @@ const OceanCanvas = () => {
     return () => {
       if (cleanup) cleanup()
     }
-  }, [])
+  }, [still])
 
   // No WebGL (blocked extension, disabled acceleration) → static CSS ocean:
   // ember sky over dark water with the SVG dawn scene on top. Not animated,
   // but unmistakably the same world.
-  if (failed) {
-    return (
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: 'none',
-          background: `
-            radial-gradient(ellipse 90% 42% at 50% 46%, oklch(0.62 0.19 40 / 0.55), transparent 70%),
-            linear-gradient(to bottom,
-              oklch(0.14 0.05 30) 0%,
-              oklch(0.30 0.13 35) 32%,
-              oklch(0.45 0.16 45) 45%,
-              oklch(0.22 0.05 210) 47%,
-              oklch(0.30 0.06 195) 60%,
-              oklch(0.13 0.03 230) 100%)
-          `,
-        }}
-      >
-        <WaveScene variant="dawn" />
-      </div>
-    )
-  }
-  return (
-    <canvas
-      ref={ref}
-      aria-hidden="true"
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-      }}
-    />
-  )
+  if (failed) return <div className="ocean-fallback" aria-hidden="true" />
+  return <canvas ref={ref} aria-hidden="true" className="ocean-canvas" />
 }
 
 export default OceanCanvas

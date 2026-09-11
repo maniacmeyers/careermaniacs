@@ -10,11 +10,11 @@ const rise = {
 
 const serviceData = {
   'job-acquisition': {
-    title: 'Interview & Job Acquisition Coaching',
+    title: 'Interview coaching.',
     price: '$5,000/month',
-    outcome: 'From ignored to undeniable.',
+    outcome: 'Make yourself hard to ignore.',
     description:
-      'An interview is a sales call. Most candidates show up to answer questions — you will show up to run the room and be the one they remember after it clears. Built for senior operators who are done getting filtered out by people they would outperform.',
+      'For experienced sales professionals in an active search. Build your positioning, develop your career stories and practice the conversations ahead with Jeff.',
     features: [
       {
         title: 'Maniac Method coaching',
@@ -65,23 +65,23 @@ const serviceData = {
       'Resume and LinkedIn. Rebuilt around the story and the targets.',
       'Interview reps. Practice these conversations like the deals they are.',
       'Application strategy. Sequenced outreach, not a numbers game.',
-      'Ongoing coaching. Daily accountability until you sign.',
+      'Ongoing coaching. Daily accountability throughout your engagement.',
     ],
     stats: [
       { value: '2×', label: 'Sessions per week' },
       { value: 'Daily', label: 'Accountability check-ins' },
       { value: '1:1', label: 'Direct access to Jeff' },
     ],
-    ctaHeadline: 'Stop losing offers you should win.',
+    ctaHeadline: 'Make your next interview a real conversation.',
     ctaPromise:
-      'You’ll leave with one fix you can use in your next interview — whether or not we ever work together.',
+      'You’ll leave with one fix you can use in your next interview, whether or not we ever work together.',
   },
   'gtm-onboarding': {
     title: 'GTM Onboarding',
     price: '$5,000/month',
-    outcome: 'From day one to President’s Club.',
+    outcome: 'Own your first 90 days.',
     description:
-      'The first 90 days decide your reputation for the next three years. This plan turns your ramp into a campaign — stakeholder by stakeholder, week by week — so you hit month four with pipeline, champions, and a number the org already respects.',
+      'For sales professionals stepping into a new role. Build a practical ramp plan, map your stakeholders and work on the territory, pipeline and relationships you need to develop.',
     features: [
       {
         title: 'Strategic success plan',
@@ -95,7 +95,7 @@ const serviceData = {
       {
         title: 'Maniac Method coaching',
         description:
-          'Storytelling, communication, mindset — the same drills, aimed at your new territory.',
+          'Storytelling, communication, mindset .  the same drills, aimed at your new territory.',
       },
       {
         title: 'Cadence',
@@ -116,26 +116,26 @@ const serviceData = {
       { value: 'Daily', label: 'Accountability check-ins' },
       { value: '1:1', label: 'Direct access to Jeff' },
     ],
-    ctaHeadline: 'Make the first 90 days count.',
+    ctaHeadline: 'Own your first 90 days.',
     ctaPromise:
-      'You’ll leave with one move you can make in your first week — whether or not we ever work together.',
+      'You’ll leave with one move you can make in your first week, whether or not we ever work together.',
   },
   'ai-workshop': {
     title: 'Maniac AI Workshop',
     price: '$3,000/month standalone · $7,000/month bundled',
     outcome: 'You walk away with working AI you built yourself.',
     description:
-      'Stop watching demos. You build your own apps, automations, and workflows — hands on keyboard, coached by someone who has sold AI since Salesforce Einstein in 2017 and ships his own apps, agents, and automations every day.',
+      'Stop watching demos. You build your own apps, automations, and workflows .  hands on keyboard, coached by someone who has sold AI since Salesforce Einstein in 2017 and ships his own apps, agents, and automations every day.',
     features: [
       {
         title: 'Digital twin setup & orchestration',
         description:
-          'An AI counterpart that researches, drafts, and executes on your behalf — including while you sleep.',
+          'Build an AI assistant for research and drafting, with clear review steps before it takes action.',
       },
       {
         title: 'Prospecting & outreach automation',
         description:
-          'The machine that finds, qualifies, and reaches your targets at scale. No more manual grunt work.',
+          'Build prospect research and outreach preparation workflows around your process. You review what gets sent.',
       },
       {
         title: 'Research & intelligence workflows',
@@ -145,7 +145,7 @@ const serviceData = {
       {
         title: 'Personal brand content engines',
         description:
-          'A content flywheel that runs on its own without losing your voice.',
+          'A repeatable process for researching, drafting and reviewing content in your own voice.',
       },
       {
         title: 'GTM dashboards & reporting',
@@ -153,7 +153,7 @@ const serviceData = {
           'Real-time visibility into pipeline, activity, and the numbers that matter.',
       },
       {
-        title: 'Fully agentic systems',
+        title: 'Connected AI workflows',
         description:
           'Apps, automations, and workflows wired together and running as one system.',
       },
@@ -173,7 +173,7 @@ const serviceData = {
     ],
     ctaHeadline: 'Build the thing you keep putting off.',
     ctaPromise:
-      'You’ll leave with one automation worth building first — whether or not we ever work together.',
+      'You’ll leave with one automation worth building first, whether or not we ever work together.',
   },
 }
 
@@ -194,8 +194,8 @@ const ServiceDetailPage = ({ service }) => {
   }
 
   return (
-    <div className="min-h-screen pt-32">
-      {/* Hero — open to the ocean */}
+    <div className="min-h-screen pt-32 service-detail-page">
+      {/* Hero .  open to the ocean */}
       <section className="relative pb-24" id="service-detail">
         <div
           aria-hidden="true"
@@ -215,7 +215,7 @@ const ServiceDetailPage = ({ service }) => {
             </p>
             <div className="mt-9">
               <Link to="/contact#book" className="btn-gold">
-                Book a 15-minute call
+                Talk to Jeff
               </Link>
               <p className="mt-4 text-sm text-muted-foreground max-w-md">
                 {data.ctaPromise}
@@ -374,7 +374,7 @@ const ServiceDetailPage = ({ service }) => {
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#book" className="btn-gold">
-                Book a 15-minute call
+                Talk to Jeff
               </Link>
               <Link
                 to="/testimonials#testimonials-section"

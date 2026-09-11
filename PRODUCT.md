@@ -14,7 +14,7 @@ GTM executives and senior sales professionals (AEs, Directors, VPs) in career tr
 
 ## Product Purpose
 
-Career Maniacs is Jeff Meyers' coaching practice. It sells five things, in priority order: (1) interview coaching for GTM executives — the flagship; (2) corporate GTM & AI coaching; (3) sales coaching; (4) AI-skills coaching; (5) success/career coaching. The site's job is to convert a skeptical senior seller into a booked Calendly call, and to tease Interview Maniac — the app being built from the same method. Success = booked calls.
+Career Maniacs is Jeff Meyers' coaching practice. It sells five things, in priority order: (1) interview coaching for GTM executives — the flagship; (2) corporate GTM & AI coaching; (3) sales coaching; (4) AI-skills coaching; (5) success/career coaching. The site's job is to help a skeptical senior seller request an introductory call, and to tease Interview Maniac — the app being built from the same method. Primary site conversion = inquiry accepted; scheduling and conversation happen afterward.
 
 ## Positioning
 
@@ -22,10 +22,10 @@ The coach who actually carried the bag: 12× President's Club, #1 in the country
 
 ## Conversion & proof
 
-- Primary CTA: Book a strategy call (Calendly). Secondary: watch/read a story from the Maniac Method, or leave an email for Interview Maniac early access.
+- Primary CTA: Talk to Jeff → /contact#book. The form requests a 15-minute call; Jeff replies with times. Calendly is for current clients. Secondary: explore the method or read client stories. Interview Maniac early access is an inquiry for an app in development.
 - The line a visitor remembers: "Your interview is a sales call. Jeff has closed thousands of them."
 - Belief ladder: (1) This guy is a real operator, not a LinkedIn guru → (2) interviews ARE sales calls, so a closer is the right coach → (3) his method (ABT storytelling, deal-running) is concrete and learnable → (4) one call is low-risk and high-signal.
-- Proof on hand: résumé facts (12× President's Club; #1 at 264% of plan; #2 at 230%; top 5% five straight years; $8M pipeline in 9 months at Palantir; $3.1M NLU deal at expert.ai; 260% of $5M quota at 247.ai; Palantir/Salesforce/Oracle/ADP/expert.ai/247.ai/ZOLL logos), testimonials in TestimonialsPage.jsx / testimonials-research.md, coach photo public/coach-photo.jpg, wave logo public/career-maniacs-logo.png (built for dark backgrounds).
+- Proof on hand: résumé facts (12× President's Club; #1 at 264% of plan; #2 at 230%; top 5% five straight years; two new logos worth $7.63M ARR at Palantir; $3.1M ML & NLU deal at expert.ai; 260% of $5M quota at 247.ai; Palantir/Salesforce/Oracle/ADP/expert.ai/247.ai/ZOLL logos), testimonials in TestimonialsPage.jsx / testimonials-research.md, coach photo public/coach-photo.jpg, wave logo public/career-maniacs-logo.png (built for dark backgrounds).
 
 ## Brand Personality
 
@@ -40,9 +40,13 @@ Generic career-coach sites (stock handshakes, "unlock your potential"), SaaS-cre
 1. Proof over promise — numbers and named logos do the persuading; adjectives don't.
 2. The interview is a deal — sales language and deal mechanics are the metaphor system everywhere.
 3. Ride the wave — one ocean world across Career Maniacs and Interview Maniac; the story arc of a page mirrors a swell: calm, build, break, dawn.
-4. One hero action — every page funnels to the Calendly call; everything else is supporting cast.
+4. One hero action — every page funnels to the contact inquiry; everything else is supporting cast.
 5. Story beats structure — sections read as a narrative (ABT: And/But/Therefore), not a feature checklist.
 
 ## Accessibility & Inclusion
 
 WCAG AA: body contrast ≥4.5:1 on the dark surface, visible focus states, reduced-motion alternatives for all wave/scroll animation, semantic landmarks, alt text written in brand voice.
+
+## Owner decisions · September 6, 2026
+
+Preserve the actual Career Maniacs logo and teal, green and blue palette. The homepage begins in calm sunrise water, moves through a real wave image as the Maniac Method is executed, and ends in calmer water with a higher sun. Keep the MIT degree wording and guaranteed 15-minute call takeaways per Jeff’s explicit instruction. Preserve original testimonial text and existing service prices/terms.
