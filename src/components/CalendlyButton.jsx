@@ -1,6 +1,6 @@
 import { Calendar } from 'lucide-react'
 
-const CALENDLY_URL = 'https://calendly.com/jeff-careermaniacs/current_client?primary_color=00bfa8'
+const CALENDLY_URL = 'https://calendly.com/jeff-careermaniacs/maniac-coaching-session'
 
 const CalendlyButton = ({ className = '' }) => (
   <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className={`btn-ghost ${className}`}>

@@ -1,3 +1,5 @@
+import JobMethod from '../components/JobMethod'
+import { serviceData } from '../lib/finalSiteCopy'
 import { Link } from 'react-router-dom'
 import { motion as Motion } from 'framer-motion'
 
@@ -6,175 +8,6 @@ const rise = {
   whileInView: { y: 0 },
   viewport: { once: true, amount: 0.25 },
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-}
-
-const serviceData = {
-  'job-acquisition': {
-    title: 'Interview coaching.',
-    price: '$5,000/month',
-    outcome: 'Make yourself hard to ignore.',
-    description:
-      'For experienced sales professionals in an active search. Build your positioning, develop your career stories and practice the conversations ahead with Jeff.',
-    features: [
-      {
-        title: 'Maniac Method coaching',
-        description:
-          'Storytelling, communication, mindset. The skills that move a room, drilled twice a week.',
-      },
-      {
-        title: 'Target-company strategy',
-        description:
-          'A named list of companies and roles with a plan of attack for each. Not spray-and-pray applications.',
-      },
-      {
-        title: 'Resume & LinkedIn',
-        description:
-          'Rebuilt for each target role and kept current as the search moves.',
-      },
-      {
-        title: 'Interview Maniac',
-        description:
-          'Early access to Interview Maniac, the training app (in development). Reps between sessions.',
-      },
-      {
-        title: 'AI-powered research',
-        description:
-          'Company research, stakeholder maps, and positioning reports built for your specific targets.',
-      },
-      {
-        title: 'GTM coaching elements',
-        description:
-          'Walk into the room talking revenue architecture, not job duties.',
-      },
-      {
-        title: 'Proven frameworks, taught directly',
-        description:
-          'The positioning and storytelling frameworks behind 12 President’s Clubs and a #1 national finish at 264% of plan.',
-      },
-      {
-        title: 'Cadence',
-        description:
-          'Two 1:1 Zoom sessions a week plus daily accountability check-ins.',
-      },
-    ],
-    note: 'Land your role mid-engagement? Remaining sessions roll into GTM Onboarding or credit toward it.',
-    process: [
-      'Assessment. Where you are, what you want, what is in the way.',
-      'Career story. Build the narrative that makes you the obvious pick.',
-      'Target research. AI-assisted company and stakeholder intel on every name on your list.',
-      'Resume and LinkedIn. Rebuilt around the story and the targets.',
-      'Interview reps. Practice these conversations like the deals they are.',
-      'Application strategy. Sequenced outreach, not a numbers game.',
-      'Ongoing coaching. Daily accountability throughout your engagement.',
-    ],
-    stats: [
-      { value: '2×', label: 'Sessions per week' },
-      { value: 'Daily', label: 'Accountability check-ins' },
-      { value: '1:1', label: 'Direct access to Jeff' },
-    ],
-    ctaHeadline: 'Make your next interview a real conversation.',
-    ctaPromise:
-      'You’ll leave with one fix you can use in your next interview, whether or not we ever work together.',
-  },
-  'gtm-onboarding': {
-    title: 'GTM Onboarding',
-    price: '$5,000/month',
-    outcome: 'Own your first 90 days.',
-    description:
-      'For sales professionals stepping into a new role. Build a practical ramp plan, map your stakeholders and work on the territory, pipeline and relationships you need to develop.',
-    features: [
-      {
-        title: 'Strategic success plan',
-        description: 'Onboarding to ramp to quota, mapped week by week.',
-      },
-      {
-        title: 'AI-powered GTM workflows',
-        description:
-          'Prospecting automation, stakeholder intelligence, and a personal brand engine running from day one.',
-      },
-      {
-        title: 'Maniac Method coaching',
-        description:
-          'Storytelling, communication, mindset .  the same drills, aimed at your new territory.',
-      },
-      {
-        title: 'Cadence',
-        description:
-          'Two 1:1 Zoom sessions a week plus daily accountability check-ins.',
-      },
-    ],
-    process: [
-      'Onboarding strategy. A 30-60-90 plan built before your first Monday.',
-      'Stakeholder map. Who matters, who decides, and how to earn each one.',
-      'Prospecting workflows. AI-assisted pipeline building from week one.',
-      'Personal brand. Get known inside and outside the building.',
-      'Performance coaching. Double down on what works, cut what does not.',
-      'President’s Club path. Plan the year, not just the quarter.',
-    ],
-    stats: [
-      { value: '2×', label: 'Sessions per week' },
-      { value: 'Daily', label: 'Accountability check-ins' },
-      { value: '1:1', label: 'Direct access to Jeff' },
-    ],
-    ctaHeadline: 'Own your first 90 days.',
-    ctaPromise:
-      'You’ll leave with one move you can make in your first week, whether or not we ever work together.',
-  },
-  'ai-workshop': {
-    title: 'Maniac AI Workshop',
-    price: '$3,000/month standalone · $7,000/month bundled',
-    outcome: 'You walk away with working AI you built yourself.',
-    description:
-      'Stop watching demos. You build your own apps, automations, and workflows .  hands on keyboard, coached by someone who has sold AI since Salesforce Einstein in 2017 and ships his own apps, agents, and automations every day.',
-    features: [
-      {
-        title: 'Digital twin setup & orchestration',
-        description:
-          'Build an AI assistant for research and drafting, with clear review steps before it takes action.',
-      },
-      {
-        title: 'Prospecting & outreach automation',
-        description:
-          'Build prospect research and outreach preparation workflows around your process. You review what gets sent.',
-      },
-      {
-        title: 'Research & intelligence workflows',
-        description:
-          'Automated company research, stakeholder mapping, and competitive intel. Signal, not noise.',
-      },
-      {
-        title: 'Personal brand content engines',
-        description:
-          'A repeatable process for researching, drafting and reviewing content in your own voice.',
-      },
-      {
-        title: 'GTM dashboards & reporting',
-        description:
-          'Real-time visibility into pipeline, activity, and the numbers that matter.',
-      },
-      {
-        title: 'Connected AI workflows',
-        description:
-          'Apps, automations, and workflows wired together and running as one system.',
-      },
-    ],
-    process: [
-      'Pick the use case. The one with the biggest payoff for you.',
-      'Design it together. Architecture and workflow, mapped before a line is written.',
-      'Build it. Hands on keyboard, no slides.',
-      'Test and harden. Iterate until it holds up under real use.',
-      'Deploy it. Wired into your daily workflow, not a side project.',
-      'Learn to extend it. Documented and taught so you are not dependent on anyone.',
-    ],
-    stats: [
-      { value: 'Hands-on', label: 'You build it, you own it' },
-      { value: '$3K', label: 'Per month standalone' },
-      { value: '1:1', label: 'Direct access to Jeff' },
-    ],
-    ctaHeadline: 'Build the thing you keep putting off.',
-    ctaPromise:
-      'You’ll leave with one automation worth building first, whether or not we ever work together.',
-  },
 }
 
 const ServiceDetailPage = ({ service }) => {
@@ -207,19 +40,20 @@ const ServiceDetailPage = ({ service }) => {
         />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="max-w-3xl">
-            <h1 className="display">{data.title}</h1>
-            <p className="story-voice text-xl mt-6">{data.outcome}</p>
+            <p className="eyebrow mb-4">{data.title}</p>
+            <h1 className="display">{data.outcome}</h1>
             <p className="mt-5 text-2xl font-bold">{data.price}</p>
             <p className="prose-body text-muted-foreground mt-5">
               {data.description}
             </p>
+            {data.credential && <p className="mt-5 text-muted-foreground">{data.credential}</p>}
+            {service === 'ai-workshop' && <p className="mt-5 text-muted-foreground">For individual sellers and sales leaders who want to build their own tooling. Building for a whole team? That is <a className="underline" href="https://gtmmaniacs.com">GTM Maniacs</a>.</p>}
             <div className="mt-9">
               <Link to="/contact#book" className="btn-gold">
                 Talk to Jeff
               </Link>
-              <p className="mt-4 text-sm text-muted-foreground max-w-md">
-                {data.ctaPromise}
-              </p>
+              {data.heroPromise && <p className="mt-4 text-sm text-muted-foreground max-w-md">{data.heroPromise}</p>}
+              {data.proof && <p className="proof-strip mt-6">{data.proof}</p>}
             </div>
           </Motion.div>
         </div>
@@ -258,6 +92,8 @@ const ServiceDetailPage = ({ service }) => {
           )}
         </div>
       </section>
+
+      {service === 'job-acquisition' && <JobMethod />}
 
       {/* The process */}
       <section className="relative py-24 bg-background">
@@ -304,7 +140,7 @@ const ServiceDetailPage = ({ service }) => {
               <div className="panel p-8">
                 <h3 className="headline-sm">Standalone</h3>
                 <p className="mt-4 text-4xl font-bold">
-                  $3,000
+                  $5,000
                   <span className="text-lg font-normal text-muted-foreground">
                     /mo
                   </span>
@@ -316,7 +152,7 @@ const ServiceDetailPage = ({ service }) => {
               <div className="panel p-8" style={{ borderColor: 'var(--gold)' }}>
                 <h3 className="headline-sm">Bundled</h3>
                 <p className="mt-4 text-4xl font-bold">
-                  $7,000
+                  $2,000
                   <span className="text-lg font-normal text-muted-foreground">
                     /mo
                   </span>
@@ -325,7 +161,7 @@ const ServiceDetailPage = ({ service }) => {
                   className="mt-2 text-sm font-semibold"
                   style={{ color: 'var(--gold)' }}
                 >
-                  Save $1,000/mo versus paying separately
+                  $7,000 a month total
                 </p>
                 <p className="text-muted-foreground mt-4">
                   Added to Job Acquisition or GTM Onboarding. You choose which
@@ -335,8 +171,7 @@ const ServiceDetailPage = ({ service }) => {
               </div>
             </Motion.div>
             <Motion.p {...rise} className="mt-8 text-sm text-muted-foreground">
-              The Workshop runs while you are in active contract. Everything
-              you build is yours to keep.
+              The Workshop runs month to month for as long as you are enrolled. Everything you build is yours to keep.
             </Motion.p>
           </div>
         </section>
@@ -364,13 +199,12 @@ const ServiceDetailPage = ({ service }) => {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-28 bg-background">
+      <section className="relative py-28 bg-background ocean-rule">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="text-center">
             <h2 className="headline">{data.ctaHeadline}</h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
-              Fifteen minutes. You talk, Jeff listens, and you both decide if
-              this is the right fit.
+              Fifteen minutes. You talk, I listen, and we both decide if this is the right fit.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact#book" className="btn-gold">

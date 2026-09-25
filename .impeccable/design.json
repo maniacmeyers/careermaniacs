@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-07T00:53:57.800518+00:00",
+  "title": "Design System: Career Maniacs",
+  "extensions": {
+    "colorMeta": {
+      "action": {
+        "role": "primary",
+        "displayName": "Action",
+        "tonalRamp": [
+          "oklch(15.00% 0.12686 167.64)",
+          "oklch(26.43% 0.12686 167.64)",
+          "oklch(37.86% 0.12686 167.64)",
+          "oklch(49.29% 0.12686 167.64)",
+          "oklch(60.71% 0.12686 167.64)",
+          "oklch(72.14% 0.12686 167.64)",
+          "oklch(83.57% 0.12686 167.64)",
+          "oklch(95.00% 0.12686 167.64)"
+        ]
+      },
+      "action-hover": {
+        "role": "primary",
+        "displayName": "Action Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.09580 168.83)",
+          "oklch(26.43% 0.09580 168.83)",
+          "oklch(37.86% 0.09580 168.83)",
+          "oklch(49.29% 0.09580 168.83)",
+          "oklch(60.71% 0.09580 168.83)",
+          "oklch(72.14% 0.09580 168.83)",
+          "oklch(83.57% 0.09580 168.83)",
+          "oklch(95.00% 0.09580 168.83)"
+        ]
+      },
+      "on-action": {
+        "role": "primary",
+        "displayName": "On Action",
+        "tonalRamp": [
+          "oklch(15.00% 0.03318 188.95)",
+          "oklch(26.43% 0.03318 188.95)",
+          "oklch(37.86% 0.03318 188.95)",
+          "oklch(49.29% 0.03318 188.95)",
+          "oklch(60.71% 0.03318 188.95)",
+          "oklch(72.14% 0.03318 188.95)",
+          "oklch(83.57% 0.03318 188.95)",
+          "oklch(95.00% 0.03318 188.95)"
+        ]
+      },
+      "primary": {
+        "role": "secondary",
+        "displayName": "Primary",
+        "tonalRamp": [
+          "oklch(15.00% 0.10041 201.00)",
+          "oklch(26.43% 0.10041 201.00)",
+          "oklch(37.86% 0.10041 201.00)",
+          "oklch(49.29% 0.10041 201.00)",
+          "oklch(60.71% 0.10041 201.00)",
+          "oklch(72.14% 0.10041 201.00)",
+          "oklch(83.57% 0.10041 201.00)",
+          "oklch(95.00% 0.10041 201.00)"
+        ]
+      },
+      "teal": {
+        "role": "secondary",
+        "displayName": "Teal",
+        "tonalRamp": [
+          "oklch(15.00% 0.13191 186.00)",
+          "oklch(26.43% 0.13191 186.00)",
+          "oklch(37.86% 0.13191 186.00)",
+          "oklch(49.29% 0.13191 186.00)",
+          "oklch(60.71% 0.13191 186.00)",
+          "oklch(72.14% 0.13191 186.00)",
+          "oklch(83.57% 0.13191 186.00)",
+          "oklch(95.00% 0.13191 186.00)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Green",
+        "tonalRamp": [
+          "oklch(15.00% 0.19608 156.33)",
+          "oklch(26.43% 0.19608 156.33)",
+          "oklch(37.86% 0.19608 156.33)",
+          "oklch(49.29% 0.19608 156.33)",
+          "oklch(60.71% 0.19608 156.33)",
+          "oklch(72.14% 0.19608 156.33)",
+          "oklch(83.57% 0.19608 156.33)",
+          "oklch(95.00% 0.19608 156.33)"
+        ]
+      },
+      "blue": {
+        "role": "secondary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.15106 237.66)",
+          "oklch(26.43% 0.15106 237.66)",
+          "oklch(37.86% 0.15106 237.66)",
+          "oklch(49.29% 0.15106 237.66)",
+          "oklch(60.71% 0.15106 237.66)",
+          "oklch(72.14% 0.15106 237.66)",
+          "oklch(83.57% 0.15106 237.66)",
+          "oklch(95.00% 0.15106 237.66)"
+        ]
+      },
+      "bg-deep": {
+        "role": "neutral",
+        "displayName": "Bg Deep",
+        "tonalRamp": [
+          "oklch(15.00% 0.02155 243.12)",
+          "oklch(26.43% 0.02155 243.12)",
+          "oklch(37.86% 0.02155 243.12)",
+          "oklch(49.29% 0.02155 243.12)",
+          "oklch(60.71% 0.02155 243.12)",
+          "oklch(72.14% 0.02155 243.12)",
+          "oklch(83.57% 0.02155 243.12)",
+          "oklch(95.00% 0.02155 243.12)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Background",
+        "tonalRamp": [
+          "oklch(15.00% 0.02580 237.40)",
+          "oklch(26.43% 0.02580 237.40)",
+          "oklch(37.86% 0.02580 237.40)",
+          "oklch(49.29% 0.02580 237.40)",
+          "oklch(60.71% 0.02580 237.40)",
+          "oklch(72.14% 0.02580 237.40)",
+          "oklch(83.57% 0.02580 237.40)",
+          "oklch(95.00% 0.02580 237.40)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.00498 165.01)",
+          "oklch(26.43% 0.00498 165.01)",
+          "oklch(37.86% 0.00498 165.01)",
+          "oklch(49.29% 0.00498 165.01)",
+          "oklch(60.71% 0.00498 165.01)",
+          "oklch(72.14% 0.00498 165.01)",
+          "oklch(83.57% 0.00498 165.01)",
+          "oklch(95.00% 0.00498 165.01)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card",
+        "tonalRamp": [
+          "oklch(15.00% 0.02994 233.58)",
+          "oklch(26.43% 0.02994 233.58)",
+          "oklch(37.86% 0.02994 233.58)",
+          "oklch(49.29% 0.02994 233.58)",
+          "oklch(60.71% 0.02994 233.58)",
+          "oklch(72.14% 0.02994 233.58)",
+          "oklch(83.57% 0.02994 233.58)",
+          "oklch(95.00% 0.02994 233.58)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Secondary",
+        "tonalRamp": [
+          "oklch(15.00% 0.03286 228.28)",
+          "oklch(26.43% 0.03286 228.28)",
+          "oklch(37.86% 0.03286 228.28)",
+          "oklch(49.29% 0.03286 228.28)",
+          "oklch(60.71% 0.03286 228.28)",
+          "oklch(72.14% 0.03286 228.28)",
+          "oklch(83.57% 0.03286 228.28)",
+          "oklch(95.00% 0.03286 228.28)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Muted Foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.01981 217.26)",
+          "oklch(26.43% 0.01981 217.26)",
+          "oklch(37.86% 0.01981 217.26)",
+          "oklch(49.29% 0.01981 217.26)",
+          "oklch(60.71% 0.01981 217.26)",
+          "oklch(72.14% 0.01981 217.26)",
+          "oklch(83.57% 0.01981 217.26)",
+          "oklch(95.00% 0.01981 217.26)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "tonalRamp": [
+          "oklch(15.00% 0.03069 228.73)",
+          "oklch(26.43% 0.03069 228.73)",
+          "oklch(37.86% 0.03069 228.73)",
+          "oklch(49.29% 0.03069 228.73)",
+          "oklch(60.71% 0.03069 228.73)",
+          "oklch(72.14% 0.03069 228.73)",
+          "oklch(83.57% 0.03069 228.73)",
+          "oklch(95.00% 0.03069 228.73)"
+        ]
+      },
+      "input": {
+        "role": "neutral",
+        "displayName": "Input",
+        "tonalRamp": [
+          "oklch(15.00% 0.02877 236.96)",
+          "oklch(26.43% 0.02877 236.96)",
+          "oklch(37.86% 0.02877 236.96)",
+          "oklch(49.29% 0.02877 236.96)",
+          "oklch(60.71% 0.02877 236.96)",
+          "oklch(72.14% 0.02877 236.96)",
+          "oklch(83.57% 0.02877 236.96)",
+          "oklch(95.00% 0.02877 236.96)"
+        ]
+      },
+      "navigation": {
+        "role": "neutral",
+        "displayName": "Navigation",
+        "tonalRamp": [
+          "oklch(15.00% 0.01724 270.72)",
+          "oklch(26.43% 0.01724 270.72)",
+          "oklch(37.86% 0.01724 270.72)",
+          "oklch(49.29% 0.01724 270.72)",
+          "oklch(60.71% 0.01724 270.72)",
+          "oklch(72.14% 0.01724 270.72)",
+          "oklch(83.57% 0.01724 270.72)",
+          "oklch(95.00% 0.01724 270.72)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "Extracted from the current CSS cascade."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Extracted from the current CSS cascade."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Extracted from the current CSS cascade."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Extracted from the current CSS cascade."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Extracted from the current CSS cascade."
+      },
+      "story": {
+        "displayName": "Story",
+        "purpose": "Extracted from the current CSS cascade."
+      },
+      "navigation": {
+        "displayName": "Navigation",
+        "purpose": "Extracted from the current CSS cascade."
+      }
+    },
+    "shadows": [
+      {
+        "name": "method-heading",
+        "value": "0 2px 25px #081c32",
+        "purpose": "Local text shadow for wave-image legibility, not card elevation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "action",
+        "value": "0.18s ease",
+        "purpose": "Primary background and ghost states."
+      },
+      {
+        "name": "legacy-action",
+        "value": "0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Legacy primary background and one-pixel hover lift."
+      },
+      {
+        "name": "ambient-ocean",
+        "value": "30fps cap",
+        "purpose": "Calm water; pause/reduced-motion freezes time and hidden tabs suspend animation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "content-stack",
+        "value": "800px"
+      },
+      {
+        "name": "desktop-navigation",
+        "value": "1024px"
+      }
+    ],
+    "rampNote": "Synthesized OKLCH ramps are preview metadata only; application colors remain the DESIGN.md frontmatter tokens."
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Homepage destination link; sea-glass fill.",
+      "html": "<a class=\"ds-primary\" href=\"/contact#book\">Talk to Jeff</a>",
+      "css": ".ds-primary {font-family: var(--font-sans); text-decoration: none; display:inline-flex;align-items:center;justify-content:center;background:var(--action);color:var(--on-action);padding:.95rem 1.5rem;border-radius:var(--radius);font-weight:700;min-height:46px;box-sizing:border-box;line-height:1.4;transition:background .18s ease} .ds-primary:hover {background:var(--action-hover)} .ds-primary:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; } @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Legacy primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Gold-named class retains the green palette and slight hover lift.",
+      "html": "<button type=\"button\" class=\"ds-legacy\">Send request</button>",
+      "css": ".ds-legacy {font-family: var(--font-sans); text-decoration: none; background:var(--action);color:var(--on-action);border:0;padding:.95rem 1.5rem;border-radius:var(--radius);font-weight:700;font-size:1.05rem;line-height:1.4;min-height:46px;transition:background .18s cubic-bezier(.22,1,.36,1),transform .18s cubic-bezier(.22,1,.36,1)} .ds-legacy:hover {background:var(--action-hover);transform:translateY(-1px)} .ds-legacy:active {transform:translateY(0)} .ds-legacy:disabled {opacity:.65;cursor:wait} .ds-legacy:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; } @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Ghost action",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary destination with a quiet outline.",
+      "html": "<a class=\"ds-ghost\" href=\"/services\">Explore coaching</a>",
+      "css": ".ds-ghost {font-family: var(--font-sans); text-decoration: none; display:inline-flex;border:1px solid var(--border);color:var(--foreground);border-radius:var(--radius);padding:.95rem 1.5rem;font-weight:600;font-size:1.05rem;line-height:1.4;min-height:46px;box-sizing:border-box;transition:border-color .18s ease,background .18s ease} .ds-ghost:hover {border-color:var(--muted-foreground);background:var(--secondary)} .ds-ghost:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; } @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Inquiry field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Native required email with label and visible focus.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Email</label><input class=\"ds-input\" type=\"email\" id=\"ds-email\" name=\"email\" autocomplete=\"email\" required>",
+      "css": ".ds-label {font-family: var(--font-sans); text-decoration: none; display:block;color:var(--foreground);font-size:14px;font-weight:500;margin-bottom:8px} .ds-input {font-family: var(--font-sans); text-decoration: none; width:100%;box-sizing:border-box;background:var(--input);border:1px solid var(--border);color:var(--foreground);border-radius:var(--radius);padding:12px 16px;transition:box-shadow .15s} .ds-input:focus {outline:none;box-shadow:0 0 0 2px var(--action)} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Inherited form and content container; padding supplied by the caller.",
+      "html": "<div class=\"ds-panel\"><h3 class=\"ds-panel-title\">Request a 15-minute call</h3><p>Fill this out and I\u2019ll reply with times.</p></div>",
+      "css": ".ds-panel {font-family: var(--font-sans); text-decoration: none; background:var(--card);color:var(--foreground);border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);padding:32px;line-height:1.65} .ds-panel-title {margin:0;font-size:1.25rem;font-weight:700;line-height:1.1} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Navigation links",
+      "kind": "nav",
+      "description": "Mixed-case navigation on logo-matched charcoal; original artwork is not recreated in this specimen.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Design specimen\"><a class=\"ds-nav-link\" href=\"/services\" aria-current=\"page\">Services</a><a class=\"ds-nav-link\" href=\"/about\">About</a><a class=\"ds-nav-link\" href=\"/testimonials\">Client stories</a></nav>",
+      "css": ".ds-nav {font-family: var(--font-sans); text-decoration: none; display:flex;flex-wrap:wrap;gap:8px;background:#242730;padding:12px} .ds-nav-link {font-family: var(--font-sans); text-decoration: none; font-variation-settings:\"wdth\" 100;font-weight:600;font-size:.9rem;letter-spacing:0;color:var(--muted-foreground);padding:12px 16px;border-radius:6px;transition:color .15s} .ds-nav-link[aria-current],.ds-nav-link:hover {color:var(--foreground)} .ds-nav-link:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; } @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Text link",
+      "kind": "custom",
+      "description": "Supporting destination with arrow movement.",
+      "html": "<a class=\"ds-text\" href=\"/testimonials\">Read client stories <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></a>",
+      "css": ".ds-text {font-family: var(--font-sans); text-decoration: none; color:var(--foreground);display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding-block:10px} .ds-text:hover {text-decoration:underline;text-underline-offset:5px} .ds-text svg {transition:transform .2s} .ds-text:hover svg {transform:translateX(3px)} .ds-text:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; } @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Ocean control",
+      "kind": "custom",
+      "description": "Native pressed-state control in reserved navigation space. Static specimen shows the pause state.",
+      "html": "<button type=\"button\" class=\"ds-ocean\" aria-pressed=\"false\" aria-label=\"Pause ocean\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/></svg></button>",
+      "css": ".ds-ocean {display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:transparent;color:var(--muted-foreground);border-radius:6px;cursor:pointer}.ds-ocean:hover {color:var(--foreground);background:var(--secondary)}.ds-ocean:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; } @media(prefers-reduced-motion:reduce){.ds-ocean{display:none}} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition-duration:.01ms!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "An ocean world. A steady hand. A clear next move.",
+    "overview": "Career Maniacs uses open water, wide Archivo headlines and direct human language. The original wave logo anchors a teal, green and blue identity; sea-glass green identifies the next action. Opaque ocean surfaces carry reading-heavy content.\n\nThe homepage moves from calm animated sunrise water to an illustrative breaking wave for Position, Story and Close, then returns to calm water with a higher sun. This is the implemented expression of the owner-approved direction, not a new shader animation. The public /style-guide page shares the live site tokens. Use bold, specific copy: \u201cStop blending in. Start closing.\u201d A Maniac prepares relentlessly, stays curious and commits fully. Shared BrandLogo places the original wave before the wordmark on one horizontal line.",
+    "keyCharacteristics": [
+      "Original wave identity, preserved without redrawing.",
+      "Wide headlines and readable all-sans body copy.",
+      "Ocean imagery around opaque reading surfaces.",
+      "Visible native controls, ordinary scrolling and reduced-motion alternatives."
+    ],
+    "rules": [
+      {
+        "name": "The Sea Glass Rule",
+        "body": "Use the action token for the main next step. Sunrise warmth belongs to the ocean imagery.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Use self-hosted Archivo throughout; the story voice is normal sans-serif, not serif italic.",
+        "section": "typography"
+      },
+      {
+        "name": "The Reading Surface Rule",
+        "body": "Put dense copy on opaque ocean surfaces and let the ocean carry the opening, method and closing chapters.",
+        "section": "layout"
+      },
+      {
+        "name": "The Native Action Rule",
+        "body": "Use links for destinations and buttons for state changes or submission; keep labels and focus states visible.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do preserve the original logo artwork and its teal, green and blue palette.",
+      "Do use sea-glass action color for the main next step and keep sunrise warmth in imagery.",
+      "Do keep native links, labeled form controls, visible focus and motion alternatives.",
+      "Do label the generated wave and example interview answer as illustrative where provenance or meaning is explained.",
+      "Do keep Career Maniacs and GTM Maniacs distinct."
+    ],
+    "donts": [
+      "Don't reintroduce gold primary actions or a decorative serif voice.",
+      "Don't redraw the logo, convert whole-page navigation to scripted buttons, or trap scrolling.",
+      "Don't make dense reading sections transparent over the sun.",
+      "Don't describe an accepted inquiry as a scheduled call or a generated wave as documentary photography."
+    ]
+  }
+}

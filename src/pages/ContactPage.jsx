@@ -1,3 +1,4 @@
+import { submitContact } from '../lib/submitContact'
 import { useState, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { motion as Motion } from 'framer-motion'
@@ -13,9 +14,7 @@ const rise = {
 const NEED_OPTIONS = [
   'Interview & Job Acquisition',
   'GTM Onboarding',
-  'AI Workshop',
-  'Corporate GTM & AI',
-  'Interview Maniac early access',
+  'Maniac AI Workshop',
   'Something else',
 ]
 
@@ -57,24 +56,7 @@ const ContactPage = () => {
     sending.current = true
     setStatus('sending')
     try {
-      const res = await fetch('https://formsubmit.co/ajax/jeff@careermaniacs.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          _subject: 'New Career Maniacs inquiry',
-          name: data.name,
-          email: data.email,
-          currentRole: data.currentRole,
-          need: data.need,
-          message: data.message,
-        }),
-      })
-      if (!res.ok) throw new Error(`FormSubmit responded ${res.status}`)
-      const result = await res.json()
-      if (result.success !== true && result.success !== 'true') throw new Error('Submission not accepted')
+      await submitContact(data)
       setStatus('success')
       form.reset()
     } catch {
@@ -86,7 +68,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen pt-32 contact-page">
-      {/* Hero — open to the ocean */}
+      {/* Contact introduction */}
       <section className="relative py-24">
         <div
           aria-hidden="true"
@@ -98,11 +80,10 @@ const ContactPage = () => {
         />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Motion.div {...rise} className="max-w-3xl">
-            <h1 className="display mb-6">Bring your toughest career question.</h1>
+            <h1 className="display mb-6">Bring the challenge you’re ready to tackle.</h1>
             <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
-              Tell me where you are and where you're trying to land. I read every
-              message myself — no assistant, no autoresponder — and I'll tell you
-              plainly whether I can help. You can also email me directly at{' '}
+              Tell me about the deal, the workflow or the role. I read every
+              message myself. I’ll tell you plainly whether I can help. You can also email me directly at{' '}
               <a
                 href="mailto:jeff@careermaniacs.com"
                 className="underline underline-offset-4"
@@ -117,18 +98,17 @@ const ContactPage = () => {
       </section>
 
       {/* Form + next steps */}
-      <section id="book" className="relative py-24 scroll-mt-32 bg-background">
+      <section id="book" className="relative py-24 scroll-mt-32 bg-background ocean-rule">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Form */}
             <Motion.div {...rise} className="lg:col-span-7">
-              <div className="panel p-8 sm:p-10">
-                <h2 className="headline-sm mb-2">Request a 15-minute call</h2>
+              <div className="panel p-5 sm:p-10">
+                <h2 className="headline-sm mb-2">Book a 15-minute call</h2>
                 <p className="mb-8 text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                  Fill this out and I&apos;ll reply with times. Fifteen minutes,
+                  Send the form and I will reply within one business day. Fifteen minutes,
                   and you leave with one fix you can use in your next interview
-                  &mdash; whether or not we ever work together. No pitch deck, no
-                  pressure.
+                  or one practical next step for your GTM work, whether or not we work together.
                 </p>
 
                 {status === 'success' ? (
@@ -138,7 +118,7 @@ const ContactPage = () => {
                     style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
                   >
                     <p className="font-bold mb-1" style={{ color: 'var(--foreground)' }}>
-                      Your request has been accepted.
+                      Your message was accepted by our email service.
                     </p>
                     <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
                       Jeff will reply with times. Your call is not scheduled yet.
@@ -223,6 +203,8 @@ const ContactPage = () => {
                       />
                     </div>
 
+                    <div><label htmlFor="careerStage" className="block text-sm font-medium mb-2">Where are you right now?</label><select id="careerStage" name="careerStage" className={inputClass} style={inputStyle} defaultValue=""><option value="">Choose your situation</option>{['Actively interviewing', 'Starting a search', 'Just landed a new role', 'Employed and building AI skills'].map(stage => <option key={stage}>{stage}</option>)}</select></div>
+
                     <div>
                       <label
                         htmlFor="need"
@@ -257,7 +239,7 @@ const ContactPage = () => {
                         aria-describedby={errors.message ? 'message-error' : undefined}
                         className={`${inputClass} resize-y min-h-[140px]`}
                         style={inputStyle}
-                        placeholder="Where are you now, and where are you trying to land?"
+                        placeholder="What role, deal or AI workflow would you like to work on?"
                       ></textarea>
                       {errors.message && (
                         <p id="message-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.message}</p>
@@ -270,7 +252,7 @@ const ContactPage = () => {
                         className="rounded-lg p-4 text-sm"
                         style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
                       >
-                        Your request could not be confirmed. Your message is still here. Try again, or email me directly:{' '}
+                        We couldn’t confirm your submission. Your message is still here. The service may be slow or blocked by your browser. Email Jeff directly, or try again:{' '}
                         <a
                           href="mailto:jeff@careermaniacs.com"
                           className="underline underline-offset-4 font-semibold"
@@ -281,12 +263,13 @@ const ContactPage = () => {
                     )}
 
                     <button type="submit" className="btn-gold w-full" disabled={status === 'sending'}>
-                      <span>{status === 'sending' ? 'Sending…' : 'Send request'}</span>
+                      <span>{status === 'sending' ? 'Sending…' : 'Talk to Jeff'}</span>
                       <ArrowRight className="w-5 h-5" aria-hidden="true" />
                     </button>
                   </form>
                 )}
               </div>
+              <p className="mt-8 text-muted-foreground">Coaching a whole floor? That is <a className="underline" href="https://gtmmaniacs.com">GTM Maniacs</a>, the sister company that builds outbound systems and trains BDR and AE teams.</p>
             </Motion.div>
 
             {/* What happens next */}
@@ -296,15 +279,14 @@ const ContactPage = () => {
                 <li>
                   <span className="font-bold">One fix you can use right away.</span>{' '}
                   <span style={{ color: 'var(--muted-foreground)' }}>
-                    Something you can take into your next interview — whether or
+                    Something you can take into your next interview or your GTM work, whether or
                     not we ever work together.
                   </span>
                 </li>
                 <li>
-                  <span className="font-bold">The real reason you&apos;re getting filtered out.</span>{' '}
+                  <span className="font-bold">A closer look at what’s in the way.</span>{' '}
                   <span style={{ color: 'var(--muted-foreground)' }}>
-                    You tell me the target. I tell you what&apos;s actually
-                    standing between you and it.
+                    We’ll look at the specific obstacle and where to focus your effort.
                   </span>
                 </li>
                 <li>
@@ -325,7 +307,7 @@ const ContactPage = () => {
                 >
                   jeff@careermaniacs.com
                 </a>
-                . Based in Ponte Vedra Beach, Florida — Eastern time.
+                . Based in Ponte Vedra Beach, Florida. Eastern time.
               </p>
 
               <div className="mt-10">

@@ -26,7 +26,7 @@ const TermsPage = () => {
                 Acquisition Plan and the Maniac GTM Onboarding Plan. Coaching typically includes:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Two Zoom coaching sessions per week</li>
+                <li>Three one-on-one Zoom coaching sessions a week, one hour minimum each</li>
                 <li>Daily accountability check-ins (async)</li>
                 <li>Written strategy, positioning, and AI-workflow deliverables</li>
               </ul>

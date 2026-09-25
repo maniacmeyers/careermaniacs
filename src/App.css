@@ -340,6 +340,47 @@ nav .btn-gold { border-radius: 6px; }
 .method-heading { max-width: 500px; padding: 25px 30px 30px 0; text-shadow: 0 2px 25px #081c32; }
 .method-heading h2 { font-size: clamp(3.25rem, 6vw, 5.5rem); line-height: 1.03; font-weight: 760; letter-spacing: -.035em; }
 .method-heading > p { font-size: 20px; margin-top: 22px; }
+.method-heading > .method-promise { color: var(--action); font-size: clamp(1.5rem, 2.3vw, 2rem); font-weight: 650; }
+.method-challenge { max-width: 850px; margin-top: 44px; padding-left: 24px; border-left: 3px solid var(--action); }
+.method-challenge > p:last-child { margin-top: 12px; font-size: clamp(1.5rem, 2.7vw, 2.3rem); line-height: 1.35; text-wrap: pretty; }
+.method-challenge strong { color: var(--action); font-weight: 650; }
+.method-practice { padding-block: 80px; }
+.method-story { padding-block: 88px; }
+.method-story .headline { margin-top: 16px; }
+.method-story-intro { max-width: 68ch; margin-top: 28px; font-size: 20px; line-height: 1.7; color: var(--muted-foreground); }
+.story-structure { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; margin-top: 48px; }
+.story-structure article { border-top: 1px solid var(--border); padding-top: 24px; }
+.story-connector { font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 1.1; color: var(--action); font-weight: 750; letter-spacing: -.03em; }
+.story-structure h3 { font-size: 22px; margin: 22px 0 12px; font-weight: 650; }
+.story-structure article > p:last-child, .story-practice p { color: var(--muted-foreground); line-height: 1.75; }
+.story-practice { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.story-practice h3 { font-size: 26px; font-weight: 650; }
+.story-application { max-width: 66ch; margin-top: 30px; font-size: 18px; line-height: 1.7; }
+.method-story + .answer-section { padding-top: 0; }
+@media (max-width: 800px) {
+  .method-story { padding-block: 56px; }
+  .story-structure, .story-practice { grid-template-columns: 1fr; gap: 28px; }
+  .method-story-intro { font-size: 18px; }
+}
+.method-practice-heading { display: grid; grid-template-columns: 1.3fr 1fr; align-items: end; gap: 64px; }
+.method-practice-heading > p { max-width: 42ch; color: var(--muted-foreground); font-size: 18px; line-height: 1.7; }
+.method-habits { display: grid; grid-template-columns: 1fr 1fr; column-gap: 72px; margin-top: 40px; }
+.method-habits article { padding-block: 28px; border-top: 1px solid var(--border); }
+.method-habits h3 { color: var(--action); font-size: clamp(1.3rem, 2vw, 1.65rem); font-weight: 650; }
+.method-habits p { margin-top: 12px; max-width: 49ch; color: var(--muted-foreground); line-height: 1.75; }
+.method-truth { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; padding-block: 36px; margin-top: 16px; border-block: 1px solid var(--border); }
+.method-truth h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.25; font-weight: 650; }
+.method-truth p { max-width: 58ch; line-height: 1.75; color: var(--muted-foreground); }
+.method-truth p + p { margin-top: 14px; }
+.method-process { margin-top: 28px; }
+.method-process summary { cursor: pointer; padding-block: 16px; color: var(--foreground); font-size: 18px; }
+.method-process .method-steps { margin-top: 24px; }
+@media (max-width: 800px) {
+  .method-practice { padding-block: 56px; }
+  .method-practice-heading, .method-habits, .method-truth { grid-template-columns: 1fr; gap: 24px; }
+  .method-habits { gap: 0; margin-top: 32px; }
+  .method-challenge { padding-left: 18px; margin-top: 32px; }
+}
 .method-steps { margin-top: 270px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 46px; }
 .method-steps h3 { font-size: 34px; font-weight: 700; letter-spacing: -.02em; }
 .method-steps h3 span { color: var(--action); }
@@ -358,15 +399,16 @@ nav .btn-gold { border-radius: 6px; }
 .answer-text p + p { margin-top: 16px; }
 .answer-text strong { color: var(--action); font-weight: 650; }
 .answer-note { color: var(--muted-foreground); padding: 20px 32px 28px; font-size: 13px; }
-.quote-section { padding-block: 90px 110px; }
-.quote-section figure { border-top: 1px solid var(--border); padding-top: 70px; }
-.quote-section blockquote { font-size: clamp(1.8rem, 3.4vw, 3rem); font-weight: 550; max-width: 960px; line-height: 1.35; letter-spacing: -.025em; }
+.quote-section { padding-block: 64px; }
+.quote-section figure { border-top: 1px solid var(--border); padding-top: 48px; }
+.quote-section blockquote { font-size: clamp(1.5rem, 2.6vw, 2.25rem); font-weight: 550; max-width: 840px; line-height: 1.35; letter-spacing: -.025em; }
 .quote-section figcaption { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-top: 34px; line-height: 1.8; font-size: 14px; }
-.coach-section { padding-block: 60px 120px; }
-.coach-layout { display: grid; grid-template-columns: .85fr 1.2fr; gap: 100px; align-items: center; }
-.coach-image { height: 500px; overflow: hidden; border-radius: 12px; }
+.coach-section { padding-block: 64px 80px; border-top: 1px solid var(--border); }
+.coach-layout { display: grid; grid-template-columns: 240px minmax(0, 620px); gap: 56px; align-items: center; justify-content: center; }
+.coach-image { height: 300px; overflow: hidden; border-radius: 12px; }
 .coach-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
-.coach-layout p { font-size: 18px; color: var(--muted-foreground); line-height: 1.75; margin-top: 24px; max-width: 52ch; }
+.coach-layout .headline { font-size: clamp(1.75rem, 2.7vw, 2.25rem); line-height: 1.2; }
+.coach-layout p { font-size: 16px; color: var(--muted-foreground); line-height: 1.7; margin-top: 16px; max-width: 60ch; }
 .coach-layout .text-link { margin-top: 22px; color: var(--action); }
 .offers-section { padding-block: 60px 100px; }
 .offer-main { margin-top: 50px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 70px; background: #1c333e; border-radius: 12px; padding: 44px; transition: background .2s; }
@@ -391,6 +433,15 @@ nav .btn-gold { border-radius: 6px; }
 .app-note .wrap { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
 .app-note p { font-size: 14px; color: var(--muted-foreground); max-width: 62ch; }
 .app-note strong { color: var(--foreground); }
+.app-note .app-announcement-text { font-size: 18px; font-weight: 600; line-height: 1.6; }
+.app-announcement { max-width: 62ch; }
+.text-motion-control { display: block; min-height: 44px; padding-block: 10px; font-size: 13px; color: var(--muted-foreground); text-decoration: underline; text-underline-offset: 4px; }
+@media (forced-colors: active) {
+  .text-gradient { background-image: none !important; color: CanvasText !important; }
+}
+@supports not ((background-clip: text) or (-webkit-background-clip: text)) {
+  .text-gradient { color: #6ce4bf !important; }
+}
 button, a { -webkit-tap-highlight-color: transparent; }
 button:disabled { opacity: .65; cursor: wait; }
 .btn-primary, .btn-gold, .btn-ghost { min-height: 46px; line-height: 1.4; }
@@ -412,8 +463,10 @@ button:disabled { opacity: .65; cursor: wait; }
   .method-section { min-height: auto; }
   .wave-image { background-position: 62% top; background-size: auto 650px; background-repeat: no-repeat; }
   .method-content { padding-top: 40px; }
-  .method-heading h2 { font-size: 3.5rem; }
+  .method-heading h2 { font-size: clamp(2.5rem, 12vw, 3.5rem); }
   .method-heading { padding: 20px 0; }
+  .method-heading > p { font-size: 18px; line-height: 1.65; }
+  .method-heading > .method-promise { font-size: clamp(1.25rem, 5.4vw, 1.5rem); line-height: 1.4; }
   .method-steps { margin-top: 230px; grid-template-columns: 1fr; gap: 32px; }
   .method-steps article { max-width: 50ch; }
   .method-section::before { background: linear-gradient(180deg, #10232ab3 0px, #10232a80 270px, #10222df0 530px, #10222d 650px); }
@@ -422,8 +475,8 @@ button:disabled { opacity: .65; cursor: wait; }
   .quote-section { padding-block: 30px 65px; }
   .quote-section figure { padding-top: 45px; }
   .quote-section figcaption { flex-direction: column; align-items: start; gap: 15px; }
-  .coach-section { padding-block: 10px 70px; }
-  .coach-image { height: 440px; max-width: 480px; }
+  .coach-section { padding-block: 40px 56px; }
+  .coach-image { width: 160px; height: 210px; }
   .offers-section { padding-block: 30px 65px; }
   .offer-main { grid-template-columns: 1fr; gap: 28px; padding: 28px; }
   .offer-price { text-align: left; }
@@ -506,6 +559,11 @@ button:disabled { opacity: .65; cursor: wait; }
 .hero-copy h1 { max-width: 920px; }
 .wave-image { background-position: center 46%; }
 .method-section::before { background: linear-gradient(90deg, #10222d99, transparent 70%), linear-gradient(180deg, #15232c 0%, #10222d26 24%, #10222d99 62%, #15232c 100%); }
+@media (max-width: 800px) {
+  .method-section .wave-image { background-position: 62% top; }
+  .method-section::before { background: linear-gradient(180deg, #10232ab3 0px, #10232a80 270px, #15232cf0 530px, #15232c 650px); }
+  .method-content { text-align: left; }
+}
 @media (max-width: 767px) {
   .ocean-hero { background-position: center; }
   .closing-ocean { background-position: center; }
@@ -528,3 +586,122 @@ button:disabled { opacity: .65; cursor: wait; }
 /* Match the original logo artwork surface so the footer has no logo box. */
 footer { background-color: #242730; }
 footer .brand-logo { background: transparent; }
+
+/* A distinct client voice, framed by matching brand-color rules. */
+.home-page .quote-section {
+  padding-block: 56px;
+  scroll-margin-top: 100px;
+  border: 0;
+  background: var(--background);
+}
+.home-page .quote-section::before,
+.home-page .quote-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: url('/ocean-editorial-calm.webp') center 70% / cover;
+}
+.home-page .quote-section::before { top: 0; }
+.home-page .quote-section::after { bottom: 0; }
+.home-page .quote-section figure { border: 0; padding-top: 0; text-align: center; }
+.home-page .quote-section blockquote { max-width: 760px; margin-inline: auto; line-height: 1.45; color: #8aefd3; }
+.home-page .quote-section figcaption { flex-direction: column; align-items: center; gap: 18px; margin-top: 24px; }
+.home-page .quote-section figcaption strong { color: #f0f7f7; }
+.home-page .quote-section .text-link { color: #6bd5f4; }
+.home-page .coach-section { border-top: 0; }
+.home-page .coach-layout { grid-template-columns: 230px minmax(0, 620px); gap: 40px; }
+.home-page .coach-image { width: 230px; height: 290px; }
+@media (max-width: 800px) {
+  .home-page .quote-section { padding-block: 36px; }
+  .home-page .quote-section blockquote { font-size: 1.4rem; }
+  .home-page .coach-layout { grid-template-columns: 1fr; gap: 24px; }
+  .home-page .coach-image { width: 180px; height: 230px; }
+}
+
+/* Method and coaching pathways: legible modules, equal entry points. */
+.story-accent, .eyebrow { color: var(--action); }
+.eyebrow { font-size: 14px; font-weight: 650; margin-bottom: 16px; }
+.coaching-paths { padding-block: 64px; }
+.path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 40px; }
+.path-grid h3 { font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.25; }
+.path-grid article > p:not(.eyebrow) { color: var(--muted-foreground); line-height: 1.75; margin-block: 20px; max-width: 54ch; }
+.path-grid .text-link { color: var(--action); }
+.method-beliefs { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; max-width: 920px; }
+.method-beliefs p { font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.4; color: #8aefd3; }
+.method-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin-top: 56px; }
+.method-steps h3 { font-size: clamp(1.4rem, 2.4vw, 2rem); }
+.ai-coaching-feature { position: relative; padding-block: 48px; margin-bottom: 56px; }
+.ocean-rule { position: relative; }
+.ocean-rule::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 12px; background: url('/ocean-editorial-calm.webp') center 70% / cover; pointer-events: none; }
+.service-detail-page h3 { font-size: 20px; }
+.service-detail-page p { line-height: 1.7; }
+.faq-list summary { padding-right: 20px; }
+.testimonial-list summary:focus-visible, .faq-list summary:focus-visible { outline: 2px solid var(--action); outline-offset: 6px; }
+@media (max-width: 800px) {
+  .path-grid, .method-beliefs { grid-template-columns: 1fr; gap: 32px; }
+  .path-grid article + article { padding-top: 28px; border-top: 1px solid var(--border); }
+  .method-steps { grid-template-columns: 1fr; margin-top: 48px; }
+  .method-beliefs { margin-top: 32px; }
+  .coaching-paths { padding-block: 44px; }
+}
+
+/* Keep the higher morning sun in the closing image's visible sky. */
+.closing-ocean { background-position: center top; }
+.closing-ocean::before { background: linear-gradient(180deg, transparent 0%, #10222d15 25%, #10222dbf 58%, #15232c 100%); }
+.closing-copy { padding-top: 300px; padding-bottom: 80px; }
+@media (max-width: 800px) {
+  .closing-copy { padding-top: 260px; padding-bottom: 64px; }
+}
+
+/* Sunrise warmth recedes through the opening chapters into ocean colors. */
+.home-page .hero-copy h1 { color: #ffc393; }
+.home-page .story-intro .headline { color: #f6ddcb; }
+.home-page .coaching-paths > .wrap > .headline { color: #f1e8df; }
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .home-page .hero-copy h1 {
+    background: linear-gradient(120deg, #ffac70 0%, #ffd3ad 46%, #f0f7f7 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .home-page .story-intro .headline {
+    background: linear-gradient(110deg, #f5c7a7, #f0f7f7 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .home-page .hero-copy h1, .home-page .story-intro .headline { background: none; color: CanvasText; }
+}
+
+.home-page .method-beliefs p:last-child { color: #ffd3ad; }
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .home-page .method-beliefs p:last-child {
+    background: linear-gradient(120deg, #ffac70, #ffd3ad 46%, #f0f7f7 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .home-page .method-beliefs p:last-child { background: none; color: CanvasText; }
+}
+
+/* Actual water movement, with the existing still for mobile and reduced motion. */
+.wave-video { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 46%; z-index: -2; }
+.wave-control { position: absolute; right: max(24px, calc((100% - 1200px) / 2)); top: 18px; z-index: 1; min-height: 44px; padding: 8px 16px; border: 1px solid #6ce4bf70; border-radius: 24px; background: #10222dcc; color: #d4f4ea; font-size: 13px; }
+.wave-control:hover { border-color: #6ce4bf; background: #10222d; }
+@media (min-width: 801px) and (prefers-reduced-motion: no-preference) {
+  .wave-video { display: block; }
+}
+
+/* Supplied copy: readable proof and program notes at every width. */
+.proof-strip { padding-block: 24px; color: var(--muted-foreground); font-size: 16px; line-height: 1.7; }
+.offer-price .program-note { display: block; max-width: 320px; margin-block: 16px; font-size: 15px; font-weight: 400; line-height: 1.6; }
+.team-link a { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
+
+.testimonial-list > article { padding-block: 32px; border-top: 1px solid var(--border); }
+.testimonial-list > article > blockquote { max-width: 850px; font-size: clamp(1.2rem, 2.5vw, 1.75rem); line-height: 1.6; margin-bottom: 24px; }

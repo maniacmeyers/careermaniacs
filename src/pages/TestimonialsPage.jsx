@@ -13,13 +13,15 @@ const featured = {
 const testimonials = [
   {
     id: 'justin-ph',
+    excerpt: "I connected with Jeff with the goal of standing out as a top Enterprise Sales candidate in a hyper-competitive market. His ability to dig deep and uncover the heart of your story is remarkable.",
     author: 'Justin P. H',
     title: 'Director of Strategic Sales at Neuron7.ai',
     quote:
-      "I connected with Jeff in 2023 with the goal of standing out as a top Enterprise Sales candidate in a hyper-competitive market. What I received was far more than I could have anticipated: a transformative journey that redefined how I view my career, my capabilities, and my potential. Jeff doesn't just polish resumes or refine interview techniques—he reshapes how you see yourself. His unique ability to dig deep and uncover the heart of your story is nothing short of remarkable. With Jeff, it's not just about landing a job; it's about becoming the version of yourself that others can't ignore. What sets Jeff apart is his relentless commitment to your success. He approaches every client with the precision of a master strategist and the empathy of a trusted confidant. His insights were so tailored and impactful that it often felt like he knew me better than I knew myself. With Jeff in your corner, you gain not just a coach but a partner who invests wholly in your journey.",
+      "I connected with Jeff in 2023 with the goal of standing out as a top Enterprise Sales candidate in a hyper-competitive market. What I received was far more than I could have anticipated: a transformative journey that redefined how I view my career, my capabilities, and my potential. Jeff doesn't just polish resumes or refine interview techniques; he reshapes how you see yourself. His unique ability to dig deep and uncover the heart of your story is nothing short of remarkable. With Jeff, it's not just about landing a job; it's about becoming the version of yourself that others can't ignore. What sets Jeff apart is his relentless commitment to your success. He approaches every client with the precision of a master strategist and the empathy of a trusted confidant. His insights were so tailored and impactful that it often felt like he knew me better than I knew myself. With Jeff in your corner, you gain not just a coach but a partner who invests wholly in your journey.",
   },
   {
     id: 'charles-n',
+    excerpt: "I reached out to polish a resume and brush up on interviewing. What I got was a master class in goal setting and a new perspective on how to position myself in the job market.",
     author: 'Charles N',
     title: 'AE at TitanX',
     quote:
@@ -27,6 +29,7 @@ const testimonials = [
   },
   {
     id: 'paul-d',
+    excerpt: "An incredible knowledge base with a talent for distilling information in a way that is practical and readily adopted.",
     author: 'Paul D',
     title: 'Regional Sales Manager at Kumo',
     quote:
@@ -34,6 +37,7 @@ const testimonials = [
   },
   {
     id: 'justin-h',
+    excerpt: "Practical, actionable guidance on pipeline generation, sales processes, and career development. Whether it was improving my discovery process or preparing for a career move, his advice was always practical and results-driven.",
     author: 'Justin H',
     title: 'Regional Sales Manager at Splunk',
     quote:
@@ -41,19 +45,20 @@ const testimonials = [
   },
   {
     id: 'john-k',
+    excerpt: "During the 2020 layoffs his coaching was exactly what I needed. He helped me focus on what mattered and present my story in the best light.",
     author: 'John K',
     title: 'Manager Customer Success at Vibes',
     quote:
-      "I had the privilege of working with Jeff during a particularly challenging time(2020 and mass layoffs), and his coaching was exactly what I needed. His approach is thoughtful, sincere, and tailored to your unique circumstances. Jeff has a way of helping you focus on what truly matters while giving you the confidence to present your story in the best light. His support went beyond just interview prep—he helped me shift my mindset, stay positive, and see opportunities during a time of uncertainty. If you're looking for someone who genuinely cares about your success and knows how to guide you there, Jeff is the person to turn to.",
+      "I had the privilege of working with Jeff during a particularly challenging time(2020 and mass layoffs), and his coaching was exactly what I needed. His approach is thoughtful, sincere, and tailored to your unique circumstances. Jeff has a way of helping you focus on what truly matters while giving you the confidence to present your story in the best light. His support went beyond just interview prep; he helped me shift my mindset, stay positive, and see opportunities during a time of uncertainty. If you're looking for someone who genuinely cares about your success and knows how to guide you there, Jeff is the person to turn to.",
   },
 ]
 
 const TestimonialsPage = () => (
   <div className="min-h-screen pt-32">
-    <section className="wrap"><h1 className="display">In their words.</h1><p className="section-deck">The work is personal. Here’s how clients describe it.</p></section>
-    <section id="testimonials-section" className="quote-section solid-section"><figure className="wrap"><blockquote>“{featured.quote}”</blockquote><figcaption><span><strong>{featured.author}</strong><br /><span className="muted">{featured.title}</span></span></figcaption></figure></section>
-    <section className="solid-section section-space"><div className="wrap testimonial-list">{testimonials.map(t => <details key={t.id}><summary><span><strong>{t.author}</strong><span className="muted">{t.title}</span></span><span className="read-story">Read their story</span></summary><blockquote>“{t.quote}”</blockquote></details>)}</div></section>
-    <section className="section-space solid-section"><div className="wrap"><h2 className="headline">Your story is worth working on.</h2><p className="section-deck">You’ll leave our 15-minute call with one fix you can use in your next interview, whether or not we work together.</p><div className="actions"><Link to="/contact#book" className="btn-primary">Talk to Jeff <ArrowRight size={18} aria-hidden="true" /></Link><CalendlyButton /></div></div></section>
+    <section className="wrap"><h1 className="display">In their words.</h1><p className="section-deck">Career moves. Better discovery. More confidence in the work. Here’s how clients describe coaching with Jeff.</p><p className="proof-strip">25+ sales professionals coached · 11 weeks from first session to signed offer, on average</p></section>
+    <section id="testimonials-section" className="quote-section solid-section ocean-rule"><figure className="wrap"><blockquote>“{featured.quote}”</blockquote><figcaption><span><strong>{featured.author}</strong><br /><span className="muted">{featured.title}</span></span></figcaption></figure></section>
+    <section className="solid-section section-space"><div className="wrap testimonial-list">{testimonials.map(t => <article key={t.id}><blockquote>“{t.excerpt}”</blockquote><details><summary><span><strong>{t.author}</strong><span className="muted">{t.title}</span></span><span className="read-story">Read their story</span></summary><blockquote>“{t.quote}”</blockquote></details></article>)}</div></section>
+    <section className="section-space solid-section"><div className="wrap"><h2 className="headline">Your story is worth working on.</h2><p className="section-deck">You leave our 15-minute call with one fix you can use in your next interview, whether or not we work together.</p><div className="actions"><Link to="/contact#book" className="btn-primary">Talk to Jeff <ArrowRight size={18} aria-hidden="true" /></Link><CalendlyButton /></div></div></section>
   </div>
 )
 export default TestimonialsPage

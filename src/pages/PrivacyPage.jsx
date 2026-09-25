@@ -8,7 +8,7 @@ const PrivacyPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">Privacy Policy</span>
           </h1>
-          <p className="text-sm text-muted-foreground mb-12">Last updated: April 11, 2026</p>
+          <p className="text-sm text-muted-foreground mb-12">Last updated: September 11, 2026</p>
 
           <div className="space-y-10 text-muted-foreground leading-relaxed">
             <section>
@@ -26,17 +26,16 @@ const PrivacyPage = () => {
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">Information We Collect</h2>
               <p className="mb-4">
-                We only collect information you choose to give us. When you submit a form on this site, we receive:
+                When you submit a form on this site, we receive the information you provide:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Your name, email address, and (optionally) phone number</li>
+                <li>Your name and email address</li>
                 <li>Your current role and the service you're interested in</li>
                 <li>Career goals, challenges, and timeline you share in the form</li>
               </ul>
               <p className="mt-4">
-                We do not use tracking cookies or third-party analytics beyond what is needed to serve the site.
-                Standard server logs (IP address, browser, timestamps) are retained briefly by our hosting provider
-                for security and troubleshooting.
+                The site uses Apollo visitor tracking. Our hosting provider may also process technical information
+                such as IP addresses, browser details and request timestamps to operate and secure the site.
               </p>
             </section>
 
@@ -56,10 +55,11 @@ const PrivacyPage = () => {
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">Who We Share It With</h2>
               <p>
-                Form submissions are processed by <strong>Netlify</strong>, our hosting and form-handling provider,
-                and stored in our inbox. We use <strong>Google Workspace</strong> for email. These providers process
-                your data on our behalf under their own security and privacy terms. We do not share your data with
-                any other third parties unless required by law.
+                <strong>FormSubmit</strong> processes contact form submissions and emails them to our
+                <strong> Microsoft 365</strong> mailbox. <strong>Vercel</strong> hosts the site.
+                <strong> Apollo</strong> provides visitor tracking. If you follow our booking link,
+                <strong> Calendly</strong> processes the scheduling information you provide there.
+                These services process information under their respective privacy terms.
               </p>
             </section>
 

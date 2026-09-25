@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react'
 // ponytail: flat nav — the hover dropdown was keyboard-dead; service detail
 // pages are linked from /services and the footer instead.
 const navItems = [
+  { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
   { name: 'About', path: '/about' },
   { name: 'Client stories', path: '/testimonials' },
@@ -47,7 +48,7 @@ const Navigation = () => {
                 to={item.path}
                 aria-current={location.pathname === item.path ? 'page' : undefined}
                 className={`label-condensed px-4 py-3 rounded-md transition-colors ${
-                  location.pathname.startsWith(item.path)
+                  (item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path))
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
@@ -82,7 +83,7 @@ const Navigation = () => {
                   to={item.path}
                   aria-current={location.pathname === item.path ? 'page' : undefined}
                   className={`label-condensed px-2 py-3 rounded-md ${
-                    location.pathname.startsWith(item.path)
+                    (item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path))
                       ? 'text-foreground'
                       : 'text-muted-foreground'
                   }`}

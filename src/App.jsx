@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { pageMetadata } from './lib/finalSiteCopy'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { MotionConfig } from 'framer-motion'
 import ScrollToHashWrapper from './components/ScrollToHashWrapper'
 import Navigation from './components/Navigation'
@@ -14,10 +16,21 @@ import Footer from './components/Footer'
 import StyleGuidePage from './pages/StyleGuidePage'
 import './App.css'
 
+function PageMetadata() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const meta = pageMetadata[pathname] || { title: 'Career Maniacs', description: pageMetadata['/'].description }
+    document.title = meta.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
+  }, [pathname])
+  return null
+}
+
 function App() {
 
   return (
     <Router>
+      <PageMetadata />
       <MotionConfig reducedMotion="user">
       <ScrollToHashWrapper>
         <div className="min-h-screen text-foreground">

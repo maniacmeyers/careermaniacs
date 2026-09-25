@@ -1,0 +1,109 @@
+{
+  "title": "The next Career Maniacs",
+  "question": "My recommendation is Built for the big moment: a distinctive ocean identity with the coaching offer immediately clear. Choose a direction, or tell me to make the call.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Built for the big moment",
+      "lineage": "Coastal performance brands and surf outfitter campaigns",
+      "thesis": "A serious coaching practice with the confidence and scale of a performance brand.",
+      "palette": [
+        "#073A3D",
+        "#E9F0ED",
+        "#F2C75C",
+        "#102426"
+      ],
+      "materials": [
+        "expansive ocean photography",
+        "bold condensed type",
+        "clean solid surfaces"
+      ],
+      "viewport": "A short, oversized promise beside open water; one gold call button, then a concrete storytelling example.",
+      "risk": "The ocean must support the coaching offer, never turn the site into a surf shop.",
+      "sketch": ".impeccable/sketches/assigned.png"
+    },
+    {
+      "id": "shader",
+      "label": "The living horizon",
+      "lineage": "Immersive WebGL studio portals",
+      "thesis": "The ocean moves quietly behind one clear offer and a guided story.",
+      "case": "Strong continuity with the wave identity; weaker clarity if motion competes with the coaching.",
+      "palette": [
+        "#062A36",
+        "#D6EBE7",
+        "#EFC257"
+      ],
+      "materials": [
+        "living ocean shader",
+        "large variable type"
+      ],
+      "viewport": "Full-screen water, a compact heading on the left, and a clear action above the horizon.",
+      "risk": "More GPU work and greater readability risk than photographic panels.",
+      "sketch": ".impeccable/sketches/shader.png",
+      "hero": "https://impeccable.style/worlds/cards/webgl-shader-portal-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/webgl-shader-portal.webp"
+    },
+    {
+      "id": "poster",
+      "label": "Make your story heard",
+      "lineage": "Public theater street typography",
+      "thesis": "Architectural lettering turns the coaching message into an unmistakable public statement.",
+      "case": "Clear and memorable; its loudness may feel less personal to a skeptical executive.",
+      "palette": [
+        "#F2C75C",
+        "#092E32",
+        "#FFFFFF"
+      ],
+      "materials": [
+        "oversized condensed lettering",
+        "cropped geometric fields"
+      ],
+      "viewport": "An enormous short headline, tight navigation, and the coaching offer presented like a performance bill.",
+      "risk": "Aggressive typography can overwhelm the human side of coaching.",
+      "sketch": ".impeccable/sketches/poster.png",
+      "hero": "https://impeccable.style/worlds/cards/brand-identity-canon-scher-street-typography-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/brand-identity-canon-scher-street-typography.webp"
+    },
+    {
+      "id": "industrial",
+      "label": "The working playbook",
+      "lineage": "Industrial streetwear grammar",
+      "thesis": "Coaching presented as a practical working kit, with emphatic labels and purposeful contrast.",
+      "case": "Concrete and direct, but fashion labels and hazard marks distract from the actual method.",
+      "palette": [
+        "#FFFFFF",
+        "#172A2D",
+        "#F2C75C"
+      ],
+      "materials": [
+        "industrial typography",
+        "square label plates",
+        "wave geometry"
+      ],
+      "viewport": "A compact bold headline and literal program navigation, with Jeff and the work plainly visible.",
+      "risk": "Can read as a merchandise brand rather than a coaching relationship.",
+      "sketch": ".impeccable/sketches/industrial.png",
+      "hero": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-industrial-quote-grammar-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-industrial-quote-grammar.webp"
+    }
+  ],
+  "reroll": true,
+  "steer": true,
+  "canon": true,
+  "canonCard": {
+    "label": "Classic executive coaching",
+    "thesis": "A familiar professional coaching website, carefully executed.",
+    "palette": [
+      "#FFFFFF",
+      "#102426",
+      "#F2C75C"
+    ],
+    "materials": [
+      "portrait photography",
+      "restrained sans serif"
+    ],
+    "viewport": "Jeff\u2019s portrait beside a straightforward coaching headline, then services and testimonials.",
+    "risk": "Clear, but less distinctive as a Maniacs identity.",
+    "sketch": ".impeccable/sketches/canon.png"
+  }
+}

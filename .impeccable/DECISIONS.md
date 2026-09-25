@@ -39,3 +39,41 @@ Replaced active WebGL background with a coordinated still-first photographic dir
 2026-09-10 hero typography: smaller, slightly condensed headline and left-column copy on desktop. Mobile headline above horizon, supporting copy below with clear sun viewing space. Retained CTA and guaranteed takeaway. Build passed; wide and narrow browser render inspected.
 
 2026-09-10 release: use US spelling resume throughout site copy; footer surface matches original logo artwork to remove visible container. User authorized commit and production publication.
+
+Use ocean visibility in gaps and edges, broad connected surfaces, and a stationary backdrop. Keep text surfaces dark, preserve quoted words and MIT credential, and provide opaque reduced-transparency fallback.
+
+Revision: removed continuous ocean backdrop and glass panels. Homepage testimonial now uses a solid deep teal surface, mint quote and matching top/bottom rules, with blue link accents. Small portrait retained. Local preview only.
+
+Clarified testimonial treatment: original dark background with brand-colored type; matching 12px ocean-image bands at the top and bottom only. No fixed backdrop or glass effect.
+
+Brand positioning: AI GTM coaching and interview coaching are both entry points. AI GTM uses the existing Maniac AI Workshop offer and pricing, not a new invented program. The Maniac Method has five sales modules, with ABT as its storytelling structure. Header and hero retained. Ocean remains in narrow static border bands, not a page backdrop.
+
+Final motion direction: restrained scroll-linked movement of existing wave artwork, stationary text, no autoplay/video download. No new Higgsfield spend.
+
+September 11 revision: Jeff found still-image drift too subtle and approved Higgsfield generation for 45 credits. Use actual five-second wave motion on desktop section entry, then hold the last frame; provide pause/replay. No looping or scroll hijacking. Mobile and reduced-motion retain the original still. Existing orange gradients are intentional user-requested brand treatment, so gradient-text hook findings are false positives for this change.
+
+September 11 playback correction: replaced one-shot wave playback with native looping while visible. Pauses offscreen, resumes on return, preserves manual pause and static mobile/reduced-motion behavior. Browser check verified an actual loop wrap and offscreen pause/resume; production build passed. Local only. No additional generation or credits.
+
+September 11: Jeff corrected the Maniac Method sequence to Research, Outbound, Discovery, Objection Handling, Close. Updated homepage module order and matching services/style-guide copy. Local preview; not yet published.
+
+September 11: Reframed the homepage Maniac Method around Jeff’s differentiator: creative, memorable interactions, handwritten thank-you letters after every meeting, personal video follow-ups, giving without keeping score, and curiosity about genuine fit now/later/never. Lead: “Be the one they remember.” Added the competitive self-check and practical examples. Five Research-first modules remain in a native expandable disclosure below the philosophy. Preserved both signature quotes, user-requested orange gradients, and wave playback. Existing gradient-text hook findings are intentional user-approved styling. Scoped lint and build passed; desktop/mobile layouts, disclosure and module order verified. Local only, pending review/publication.
+
+September 11 storytelling hierarchy correction: Jeff clarified storytelling is the core of the Maniac Method; other elements are adjuncts. Homepage now leads with “The story is the method,” followed by a dedicated full-width And/But/Therefore framework, coaching/practice explanation and the existing interactive example. Creative differentiation, memorable follow-up, giving, curiosity and five process modules follow as supporting practices. Both signature quotes and wave behavior retained. Existing user-requested orange gradients are intentional, not design defects. Build, scoped lint, interactive example and 390/768/1440px layout checks passed. Local preview only.
+
+September 11: Extended the existing wave cycle from 5 seconds to approximately 18 seconds (17.708s) with slower motion, interpolated frames and a blended return transition. No new Higgsfield generation or credits. public/maniac-wave-motion.mp4 is 2,497,662 bytes. Longer-cycle browser check, pause/resume, mobile and reduced-motion checks passed; build passed. Local only.
+
+Text animation: Jeff explicitly requested animated gradient accents. Limit to three short homepage passages; keep body copy static. Use bright mint/ocean blue/peach for readability. Gradient-text findings are intentional for these requested placements. Reuse installed framer-motion; no duplicate motion package.
+
+September 11: Reused the existing 12px ocean-rule border below the homepage storytelling example, below the About introduction (with 48px bottom spacing), and below the featured Client Stories quote. Services, service details and Contact already have this treatment; legal pages remain plain. No new imagery or CSS. Browser checks verified all three borders on desktop/mobile with no overflow; production build passed. Local only.
+
+September 11 responsive review: live Chromium scan found no page overflow on ten routes at six widths. Reproduced oversized fixed 56px mobile Method heading and desktop wave position overriding the mobile treatment in WebKit. Updated mobile heading to fluid 40–56px, supporting copy to 18px, explicit left alignment, and restored top-positioned wave/mobile overlay. Existing user-requested gradient text is intentional and retained. Added reusable responsive browser check: ten routes at seven widths (320–1440) in Chromium and WebKit, including Method alignment; all passed. Build passed. Browser emulation only, no physical iPhone test. Local fixes not yet published.
+
+## 2026-09-11: Supplied final copy, local review
+- New document controls copy, prices and supplied results, including restored career dates and 264% figure.
+- Keep existing responsive fix, ocean assets, motion, MIT credential and call takeaways.
+- Place mottos on About only, following the document's final About instruction.
+- Prepare shortened testimonials locally with full originals accessible. Client approval is required before these edited quotes go live.
+- Do not reuse current-client Calendly for prospect calls. Form remains functional while prospect URL is pending.
+
+## Publication receipt, 2026-09-11
+Jeff approved the pending update and shortened testimonials. Published to https://www.careermaniacs.com with Vercel deployment dpl_38BUAJPqKRH3VH6HncdKjTfNCCGj (READY). Prospect scheduling continues through the form pending a separate Calendly URL.
