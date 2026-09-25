@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
+const deals = [
+  ['Oracle', 'Largest cloud deal in Oracle history, by license count.'],
+  ['Palantir', 'Two new logos worth $7.63M.'],
+  ['expert.ai', '$3.1M ML & NLU deal with the world’s largest beverage company.'],
+]
 const employers = ['Palantir', 'Salesforce', 'Oracle', 'ADP', 'expert.ai', '[24]7.ai', 'ZOLL']
 
-// Operator proof, set as a ledger: the record reads as a sentence, the employers as a roster.
+// Operator proof, set as a ledger: the honors read as one sentence, the deals sit smaller beneath, the employers as a roster.
 export function ProofLedger() {
   return (
     <section className="proof-ledger" aria-labelledby="proof-title">
       <div className="wrap">
         <h2 id="proof-title" className="proof-line">
-          <span>12× President’s Club.</span> <span>#1 in the country at 264% of plan.</span> <span>Two new Palantir logos worth $7.63M.</span>
+          <span>12× President’s Club.</span> <span>#1 in the country at 264% of plan.</span> <span>4× AE of the Year. 3× MVP. 2× Rookie of the Year.</span>
         </h2>
+        <ul className="deal-list" aria-label="Deals Jeff closed">
+          {deals.map(([company, deal]) => <li key={company}><strong>{company}</strong>{deal}</li>)}
+        </ul>
         <p className="proof-claim">Your interview is a sales call. Jeff has closed thousands of them.</p>
         <ul className="roster" aria-label="Where Jeff carried a bag">
           {employers.map((name) => <li key={name}>{name}</li>)}

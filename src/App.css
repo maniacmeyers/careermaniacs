@@ -249,12 +249,15 @@
 .proof-ledger { background: var(--bg-deep); padding-block: clamp(56px, 7vw, 88px); border-block: 1px solid var(--border); }
 .proof-line {
   font-size: clamp(1.7rem, 3.4vw, 3rem); line-height: 1.12; letter-spacing: -.025em;
-  font-weight: 760; font-variation-settings: "wdth" 104; max-width: 26ch;
+  font-weight: 760; font-variation-settings: "wdth" 104; max-width: 34ch;
 }
-.proof-line span { display: inline; }
-.proof-line span + span { color: #d7e6ea; }
-.proof-line span:last-child { color: var(--action); }
-.proof-claim { margin-top: 24px; max-width: 52ch; font-size: var(--text-lede); color: var(--muted-foreground); }
+.proof-line span { display: block; text-wrap: balance; }
+.proof-line span:first-child { color: var(--action); }
+.proof-line span + span { color: #e4eef0; }
+.deal-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 40px; margin-top: 36px; max-width: 1040px; }
+.deal-list li { padding-top: 14px; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.55; color: var(--muted-foreground); }
+.deal-list strong { display: block; margin-bottom: 4px; color: var(--foreground); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-variation-settings: "wdth" 80; }
+.proof-claim { margin-top: 36px; max-width: 52ch; font-size: var(--text-lede); color: var(--muted-foreground); }
 .roster { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--border); }
 .roster li {
   font-variation-settings: "wdth" 80; font-weight: 650; text-transform: uppercase; letter-spacing: .12em;
@@ -553,6 +556,7 @@ footer .brand-logo { background: transparent; }
   }
   .offer-secondary, .feature-grid, .method-habits { gap: 0; }
   .roster li { font-size: 13px; padding-right: 14px; margin-right: 14px; }
+  .deal-list { grid-template-columns: 1fr; gap: 12px; }
 
   .method-section { min-height: auto; }
   .method-section .wave-image { background-position: 62% top; background-size: auto 650px; background-repeat: no-repeat; }
