@@ -191,3 +191,16 @@ Ambient rendering is capped around 30fps and pauses in hidden tabs. Global reduc
 
 ## 2026-09-10 — Still ocean mockup
 Replaced active WebGL background with a coordinated still-first photographic direction: generated editorial sunrise, existing illustrative barrel, generated calm ocean. These are illustrative AI assets, not Jeff’s original sunrise or a verified Teahupoo photograph. Removed playback control while stills are active. Preserved all copy, MIT degree and guaranteed call takeaway. Navy overlay #0b1d2c with opacity variants keeps white text legible. No deployment or additional Higgsfield credit spend.
+
+
+## 2026-09-25: Award pass (system consolidation)
+- **One container.** Every surface, including navigation, footer, program pages and contact, uses `.wrap` (1184px, 40px gutters, 20px under 800px). The `max-w-6xl` Tailwind container is retired.
+- **Stylesheet rebuilt** from layered overrides into one ordered system in src/App.css: tokens, type voices, actions, layout, chapters, pages, small screens. Legacy aliases (`.btn-gold`, `.sunlit`, `.glass`, `.gradient-text`) and the unused WebGL OceanCanvas/WaveScene are deleted.
+- **Proof ledger** follows the homepage hero: the record set as one sentence (12× President's Club, #1 at 264% of plan, $7.63M in new Palantir logos), the remembered line, and an employer roster in condensed caps. Proof leads; programs follow.
+- **Interior page hero** (`PageHero`): copy left, one ocean still right (dawn, calm or wave), masked into the page. Its 1.6s tide-in is the single authored motion moment on interior pages.
+- **No eyebrows.** Section kicker labels are removed; headings carry their own weight. Program names sit under the page headline.
+- **Callouts** use a 1px action-colored top rule, never a thick side stripe.
+- **Gradient headline text** (hero, "The story is.", "The story is the method.", Interview Maniac note) stays by owner request. The animated sweep runs once, under 5 seconds, when it enters view, so no pause control is required.
+- **Contact** pairs the form with Jeff's portrait and record; the three call promises precede the form on phones; submit reads "Request my 15 minutes."
+- **Performance:** Archivo ships as a 92KB WOFF2 subset (was a 658KB TTF, 235KB transferred); portraits are 480/800px WebP; ocean strips use a 19KB slice; robots.txt and sitemap.xml exist.
+- **Tap targets:** footer links, FAQ rows, text links and social links are at least 44px tall.

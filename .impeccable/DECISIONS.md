@@ -77,3 +77,7 @@ September 11 responsive review: live Chromium scan found no page overflow on ten
 
 ## Publication receipt, 2026-09-11
 Jeff approved the pending update and shortened testimonials. Published to https://www.careermaniacs.com with Vercel deployment dpl_38BUAJPqKRH3VH6HncdKjTfNCCGj (READY). Prospect scheduling continues through the form pending a separate Calendly URL.
+
+## 2026-09-25: Award-level review and rebuild
+Jeff authorized all recommended design and content changes plus commit and publish. Dual-agent critique (design review + detector/Lighthouse). Applied: operator proof ledger under hero, removed duplicate coaching-paths section, interior ocean page heroes, unified container, rebuilt stylesheet, grouped FAQ, seniority-ordered client stories, contact with portrait/proof, one-shot gradient sweep (pause control removed), eyebrow removal, WOFF2 font, WebP portraits, robots/sitemap, per-route canonical, 44px tap targets. Preserved: logo, palette, ocean imagery and wave video, MIT wording, call takeaways, testimonial text, prices, owner-requested gradients, left-column hero with clear sun.
+Open question for Jeff: About lists 264% of a $5M quota at [24]7.ai; the operating context says 260% there and #1 in the country at 264% separately. Not changed.

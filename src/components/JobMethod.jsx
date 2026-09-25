@@ -2,7 +2,6 @@ export default function JobMethod() {
   return <>
       <section className="method-story solid-section" aria-labelledby="method-story-title">
         <div className="wrap">
-          <p className="eyebrow">The heart of the Maniac Method</p>
           <h2 id="method-story-title" className="headline">Build the story.<br />Make it matter to them.</h2>
           <p className="method-story-intro">Start with something true. A decision you made. A challenge they face. Find the tension that makes it worth discussing. Then connect it to what happened or what needs to happen next.</p>
           <div className="story-structure">
@@ -18,7 +17,7 @@ export default function JobMethod() {
       <section className="method-practice solid-section" aria-labelledby="method-practice-title">
         <div className="wrap">
           <div className="method-practice-heading"><h2 id="method-practice-title" className="headline">The habits that separate you.</h2><p>Creativity, generosity and curiosity support the storytelling. Bring more care than the other candidates.</p></div>
-          <div className="method-challenge"><p className="eyebrow">Before every interaction, ask yourself</p><p>“Is what I’m doing <strong>better and more creative</strong> than what the other candidates are doing?”</p></div>
+          <div className="method-challenge"><p className="challenge-lead">Before every interaction, ask yourself:</p><p>“Is what I’m doing <strong>better and more creative</strong> than what the other candidates are doing?”</p></div>
           <div className="method-habits">
             <article><h3>Write the thank-you. By hand.</h3><p>After every meeting, send a handwritten thank-you letter. Mention something that mattered in the conversation. Show you were listening.</p></article>
             <article><h3>Put a face to the follow-up.</h3><p>Send a personal video in place of another email. Use it to answer their question or share an idea that could help them.</p></article>

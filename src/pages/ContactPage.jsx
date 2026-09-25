@@ -1,15 +1,9 @@
 import { submitContact } from '../lib/submitContact'
 import { useState, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { motion as Motion } from 'framer-motion'
 import CalendlyButton from '../components/CalendlyButton'
-
-const rise = {
-  initial: { y: 24 },
-  whileInView: { y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-}
+import PageHero from '../components/PageHero'
+import { Portrait } from '../components/Proof'
 
 const NEED_OPTIONS = [
   'Interview & Job Acquisition',
@@ -18,14 +12,15 @@ const NEED_OPTIONS = [
   'Something else',
 ]
 
-const inputStyle = {
-  background: 'var(--input)',
-  border: '1px solid var(--border)',
-  color: 'var(--foreground)',
-}
+const STAGES = ['Actively interviewing', 'Starting a search', 'Just landed a new role', 'Employed and building AI skills']
 
-const inputClass =
-  'w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gold)] transition-shadow'
+const Field = ({ id, label, error, optional, children }) => (
+  <div className="field">
+    <label htmlFor={id}>{label}{optional && <span className="optional"> (optional)</span>}</label>
+    {children}
+    {error && <p id={`${id}-error`} className="field-error">{error}</p>}
+  </div>
+)
 
 const ContactPage = () => {
   // status: 'idle' | 'sending' | 'success' | 'error'
@@ -66,256 +61,92 @@ const ContactPage = () => {
     }
   }
 
+  const describedBy = (id) => (errors[id] ? `${id}-error` : undefined)
+
   return (
-    <div className="min-h-screen pt-32 contact-page">
-      {/* Contact introduction */}
-      <section className="relative py-24">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(90deg, oklch(0.10 0.016 250 / 0.85), oklch(0.10 0.016 250 / 0.35) 55%, transparent 78%)',
-          }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Motion.div {...rise} className="max-w-3xl">
-            <h1 className="display mb-6">Bring the challenge you’re ready to tackle.</h1>
-            <p className="prose-body text-lg" style={{ color: 'var(--muted-foreground)' }}>
-              Tell me about the deal, the workflow or the role. I read every
-              message myself. I’ll tell you plainly whether I can help. You can also email me directly at{' '}
-              <a
-                href="mailto:jeff@careermaniacs.com"
-                className="underline underline-offset-4"
-                style={{ color: 'var(--foreground)' }}
-              >
-                jeff@careermaniacs.com
-              </a>
-              .
-            </p>
-          </Motion.div>
-        </div>
-      </section>
+    <div className="page contact-page">
+      <PageHero
+        title="Tell me what’s stuck. I’ll tell you straight if I can help."
+        image="dawn"
+        aside={
+          <aside className="contact-card" aria-label="Who reads your message">
+            <Portrait className="contact-portrait" eager />
+            <p><strong>Jeff Meyers</strong>12× President’s Club. Palantir, Salesforce, Oracle. I read every message myself.</p>
+          </aside>
+        }
+      >
+        <p className="page-deck">The role, the deal or the workflow. Send it below or email <a className="inline-link" href="mailto:jeff@careermaniacs.com">jeff@careermaniacs.com</a>. Based in Ponte Vedra Beach, Florida. Eastern time.</p>
+      </PageHero>
 
-      {/* Form + next steps */}
-      <section id="book" className="relative py-24 scroll-mt-32 bg-background ocean-rule">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Form */}
-            <Motion.div {...rise} className="lg:col-span-7">
-              <div className="panel p-5 sm:p-10">
-                <h2 className="headline-sm mb-2">Book a 15-minute call</h2>
-                <p className="mb-8 text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                  Send the form and I will reply within one business day. Fifteen minutes,
-                  and you leave with one fix you can use in your next interview
-                  or one practical next step for your GTM work, whether or not we work together.
-                </p>
+      <section id="book" className="solid-section section-space ocean-rule">
+        <div className="wrap contact-layout">
+          <div className="contact-promises">
+            <h2 className="headline-sm">What you get from 15 minutes</h2>
+            <ol>
+              <li><strong>One fix you can use right away.</strong> Something you can take into your next interview or your GTM work, whether or not we ever work together.</li>
+              <li><strong>A closer look at what’s in the way.</strong> We look at the specific obstacle and where to focus your effort.</li>
+              <li><strong>A straight answer, either way.</strong> If I’m the right coach, I’ll say so. If I’m not, I’ll say that too. No pitch, no chase.</li>
+            </ol>
+            <CalendlyButton />
+          </div>
 
-                {status === 'success' ? (
-                  <div
-                    role="status"
-                    className="rounded-lg p-6"
-                    style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
-                  >
-                    <p className="font-bold mb-1" style={{ color: 'var(--foreground)' }}>
-                      Your message was accepted by our email service.
-                    </p>
-                    <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                      Jeff will reply with times. Your call is not scheduled yet.
-                    </p>
+          <div className="panel contact-form">
+            <h2 className="headline-sm">Book a 15-minute call</h2>
+            <p className="muted form-intro">Send this and I reply within one business day with times.</p>
+
+            {status === 'success' ? (
+              <div role="status" className="form-status">
+                <p><strong>Got it. Your message is on its way to Jeff.</strong></p>
+                <p className="muted">I’ll reply within one business day with times. Your call is booked once we pick one.</p>
+              </div>
+            ) : (
+              <form aria-busy={status === 'sending'} onSubmit={handleSubmit} noValidate>
+                <input type="hidden" name="_subject" value="New Career Maniacs inquiry" />
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: 'none' }} />
+
+                <div className="field-row">
+                  <Field id="name" label="Name" error={errors.name}>
+                    <input type="text" id="name" name="name" required autoComplete="name" aria-invalid={errors.name ? 'true' : undefined} aria-describedby={describedBy('name')} />
+                  </Field>
+                  <Field id="email" label="Email" error={errors.email}>
+                    <input type="email" id="email" name="email" required autoComplete="email" aria-invalid={errors.email ? 'true' : undefined} aria-describedby={describedBy('email')} />
+                  </Field>
+                </div>
+                <div className="field-row">
+                  <Field id="currentRole" label="Current role" optional>
+                    <input type="text" id="currentRole" name="currentRole" autoComplete="organization-title" />
+                  </Field>
+                  <Field id="careerStage" label="Where are you right now?" optional>
+                    <select id="careerStage" name="careerStage" defaultValue="">
+                      <option value="">Choose your situation</option>
+                      {STAGES.map(stage => <option key={stage}>{stage}</option>)}
+                    </select>
+                  </Field>
+                </div>
+                <Field id="need" label="What do you need?">
+                  <select id="need" name="need">
+                    {NEED_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                  </select>
+                </Field>
+                <Field id="message" label="Message" error={errors.message}>
+                  <textarea id="message" name="message" required rows={5} aria-invalid={errors.message ? 'true' : undefined} aria-describedby={describedBy('message')} placeholder="What role, deal or AI workflow would you like to work on?" />
+                </Field>
+
+                {status === 'error' && (
+                  <div role="alert" className="form-status">
+                    We couldn’t confirm your submission. Your message is still here. The service may be slow or blocked by your browser. Try again, or email me directly at <a className="inline-link" href="mailto:jeff@careermaniacs.com">jeff@careermaniacs.com</a>.
                   </div>
-                ) : (
-                  <form aria-busy={status === 'sending'} onSubmit={handleSubmit} className="space-y-6">
-                    {/* FormSubmit conventions */}
-                    <input type="hidden" name="_subject" value="New Career Maniacs inquiry" />
-                    <input
-                      type="text"
-                      name="_honey"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      aria-hidden="true"
-                      style={{ display: 'none' }}
-                    />
-
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium mb-2"
-                        style={{ color: 'var(--foreground)' }}
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        autoComplete="name"
-                        aria-invalid={errors.name ? 'true' : undefined}
-                        aria-describedby={errors.name ? 'name-error' : undefined}
-                        className={inputClass}
-                        style={inputStyle}
-                      />
-                      {errors.name && (
-                        <p id="name-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.name}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium mb-2"
-                        style={{ color: 'var(--foreground)' }}
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        autoComplete="email"
-                        aria-invalid={errors.email ? 'true' : undefined}
-                        aria-describedby={errors.email ? 'email-error' : undefined}
-                        className={inputClass}
-                        style={inputStyle}
-                      />
-                      {errors.email && (
-                        <p id="email-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.email}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="currentRole"
-                        className="block text-sm font-medium mb-2"
-                        style={{ color: 'var(--foreground)' }}
-                      >
-                        Current role
-                      </label>
-                      <input
-                        type="text"
-                        id="currentRole"
-                        name="currentRole"
-                        autoComplete="organization-title"
-                        className={inputClass}
-                        style={inputStyle}
-                      />
-                    </div>
-
-                    <div><label htmlFor="careerStage" className="block text-sm font-medium mb-2">Where are you right now?</label><select id="careerStage" name="careerStage" className={inputClass} style={inputStyle} defaultValue=""><option value="">Choose your situation</option>{['Actively interviewing', 'Starting a search', 'Just landed a new role', 'Employed and building AI skills'].map(stage => <option key={stage}>{stage}</option>)}</select></div>
-
-                    <div>
-                      <label
-                        htmlFor="need"
-                        className="block text-sm font-medium mb-2"
-                        style={{ color: 'var(--foreground)' }}
-                      >
-                        What do you need?
-                      </label>
-                      <select id="need" name="need" className={inputClass} style={inputStyle}>
-                        {NEED_OPTIONS.map((opt) => (
-                          <option key={opt} value={opt}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium mb-2"
-                        style={{ color: 'var(--foreground)' }}
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows={6}
-                        aria-invalid={errors.message ? 'true' : undefined}
-                        aria-describedby={errors.message ? 'message-error' : undefined}
-                        className={`${inputClass} resize-y min-h-[140px]`}
-                        style={inputStyle}
-                        placeholder="What role, deal or AI workflow would you like to work on?"
-                      ></textarea>
-                      {errors.message && (
-                        <p id="message-error" className="mt-1 text-sm" style={{ color: 'var(--gold)' }}>{errors.message}</p>
-                      )}
-                    </div>
-
-                    {status === 'error' && (
-                      <div
-                        role="alert"
-                        className="rounded-lg p-4 text-sm"
-                        style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--foreground)' }}
-                      >
-                        We couldn’t confirm your submission. Your message is still here. The service may be slow or blocked by your browser. Email Jeff directly, or try again:{' '}
-                        <a
-                          href="mailto:jeff@careermaniacs.com"
-                          className="underline underline-offset-4 font-semibold"
-                        >
-                          jeff@careermaniacs.com
-                        </a>
-                      </div>
-                    )}
-
-                    <button type="submit" className="btn-gold w-full" disabled={status === 'sending'}>
-                      <span>{status === 'sending' ? 'Sending…' : 'Talk to Jeff'}</span>
-                      <ArrowRight className="w-5 h-5" aria-hidden="true" />
-                    </button>
-                  </form>
                 )}
-              </div>
-              <p className="mt-8 text-muted-foreground">Coaching a whole floor? That is <a className="underline" href="https://gtmmaniacs.com">GTM Maniacs</a>, the sister company that builds outbound systems and trains BDR and AE teams.</p>
-            </Motion.div>
 
-            {/* What happens next */}
-            <Motion.div {...rise} className="lg:col-span-5">
-              <h2 className="headline-sm mb-6">What you get out of it</h2>
-              <ol className="space-y-6 list-decimal list-inside" style={{ color: 'var(--foreground)' }}>
-                <li>
-                  <span className="font-bold">One fix you can use right away.</span>{' '}
-                  <span style={{ color: 'var(--muted-foreground)' }}>
-                    Something you can take into your next interview or your GTM work, whether or
-                    not we ever work together.
-                  </span>
-                </li>
-                <li>
-                  <span className="font-bold">A closer look at what’s in the way.</span>{' '}
-                  <span style={{ color: 'var(--muted-foreground)' }}>
-                    We’ll look at the specific obstacle and where to focus your effort.
-                  </span>
-                </li>
-                <li>
-                  <span className="font-bold">A straight answer, either way.</span>{' '}
-                  <span style={{ color: 'var(--muted-foreground)' }}>
-                    If I&apos;m the right coach, I&apos;ll say so. If I&apos;m not,
-                    I&apos;ll say that too. No pitch, no chase.
-                  </span>
-                </li>
-              </ol>
-
-              <p className="mt-10 prose-body text-sm" style={{ color: 'var(--muted-foreground)' }}>
-                Prefer email? Write me at{' '}
-                <a
-                  href="mailto:jeff@careermaniacs.com"
-                  className="underline underline-offset-4"
-                  style={{ color: 'var(--foreground)' }}
-                >
-                  jeff@careermaniacs.com
-                </a>
-                . Based in Ponte Vedra Beach, Florida. Eastern time.
-              </p>
-
-              <div className="mt-10">
-                <CalendlyButton />
-              </div>
-            </Motion.div>
+                <button type="submit" className="btn-primary btn-block" disabled={status === 'sending'}>
+                  <span>{status === 'sending' ? 'Sending…' : 'Request my 15 minutes'}</span>
+                  <ArrowRight size={18} aria-hidden="true" />
+                </button>
+              </form>
+            )}
           </div>
         </div>
+        <p className="wrap team-link">Coaching a whole floor? That is <a href="https://gtmmaniacs.com">GTM Maniacs</a>, the sister company that builds outbound systems and trains BDR and AE teams.</p>
       </section>
     </div>
   )

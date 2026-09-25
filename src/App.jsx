@@ -22,6 +22,7 @@ function PageMetadata() {
     const meta = pageMetadata[pathname] || { title: 'Career Maniacs', description: pageMetadata['/'].description }
     document.title = meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://www.careermaniacs.com${pathname}`)
   }, [pathname])
   return null
 }
@@ -51,11 +52,11 @@ function App() {
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="*" element={
-                <div className="relative min-h-screen pt-24 flex items-center justify-center">
+                <div className="page flex items-center justify-center">
                   <div className="text-center px-4">
                     <h1 className="display mb-4">404</h1>
                     <p className="text-xl text-muted-foreground mb-8">That set rolled through. This page doesn't exist.</p>
-                    <Link to="/" className="btn-gold">
+                    <Link to="/" className="btn-primary">
                       Back to shore
                     </Link>
                   </div>

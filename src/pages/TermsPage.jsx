@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 
 const TermsPage = () => {
   return (
-    <div className="min-h-screen pt-24">
+    <div className="page legal-page">
       <section className="py-16 relative">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Terms of Service</span>
+            Terms of Service
           </h1>
           <p className="text-sm text-muted-foreground mb-12">Last updated: April 11, 2026</p>
 

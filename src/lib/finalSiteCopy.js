@@ -48,21 +48,10 @@ export const serviceData = {
       "Application strategy. Sequenced outreach to the people who decide, before the job is posted where you can.",
       "Ongoing coaching. Daily accountability throughout your engagement."
     ],
-    "stats": [
-      {
-        "value": "3×",
-        "label": "One-on-one sessions per week"
-      },
-      {
-        "value": "11",
-        "label": "Weeks to offer, on average"
-      },
-      {
-        "value": "1:1",
-        "label": "Direct access to Jeff"
-      }
-    ],
     "ctaHeadline": "Make your next interview a real conversation.",
+    "quote": "Jeff helped me up my storytelling game, start crushing it in interviews, and land an awesome role.",
+    "quoteAuthor": "John Macpherson",
+    "quoteTitle": "Data & Analytics Leader",
     "ctaPromise": "You leave with one fix you can use in your next interview, whether or not we ever work together."
   },
   "gtm-onboarding": {
@@ -108,21 +97,10 @@ export const serviceData = {
       "Performance coaching. Double down on what works, cut what does not.",
       "President's Club path. Plan the year while everyone else plans the quarter."
     ],
-    "stats": [
-      {
-        "value": "3×",
-        "label": "One-on-one sessions per week"
-      },
-      {
-        "value": "Daily",
-        "label": "Accountability check-ins"
-      },
-      {
-        "value": "1:1",
-        "label": "Direct access to Jeff"
-      }
-    ],
     "ctaHeadline": "Ramp faster than the plan says you will.",
+    "quote": "Practical, actionable guidance on pipeline generation, sales processes, and career development. Whether it was improving my discovery process or preparing for a career move, his advice was always practical and results-driven.",
+    "quoteAuthor": "Justin H",
+    "quoteTitle": "Regional Sales Manager at Splunk",
     "ctaPromise": "You leave with one move you can make in your first week, whether or not we ever work together."
   },
   "ai-workshop": {
@@ -172,75 +150,77 @@ export const serviceData = {
       "Deploy it. Wired into the workflow you run every day.",
       "Learn to extend it. Documented and taught so it keeps working after we stop."
     ],
-    "stats": [
-      {
-        "value": "Hands-on",
-        "label": "You build it, you own it"
-      },
-      {
-        "value": "Yours",
-        "label": "Everything you build, you keep"
-      },
-      {
-        "value": "1:1",
-        "label": "Direct access to Jeff"
-      }
-    ],
     "ctaHeadline": "Build the thing you keep putting off.",
+    "quote": "An incredible knowledge base with a talent for distilling information in a way that is practical and readily adopted.",
+    "quoteAuthor": "Paul D",
+    "quoteTitle": "Regional Sales Manager at Kumo",
     "ctaPromise": "You leave with one automation worth building first, whether or not we ever work together."
   }
 }
 
 export const faqs = [
   {
+    "group": "Cost",
     "q": "What does it cost and what is included?",
     "a": "$5,000 a month, one price per program. Three one-on-one Zoom sessions a week, one hour minimum each, daily accountability check-ins, and strategy, positioning, and AI workflows built for your targets. Most clients run two to four months, month to month, no minimum. Land the role mid-engagement and the remaining sessions roll into GTM Onboarding or credit toward it. The Maniac AI Workshop is $5,000 a month on its own or $2,000 a month added to either program."
   },
   {
+    "group": "Cost",
     "q": "Is it worth $5,000 a month?",
     "a": "Do the math against your OTE. Clients average eleven weeks from first session to signed offer. Landing one month sooner usually covers the whole engagement."
   },
   {
+    "group": "Cost",
     "q": "Do you guarantee a job offer?",
     "a": "No. Hiring decisions belong to employers. I bring 20 years of closing at Palantir, Salesforce, and Oracle, the frameworks, and daily accountability. You bring the reps. What you leave with either way: a sharper story, a target list with a plan for each name, and the AI research workflows to run it."
   },
   {
-    "q": "How is this different from interview coaching?",
+    "group": "Fit",
+    "q": "How is this different from other interview coaching?",
     "a": "Interview coaches rehearse answers. I treat your search like a sales cycle. We build a target list, research every company and the people who decide, earn conversations before a job is posted, run the interview as discovery, and negotiate the offer like a deal. The interview is one step. The search is the pipeline."
   },
   {
+    "group": "Cost",
     "q": "Who pays, me or my employer?",
     "a": "Job Acquisition clients almost always pay themselves. GTM Onboarding and the Workshop are usually expensed by the employer. I will give you a one-page summary to hand your manager."
   },
   {
+    "group": "How it runs",
     "q": "What does a week look like?",
     "a": "Three one-hour Zoom sessions, which often run long, a short daily check-in, and homework between sessions: research, outreach, story reps. Plan on the work of a serious search on top of the sessions."
   },
   {
+    "group": "Fit",
     "q": "Who is this NOT for?",
     "a": "People shopping for a resume tweak or a pep talk. People who want someone to do the work for them. If daily accountability sounds exhausting, this is the wrong fit. This is for experienced professionals ready to put time into preparation and practice."
   },
   {
+    "group": "Fit",
     "q": "Do you only work with salespeople?",
     "a": "Sales is home base. I also coach senior professionals in revenue-adjacent roles: customer success, data and analytics, solutions, marketing. If you sell an idea for a living, the method applies."
   },
   {
+    "group": "Fit",
     "q": "I am still employed. Is this confidential?",
     "a": "Completely. Sessions are scheduled around your calendar, everything runs through personal email, and your employer is never contacted. Most clients start while still in seat. That is the smart play."
   },
   {
+    "group": "How it runs",
     "q": "How long does an engagement last?",
     "a": "Job Acquisition clients typically run two to four months, until they sign. GTM Onboarding clients run three to six months, through ramp and the first performance cycle. Month to month, no minimum."
   },
   {
+    "group": "How it runs",
     "q": "Can I switch between programs?",
     "a": "Yes. Start on Job Acquisition, land the role, and your remaining sessions roll straight into GTM Onboarding or credit toward it. The handoff is built in."
   },
   {
+    "group": "How it runs",
     "q": "What is the Maniac AI Workshop?",
     "a": "Hands-on building. I have sold AI since Salesforce Einstein in 2017 and build my own apps, agents, and automations every day. In the Workshop you build yours, with me, on your accounts. $5,000 a month standalone, $2,000 a month added to either coaching plan."
   },
   {
+    "group": "How it runs",
     "q": "What do I walk away with from the Workshop?",
     "a": "A working, tested app, automation, or workflow, or all three wired together as one system. Everything you build is yours to keep. When bundled, you choose which parts of your base coaching plan get condensed to make room for build sessions."
   }

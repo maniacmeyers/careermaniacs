@@ -10,7 +10,6 @@ const navItems = [
   { name: 'Services', path: '/services' },
   { name: 'About', path: '/about' },
   { name: 'Client stories', path: '/testimonials' },
-  { name: 'Contact', path: '/contact' },
 ]
 
 const Navigation = () => {
@@ -30,13 +29,9 @@ const Navigation = () => {
 
   return (
     <nav aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') { setIsOpen(false); event.currentTarget.querySelector('[aria-controls="mobile-navigation"]')?.focus() } }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled || isOpen
-          ? 'bg-[var(--bg-deep)]/95 backdrop-blur-sm border-b border-border'
-          : 'bg-transparent border-b border-transparent'
-      }`}
+      className={`site-nav${isScrolled || isOpen ? ' is-scrolled' : ''}`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="wrap">
         <div className="flex items-center gap-2 h-20">
           <Link to="/" className="shrink-0 mr-auto" aria-label="Career Maniacs home"><BrandLogo /></Link>
 
@@ -56,7 +51,7 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Link to="/contact#book" className="btn-gold ml-4 !px-5 !py-2.5 !text-sm">
+            <Link to="/contact#book" className="btn-primary nav-cta">
               Talk to Jeff
             </Link>
           </div>
@@ -91,7 +86,7 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <Link to="/contact#book" className="btn-gold mt-3 !py-3">
+              <Link to="/contact#book" className="btn-primary mt-3">
                 Talk to Jeff
               </Link>
             </div>
