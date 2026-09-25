@@ -14,7 +14,7 @@ export function ProofLedger() {
     <section className="proof-ledger" aria-labelledby="proof-title">
       <div className="wrap">
         <h2 id="proof-title" className="proof-line">
-          <span>12× President’s Club.</span> <span>#1 in the country at 264% of plan.</span> <span>4× AE of the Year. 3× MVP. 2× Rookie of the Year.</span>
+          <span>12× President’s Club.</span> <span>#1 in the country at 264% of plan.</span> <span>4× MVP. 2× Rookie of the Year.</span>
         </h2>
         <ul className="deal-list" aria-label="Deals Jeff closed">
           {deals.map(([company, deal]) => <li key={company}><strong>{company}</strong>{deal}</li>)}
