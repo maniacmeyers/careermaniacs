@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
-// ponytail: flat nav — the hover dropdown was keyboard-dead; service detail
+// ponytail: flat nav. The hover dropdown was keyboard-dead; service detail
 // pages are linked from /services and the footer instead.
 const navItems = [
   { name: 'Home', path: '/' },

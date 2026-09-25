@@ -593,3 +593,5 @@ footer .brand-logo { background: transparent; }
 .closing-ocean-short .closing-copy { padding-top: 300px; }
 .contact-layout > *, .page-hero-layout > * { min-width: 0; }
 .btn-ghost { text-align: center; }
+
+.offer-main h3, .offer-secondary h3 { line-height: 1.15; }
