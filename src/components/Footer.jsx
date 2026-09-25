@@ -24,7 +24,7 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://x.com/Jeffforgetime" target="_blank" rel="noopener noreferrer" className="footer-social" aria-label="Jeff Meyers on X">X</a>
+              <a href="https://x.com/careermaniacs" target="_blank" rel="noopener noreferrer" className="footer-social" aria-label="Jeff Meyers on X">X</a>
             </div>
           </div>
 
