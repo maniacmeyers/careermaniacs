@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import JobMethod from '../components/JobMethod'
 import PageHero from '../components/PageHero'
+import OceanScene from '../components/OceanScene'
 import { ClientQuote } from '../components/Proof'
 import { serviceData } from '../lib/finalSiteCopy'
 
@@ -88,6 +89,7 @@ const ServiceDetailPage = ({ service }) => {
       {data.quote && <section className="quote-band"><ClientQuote quote={data.quote} author={data.quoteAuthor} title={data.quoteTitle} /></section>}
 
       <section className="closing-ocean closing-ocean-short">
+        <OceanScene src="/ocean-editorial-calm.webp" fit="top" />
         <div className="wrap closing-copy">
           <h2>{data.ctaHeadline}</h2>
           <p>Fifteen minutes. You talk, I listen, and we both decide if this is the right fit.</p>

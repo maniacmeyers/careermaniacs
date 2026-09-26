@@ -217,7 +217,7 @@
 
 /* ==== Home: chapter 1, sunrise ======================================= */
 .ocean-hero {
-  position: relative; min-height: min(900px, 100svh); display: flex; align-items: center;
+  position: relative; isolation: isolate; min-height: min(900px, 100svh); display: flex; align-items: center;
   background: #10222d url('/ocean-editorial-dawn.webp') center / cover;
 }
 .ocean-hero::before {
@@ -273,8 +273,12 @@
 
 .method-section { position: relative; min-height: 880px; background: #0e222d; isolation: isolate; scroll-margin-top: var(--nav-h); }
 .wave-image { position: absolute; inset: 0; background: url('/maniac-wave.webp') center 46% / cover; z-index: -2; }
-.wave-video { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 46%; z-index: -2; }
-@media (min-width: 801px) and (prefers-reduced-motion: no-preference) { .wave-video { display: block; } }
+.wave-media, .about-wave-media { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.wave-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
+
+/* Live ocean: WebGL water over the matching still (OceanScene). The still stays as fallback. */
+.ocean-scene { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.ocean-scene canvas { display: block; width: 100%; height: 100%; }
 .method-section::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   background:
@@ -285,12 +289,12 @@
 .method-heading { max-width: 560px; }
 .method-heading h2 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.02; font-weight: 780; letter-spacing: -.035em; }
 .method-heading > p { font-size: var(--text-lede); line-height: 1.65; margin-top: 24px; color: #e4ecee; max-width: 44ch; }
-.wave-control {
-  position: absolute; right: max(24px, calc((100% - 1184px) / 2)); bottom: 28px; z-index: 1;
+.wave-control, .scene-control {
+  position: absolute; right: max(24px, calc((100% - 1184px) / 2)); bottom: 28px; z-index: 2;
   min-height: 44px; padding: 8px 16px; border: 1px solid #6ce4bf70; border-radius: 24px;
   background: #10222dcc; color: #d4f4ea; font-size: 13px;
 }
-.wave-control:hover { border-color: var(--action); background: #10222d; }
+.wave-control:hover, .scene-control:hover { border-color: var(--action); background: #10222d; }
 
 .answer-section { padding-block: var(--space-section); }
 .answer-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 88px; }
@@ -355,7 +359,7 @@
 .team-link a { color: var(--link); text-decoration: underline; text-underline-offset: 4px; }
 
 /* ==== Closing chapter: calm water, higher sun ======================== */
-.closing-ocean { position: relative; min-height: 760px; display: flex; align-items: flex-end; background: #10222d url('/ocean-editorial-calm.webp') center top / cover; }
+.closing-ocean { position: relative; isolation: isolate; min-height: 760px; display: flex; align-items: flex-end; background: #10222d url('/ocean-editorial-calm.webp') center top / cover; }
 .closing-ocean::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, #10222d15 25%, #10222dbf 58%, var(--background) 100%); }
 .closing-copy { position: relative; padding-block: 300px 96px; }
 .closing-copy h2 { max-width: 16ch; font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 780; line-height: 1.02; letter-spacing: -.035em; }
@@ -367,14 +371,17 @@
 /* ==== Interior page hero ============================================
    The one authored motion moment on interior pages: the water eases in. */
 .page-hero { position: relative; overflow: hidden; isolation: isolate; border-bottom: 1px solid var(--border); }
-.page-hero::before {
+.page-hero::before, .page-hero-media {
   content: ''; position: absolute; inset: 0 0 0 38%; z-index: -1;
-  background: var(--hero-image) center / cover;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
   opacity: .9;
   animation: tide-in 1.6s var(--ease-out) both;
 }
+.page-hero::before { background: var(--hero-image) center / cover; }
+.page-hero-media > video, .page-hero-media > canvas { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.page-hero:has(canvas.is-live)::before, .page-hero:has(.wave-video)::before { content: none; }
+.page-hero .scene-control, .page-hero .wave-control { bottom: 20px; }
 @keyframes tide-in { from { opacity: 0; transform: scale(1.06); } to { opacity: .9; transform: scale(1); } }
 .page-hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 64px; align-items: end; padding-block: clamp(72px, 9vw, 120px) clamp(56px, 7vw, 96px); }
 .page-hero-copy { max-width: 760px; }
@@ -461,7 +468,8 @@
 .career-record { margin-top: 48px; }
 .career-record article { display: grid; grid-template-columns: .8fr 1fr 1.8fr; gap: 30px; padding-block: 24px; border-bottom: 1px solid var(--border); }
 .career-record h3 { font-weight: 700; font-size: 19px; }
-.about-method { position: relative; padding-block: var(--space-section); background: linear-gradient(90deg, #10222df2 0%, #10222dde 50%, #10222d66), url('/maniac-wave.webp') center / cover; }
+.about-method { position: relative; isolation: isolate; padding-block: var(--space-section); background: #10222d url('/maniac-wave.webp') center / cover; }
+.about-method::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #10222df2 0%, #10222dde 50%, #10222d66); }
 .about-method-copy { max-width: 62ch; margin-top: 30px; font-size: 19px; line-height: 1.8; }
 .about-method-copy p + p { margin-top: 20px; }
 
@@ -560,6 +568,9 @@ footer .brand-logo { background: transparent; }
 
   .method-section { min-height: auto; }
   .method-section .wave-image { background-position: 62% top; background-size: auto 650px; background-repeat: no-repeat; }
+  .method-section .wave-media { bottom: auto; height: 650px; }
+  .method-section .wave-video { object-position: 62% top; }
+  .wave-control, .scene-control { right: 20px; bottom: 16px; }
   .method-section::before { background: linear-gradient(180deg, #10232ab3 0px, #10232a80 270px, #15232cf0 530px, var(--background) 650px); }
   .method-content { padding-block: 48px 56px; }
   .method-heading h2 { font-size: clamp(2.5rem, 12vw, 3.5rem); }
@@ -576,7 +587,7 @@ footer .brand-logo { background: transparent; }
   .closing-copy { padding-block: 260px 64px; }
   .closing-ocean-short .closing-copy { padding-top: 200px; }
 
-  .page-hero::before { inset: 0; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%); mask-image: linear-gradient(180deg, #000 0%, transparent 70%); opacity: .55; }
+  .page-hero::before, .page-hero-media { inset: 0; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%); mask-image: linear-gradient(180deg, #000 0%, transparent 70%); opacity: .55; }
   .page-hero-layout { padding-block: 56px 48px; }
 
   .career-record article { grid-template-columns: 1fr; gap: 6px; }
