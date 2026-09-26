@@ -10,11 +10,11 @@ try {
   assert.equal(await video.getAttribute('src'), null, 'No video download above the fold')
   await page.locator('#method').scrollIntoViewIfNeeded()
   await page.waitForFunction(() => document.querySelector('.wave-video').currentTime > 0)
-  await page.getByRole('button', { name: 'Pause wave', exact: true }).click()
+  await page.getByRole('button', { name: 'Pause wave video', exact: true }).click()
   const pausedAt = await video.evaluate(v => v.currentTime)
   await page.waitForTimeout(350)
   assert.equal(await video.evaluate(v => v.currentTime), pausedAt, 'Pause stops playback')
-  await page.getByRole('button', { name: 'Play wave', exact: true }).click()
+  await page.getByRole('button', { name: 'Play wave video', exact: true }).click()
   await page.waitForFunction(time => document.querySelector('.wave-video').currentTime > time, pausedAt)
   assert((await video.evaluate(v => v.duration)) >= 17, 'Wave gives readers a longer cycle')
   await page.waitForFunction(() => {

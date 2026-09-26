@@ -11,11 +11,11 @@ try {
   const water = { x: 700, y: 520, width: 450, height: 240 }
   const a = await page.screenshot({ clip: water }); await page.waitForTimeout(500)
   assert(!same(a, await page.screenshot({ clip: water })), 'Water moves')
-  await hero.getByRole('button', { name: 'Pause water' }).click()
+  await hero.getByRole('button', { name: 'Pause water animation' }).click()
   await page.waitForTimeout(400) // let the frame already in flight land (software GL can be slow)
   const p1 = await page.screenshot({ clip: water }); await page.waitForTimeout(500)
   assert(same(p1, await page.screenshot({ clip: water })), 'Pause stops the water')
-  await hero.getByRole('button', { name: 'Play water' }).click()
+  await hero.getByRole('button', { name: 'Play water animation' }).click()
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.reload(); await page.waitForSelector('.ocean-hero canvas.is-live')
   assert.equal(await hero.getByRole('button', { name: /water/ }).count(), 0, 'Reduced motion: still water, no control')

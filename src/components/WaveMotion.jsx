@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Pause, Play } from 'lucide-react'
 
 // The breaking wave, looping while on screen. Phones get a 960px encode; reduced motion keeps the poster still.
 export default function WaveMotion({ className = 'wave-media' }) {
@@ -49,8 +50,8 @@ export default function WaveMotion({ className = 'wave-media' }) {
         poster="/maniac-wave.webp"
         onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
     </div>
-    {enabled && <button type="button" className="wave-control" onClick={togglePlayback}>
-      {playing ? 'Pause wave' : 'Play wave'}
+    {enabled && <button type="button" className="wave-control" aria-label={playing ? 'Pause wave video' : 'Play wave video'} onClick={togglePlayback}>
+      {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
     </button>}
   </>
 }

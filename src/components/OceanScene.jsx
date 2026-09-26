@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Pause, Play } from 'lucide-react'
 
 // Horizon row (0 = top, 1 = bottom) measured from each still. Only water below it moves.
 const HORIZON = { '/ocean-editorial-dawn.webp': 0.372, '/ocean-editorial-calm.webp': 0.38 }
@@ -157,8 +158,8 @@ export default function OceanScene({ src, fit = 'center', className = '' }) {
     <div className={`ocean-scene ${className}`} aria-hidden="true">
       <canvas ref={canvasRef} className={live ? 'is-live' : undefined} />
     </div>
-    {live && !still && <button type="button" className="scene-control" onClick={() => toggle.current()}>
-      {userPaused ? 'Play water' : 'Pause water'}
+    {live && !still && <button type="button" className="scene-control" aria-label={userPaused ? 'Play water animation' : 'Pause water animation'} onClick={() => toggle.current()}>
+      {userPaused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
     </button>}
   </>
 }

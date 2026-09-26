@@ -291,10 +291,13 @@
 .method-heading > p { font-size: var(--text-lede); line-height: 1.65; margin-top: 24px; color: #e4ecee; max-width: 44ch; }
 .wave-control, .scene-control {
   position: absolute; right: max(24px, calc((100% - 1184px) / 2)); bottom: 28px; z-index: 2;
-  min-height: 44px; padding: 8px 16px; border: 1px solid #6ce4bf70; border-radius: 24px;
-  background: #10222dcc; color: #d4f4ea; font-size: 13px;
+  display: grid; place-items: center; width: 32px; height: 32px; padding: 0;
+  border: 1px solid #f3f7f540; border-radius: 50%; background: #0b1d2c80; color: #e4eef0;
+  opacity: .6; transition: opacity .2s, border-color .2s, background .2s;
 }
-.wave-control:hover, .scene-control:hover { border-color: var(--action); background: #10222d; }
+/* 32px to the eye, 44px to the thumb. */
+.wave-control::after, .scene-control::after { content: ''; position: absolute; inset: -6px; }
+.wave-control:hover, .scene-control:hover, .wave-control:focus-visible, .scene-control:focus-visible { opacity: 1; border-color: var(--action); background: #10222d; }
 
 .answer-section { padding-block: var(--space-section); }
 .answer-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 88px; }
