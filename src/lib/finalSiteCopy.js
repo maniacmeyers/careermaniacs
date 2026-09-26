@@ -5,7 +5,7 @@ export const serviceData = {
     "outcome": "Run your search like the deal it is.",
     "price": "$5,000/month · Most clients run two to four months",
     "description": "For experienced sales professionals in an active search. Build the target list, the positioning, and the story. Then practice the conversations until the hard question stops scaring you. Three sessions a week with me until you sign.",
-    "credential": "Coached by a 12-time President's Club winner with a #1 national finish at 264% of plan.",
+    "credential": "Coached by a 12-time President's Club winner and 4-time MVP, one for 264% of a $5M plan.",
     "proof": "25+ coached · 11 weeks to offer, on average · Landing one month sooner usually covers the whole engagement",
     "heroPromise": "",
     "features": [

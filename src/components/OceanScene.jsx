@@ -11,28 +11,48 @@ const FITS = {
 }
 
 const VERT = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}'
-const FRAG = `precision mediump float;
+const FRAG = `#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
 uniform sampler2D uTex;uniform vec2 uRes;uniform vec4 uDraw;uniform float uTime;uniform float uHorizon;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+  return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
 void main(){
   vec2 uv=(vec2(gl_FragCoord.x,uRes.y-gl_FragCoord.y)-uDraw.xy)/uDraw.zw;
   if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.){gl_FragColor=vec4(0.);return;}
-  vec2 s=uv;float glint=0.;float d=uv.y-uHorizon;
+  float t=uTime;vec2 s=uv;float glint=0.;float d=uv.y-uHorizon;float cloud=0.;
   if(d>0.){
     float depth=d/(1.-uHorizon);
     float persp=1./(depth+.06);
-    float t=uTime;
-    float w1=sin(uv.y*22.*persp-t*1.1+sin(uv.x*6.+t*.3)*1.5);
-    float w2=sin(uv.x*38.+uv.y*28.*persp-t*1.7);
-    float w3=sin(uv.x*11.-uv.y*12.*persp+t*.8);
-    float amp=mix(.0006,.0065,depth);
-    s.y+=amp*(w1*.6+w2*.3);
-    s.x+=amp*.8*(w3*.6+w2*.3);
+    float w1=sin(uv.y*22.*persp-t*1.35+sin(uv.x*6.+t*.35)*1.8);
+    float w2=sin(uv.x*38.+uv.y*28.*persp-t*2.1);
+    float w3=sin(uv.x*11.-uv.y*12.*persp+t*1.);
+    float swell=sin(uv.y*6.*persp-t*.55+uv.x*2.);
+    float amp=mix(.0009,.0105,depth);
+    s.y+=amp*(w1*.55+w2*.3+swell*.45);
+    s.x+=amp*.9*(w3*.6+w2*.3);
     s.y=max(s.y,uHorizon+.0015);
-    glint=max(w1*w2,0.);
+    glint=max(w1*w2,0.)+.35*max(swell,0.);
+  }else{
+    // Sky: drift and gently billow the existing clouds, keep the sun disc still.
+    float sky=smoothstep(0.,.06,-d);
+    vec2 q=uv*vec2(2.2,5.)+vec2(t*.07,t*.01);
+    vec2 warp=vec2(fbm(q),fbm(q+vec2(5.2,1.3)))-.5;
+    vec4 base=texture2D(uTex,uv);
+    float sun=smoothstep(.72,.92,dot(base.rgb,vec3(.299,.587,.114)));
+    s+=warp*vec2(.018,.007)*sky*(1.-sun);
+    s.y=min(s.y,uHorizon-.001);
+    float low=mix(.35,1.,smoothstep(-.35,-.04,d));
+    cloud=smoothstep(.42,.78,fbm(uv*vec2(2.5,9.)+vec2(t*.06,t*.008)))*sky*(1.-sun)*low;
   }
   vec4 c=texture2D(uTex,s);
   float lum=dot(c.rgb,vec3(.299,.587,.114));
-  c.rgb+=c.rgb*glint*smoothstep(.45,.9,lum)*.35;
+  c.rgb+=c.rgb*glint*smoothstep(.4,.9,lum)*.5;
+  c.rgb=mix(c.rgb,c.rgb*1.1+vec3(.11,.1,.09),cloud*.8);
   gl_FragColor=vec4(c.rgb,1.);
 }`
 
