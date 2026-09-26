@@ -6,6 +6,16 @@ import OceanScene from '../components/OceanScene'
 import { ProofLedger, ClientQuote, Portrait } from '../components/Proof'
 import { TextGradient } from '@/components/ui/text-gradient'
 
+// Illustrative interview answer: the same deal told as a list, then as a story.
+const summary = <p>“I managed a complex enterprise deal. I worked with stakeholders, handled objections and collaborated with our team to close it.”</p>
+const story = <>
+  <p>“Our champion was ready to sign a $1.4M platform deal, <strong>and</strong> IT had already cleared the security review. We were two weeks from quarter end.</p>
+  <p><strong>But</strong> the week before signature, the CFO froze every purchase over $500K. My champion called and said, ‘Let’s park it until next year.’ Another demo was never going to move a CFO. Finance liked the product. The timing was the problem.</p>
+  <p><strong>Therefore</strong>, I asked for thirty minutes with the CFO’s team and rebuilt the business case around one number: the cost of waiting. Their support team was losing about $90,000 a month to a manual process we would replace. Six months of waiting cost more than the first year of the contract.</p>
+  <p>We walked finance through their own numbers and let them poke holes in the model. They signed eleven days later.</p>
+  <p>What I took from it: when a deal stalls, find the person who can say no. Then give them a reason to say yes now.”</p>
+</>
+
 const HomePage = () => {
   const [answer, setAnswer] = useState('story')
   return (
@@ -55,10 +65,9 @@ const HomePage = () => {
               <button type="button" aria-pressed={answer === 'summary'} onClick={() => setAnswer('summary')}>The resume answer</button>
               <button type="button" aria-pressed={answer === 'story'} onClick={() => setAnswer('story')}>The story</button>
             </div>
-            <div className="answer-text" aria-live="polite">
-              {answer === 'summary'
-                ? <p>“I managed a complex enterprise deal. I worked with stakeholders, handled objections and collaborated with our team to close it.”</p>
-                : <><p>“The buyer wanted to move forward, <strong>and</strong> our technical team had signed off.</p><p><strong>But</strong> finance couldn’t see why this had to happen now. Another demo wouldn’t solve that.</p><p><strong>Therefore</strong>, I brought finance into the conversation and rebuilt the case around the cost of waiting. We agreed on what mattered before asking for the decision.”</p></>}
+            <div className="answer-text">
+              <div className="answer-sizer" aria-hidden="true">{story}</div>
+              <div className="answer-live" aria-live="polite">{answer === 'summary' ? summary : story}</div>
             </div>
             <p className="answer-note">{answer === 'story' ? 'A situation. A real obstacle. A decision you made.' : 'A list of responsibilities gives the listener little to remember.'}</p>
           </div>
