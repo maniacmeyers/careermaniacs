@@ -12,6 +12,7 @@ try {
   const a = await page.screenshot({ clip: water }); await page.waitForTimeout(500)
   assert(!same(a, await page.screenshot({ clip: water })), 'Water moves')
   await hero.getByRole('button', { name: 'Pause water' }).click()
+  await page.waitForTimeout(150) // let the frame already in flight land
   const p1 = await page.screenshot({ clip: water }); await page.waitForTimeout(500)
   assert(same(p1, await page.screenshot({ clip: water })), 'Pause stops the water')
   await hero.getByRole('button', { name: 'Play water' }).click()
