@@ -15,3 +15,6 @@ September 11: Extended the existing wave cycle from 5 seconds to approximately 1
 
 ## hero-swell.mp4 / hero-swell-960.mp4 (2026-09-26)
 Higgsfield Seedance 2.5, omni_reference from ocean-editorial-dawn (as JPG upload 53a74a3e-9380-41a3-babc-b07bf3c07c8a), 10s 1080p, no audio, 120 credits, Jeff-approved. Source render hf_20260926_233745_10cf9b36. Trimmed to 0-8.0s (last 2s crest became ember-like). H.264, 6-frame GOP for scroll scrubbing: 1920px 3.6MB, 960px 0.9MB. Illustrative AI footage, not documentary.
+
+## 2026-09-26 loop revision
+Jeff: the hold-and-scrub version read as the animation stopping. Replaced with a 12s ping-pong loop of 0-6s (rise, cover the sun, settle), 1080p 3.5MB / 960px 0.66MB, playing whenever the hero is visible; frame still pinned during scroll. No new credits.

@@ -1,67 +1,72 @@
 import { useEffect, useRef, useState } from 'react'
+import { Pause, Play } from 'lucide-react'
 
-const IDLE = 0.4 // share of the clip that plays on its own; scrolling drives the rest
-
-// The swell building in the sunrise water. Plays the first ~4s once, holds, then the
-// scroll toward the Maniac Method wave carries it to full height. The CSS still is the
-// poster and fallback; reduced motion never loads the video.
+// The swell building in the sunrise water, looping (rise, cover the sun, settle) while the hero
+// is on screen. The frame stays pinned while the hero scrolls away, so the swell stays in view.
+// The CSS still is the first paint and the fallback; reduced motion never loads the video.
 export default function HeroSwell() {
   const videoRef = useRef(null)
+  const manuallyPaused = useRef(false)
   const [shown, setShown] = useState(false)
+  const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
     const video = videoRef.current
     const motionOk = window.matchMedia('(prefers-reduced-motion: no-preference)')
     if (!motionOk.matches) return
-    const section = video.closest('section')
-    let idleDone = false, raf = 0, dead = false
-
     const wrap = video.parentElement
-    const target = () => {
-      const rect = section.getBoundingClientRect()
-      const px = Math.min(rect.height, Math.max(0, -rect.top))
-      // Pin the frame while the hero scrolls away, so the swell builds in view.
-      wrap.style.transform = `translate3d(0, ${px}px, 0)`
-      return video.duration * (IDLE + (1 - IDLE) * Math.min(1, px / (rect.height * 0.8)))
-    }
-    const seek = () => {
-      raf = 0
-      if (dead || !video.duration) return
-      const goal = target()
-      if (!idleDone) return
-      const t = Math.max(goal, video.duration * IDLE)
-      if (Math.abs(video.currentTime - t) > 0.03) video.currentTime = t
-    }
-    const onScroll = () => { if (!raf) raf = requestAnimationFrame(seek) }
-    const onTime = () => {
-      if (!idleDone && video.currentTime >= video.duration * IDLE) {
-        idleDone = true
-        video.pause()
-        seek()
-      }
-    }
+    const section = wrap.closest('section')
+    let visible = true, loaded = false, raf = 0, dead = false
 
+    const update = () => {
+      if (!loaded) return
+      if (visible && !document.hidden && !manuallyPaused.current) video.play().catch(() => {})
+      else video.pause()
+    }
+    const pin = () => {
+      raf = 0
+      const rect = section.getBoundingClientRect()
+      wrap.style.transform = `translate3d(0, ${Math.min(rect.height, Math.max(0, -rect.top))}px, 0)`
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(pin) }
     const start = () => {
       if (dead) return
       video.preload = 'auto'
       video.src = window.matchMedia('(max-width: 800px)').matches ? '/hero-swell-960.mp4' : '/hero-swell.mp4'
-      video.addEventListener('loadeddata', () => { setShown(true); video.play().catch(() => { idleDone = true; seek() }) }, { once: true })
+      video.addEventListener('loadeddata', () => { loaded = true; setShown(true); update() }, { once: true })
     }
     // Load after the page settles so the hero still stays the first paint.
     const idle = window.requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 600)
-    video.addEventListener('timeupdate', onTime)
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; update() })
+    io.observe(section)
+    document.addEventListener('visibilitychange', update)
     window.addEventListener('scroll', onScroll, { passive: true })
+    pin()
     return () => {
       dead = true
       window.cancelIdleCallback?.(idle); clearTimeout(idle)
       cancelAnimationFrame(raf)
-      video.removeEventListener('timeupdate', onTime)
+      io.disconnect()
+      document.removeEventListener('visibilitychange', update)
       window.removeEventListener('scroll', onScroll)
       video.pause()
     }
   }, [])
 
-  return <div className={`hero-swell${shown ? ' is-shown' : ''}`} aria-hidden="true">
-    <video ref={videoRef} muted playsInline preload="none" />
-  </div>
+  const toggle = () => {
+    const video = videoRef.current
+    manuallyPaused.current = !video.paused
+    if (video.paused) video.play().catch(() => {})
+    else video.pause()
+  }
+
+  return <>
+    <div className={`hero-swell${shown ? ' is-shown' : ''}`} aria-hidden="true">
+      <video ref={videoRef} muted loop playsInline preload="none"
+        onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
+    </div>
+    {shown && <button type="button" className="scene-control" aria-label={playing ? 'Pause swell video' : 'Play swell video'} onClick={toggle}>
+      {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
+    </button>}
+  </>
 }
