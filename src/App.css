@@ -618,3 +618,10 @@ footer .brand-logo { background: transparent; }
 .offer-main h3, .offer-secondary h3 { line-height: 1.15; }
 .answer-layout > div:first-child { position: sticky; top: calc(var(--nav-h) + 32px); align-self: start; }
 @media (max-width: 800px) { .answer-layout > div:first-child { position: static; } }
+
+/* Hero swell video (Higgsfield): fades in over the live water, then scroll carries it. */
+.ocean-hero { overflow: clip; }
+.hero-swell { position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity 1.2s var(--ease-out); pointer-events: none; will-change: transform; }
+.hero-swell.is-shown { opacity: 1; }
+.hero-swell video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+@media (max-width: 800px) { .hero-swell video { object-position: center top; } }

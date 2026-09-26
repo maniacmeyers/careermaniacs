@@ -12,3 +12,6 @@ September 7, 2026: Replaced generated wave with owner-approved Teahupoʻo photog
 September 11: public/maniac-wave-motion.mp4 generated from existing maniac-wave.webp through Higgsfield Seedance 2.5, job 749adddf-d2be-4d2f-8d5c-e243424304bc, approved estimate 45 credits. Five seconds, 1920x1080, silent H.264; optimized to 1.11 MB. Original retained at output/maniac-wave-higgsfield-original.mp4. This is illustrative AI-generated wave imagery, not a photograph of Teahupoo.
 
 September 11: Extended the existing wave cycle from 5 seconds to approximately 18 seconds (17.708s) with slower motion, interpolated frames and a blended return transition. No new Higgsfield generation or credits. public/maniac-wave-motion.mp4 is 2,497,662 bytes. Longer-cycle browser check, pause/resume, mobile and reduced-motion checks passed; build passed. Local only.
+
+## hero-swell.mp4 / hero-swell-960.mp4 (2026-09-26)
+Higgsfield Seedance 2.5, omni_reference from ocean-editorial-dawn (as JPG upload 53a74a3e-9380-41a3-babc-b07bf3c07c8a), 10s 1080p, no audio, 120 credits, Jeff-approved. Source render hf_20260926_233745_10cf9b36. Trimmed to 0-8.0s (last 2s crest became ember-like). H.264, 6-frame GOP for scroll scrubbing: 1920px 3.6MB, 960px 0.9MB. Illustrative AI footage, not documentary.

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import WaveMotion from '../components/WaveMotion'
 import OceanScene from '../components/OceanScene'
+import HeroSwell from '../components/HeroSwell'
 import { ProofLedger, ClientQuote, Portrait } from '../components/Proof'
 import { TextGradient } from '@/components/ui/text-gradient'
 
@@ -25,7 +26,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <section className="ocean-hero">
-        <OceanScene src="/ocean-editorial-dawn.webp" fit="hero" />
+        <HeroSwell />
         <div className="wrap hero-copy">
           <h1>Your next role is a deal.<br /> Work it like one.</h1>
           <p>One-on-one coaching for experienced sellers and sales leaders. Target the companies. Research the room. Tell the story only you can tell. Then own the first 90 days.</p>
