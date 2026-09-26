@@ -7,7 +7,11 @@ import { ProofLedger, ClientQuote, Portrait } from '../components/Proof'
 import { TextGradient } from '@/components/ui/text-gradient'
 
 // Illustrative interview answer: the same deal told as a list, then as a story.
-const summary = <p>“I managed a complex enterprise deal. I worked with stakeholders, handled objections and collaborated with our team to close it.”</p>
+const summary = <>
+  <p>“In my last role I owned a $1.4M enterprise platform opportunity with a complex buying committee across IT, operations and finance.</p>
+  <p>When the deal ran into some budget headwinds late in the quarter, I worked cross-functionally with my manager and our solutions team, handled objections and kept the relationship moving.</p>
+  <p>We ultimately closed it, and I finished the year at 112% of quota.”</p>
+</>
 const story = <>
   <p>“Our champion was ready to sign a $1.4M platform deal, <strong>and</strong> IT had already cleared the security review. We were two weeks from quarter end.</p>
   <p><strong>But</strong> the week before signature, the CFO froze every purchase over $500K. My champion called and said, ‘Let’s park it until next year.’ Another demo was never going to move a CFO. Finance liked the product. The timing was the problem.</p>
@@ -69,7 +73,7 @@ const HomePage = () => {
               <div className="answer-sizer" aria-hidden="true">{story}</div>
               <div className="answer-live" aria-live="polite">{answer === 'summary' ? summary : story}</div>
             </div>
-            <p className="answer-note">{answer === 'story' ? 'A situation. A real obstacle. A decision you made.' : 'A list of responsibilities gives the listener little to remember.'}</p>
+            <p className="answer-note">{answer === 'story' ? 'A situation. A real obstacle. A decision you made.' : 'All true. Same deal, same result. Nothing for the listener to hold on to.'}</p>
           </div>
         </div>
       </section>
