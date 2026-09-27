@@ -22,5 +22,10 @@ try {
   const reduced = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
   await reduced.goto(url); await reduced.waitForTimeout(2500)
   assert.equal(await reduced.evaluate(() => document.querySelector('.hero-swell video').getAttribute('src')), null, 'Reduced motion never loads the video')
-  console.log('Hero swell: loops at rest, keeps playing on scroll, pause control, offscreen pause, reduced motion passed.')
+  const blocked = await browser.newPage({ viewport: { width: 390, height: 844 } })
+  await blocked.addInitScript(() => { HTMLMediaElement.prototype.play = () => Promise.reject(new DOMException('blocked', 'NotAllowedError')) })
+  await blocked.goto(url)
+  await blocked.waitForSelector('.ocean-hero canvas.is-live', { timeout: 10000 })
+  assert.equal(await blocked.locator('.hero-swell.is-shown').count(), 0, 'Blocked autoplay falls back to the live water')
+  console.log('Hero swell: loops at rest, keeps playing on scroll, pause control, offscreen pause, reduced motion, autoplay-blocked fallback passed.')
 } finally { await browser.close() }

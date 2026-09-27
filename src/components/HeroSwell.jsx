@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { Pause, Play } from 'lucide-react'
+import OceanScene from './OceanScene'
 
 // The swell building in the sunrise water, looping (rise, cover the sun, settle) while the hero
 // is on screen. The frame stays pinned while the hero scrolls away, so the swell stays in view.
-// The CSS still is the first paint and the fallback; reduced motion never loads the video.
+// iOS never preloads video, so playback starts immediately and the video is revealed once it is
+// actually playing. If the browser refuses autoplay (iPhone Low Power Mode, data saver), the live
+// WebGL water takes over so the hero still moves. Reduced motion never loads the video.
 export default function HeroSwell() {
   const videoRef = useRef(null)
   const manuallyPaused = useRef(false)
   const [shown, setShown] = useState(false)
+  const [fallback, setFallback] = useState(false)
   const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
@@ -16,10 +20,10 @@ export default function HeroSwell() {
     if (!motionOk.matches) return
     const wrap = video.parentElement
     const section = wrap.closest('section')
-    let visible = true, loaded = false, raf = 0, dead = false
+    let visible = true, started = false, raf = 0, dead = false, giveUp = 0
 
     const update = () => {
-      if (!loaded) return
+      if (!started) return
       if (visible && !document.hidden && !manuallyPaused.current) video.play().catch(() => {})
       else video.pause()
     }
@@ -29,13 +33,23 @@ export default function HeroSwell() {
       wrap.style.transform = `translate3d(0, ${Math.min(rect.height, Math.max(0, -rect.top))}px, 0)`
     }
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(pin) }
+    const fail = () => { if (!started && !dead) { video.removeAttribute('src'); video.load(); setFallback(true) } }
     const start = () => {
       if (dead) return
-      video.preload = 'auto'
+      video.muted = true
+      video.setAttribute('muted', '')
+      video.setAttribute('playsinline', '')
       video.src = window.matchMedia('(max-width: 800px)').matches ? '/hero-swell-960.mp4' : '/hero-swell.mp4'
-      video.addEventListener('loadeddata', () => { loaded = true; setShown(true); update() }, { once: true })
+      video.addEventListener('playing', () => {
+        clearTimeout(giveUp)
+        started = true
+        setShown(true)
+        update()
+      }, { once: true })
+      video.play().catch(fail)
+      giveUp = setTimeout(fail, 6000)
     }
-    // Load after the page settles so the hero still stays the first paint.
+    // Start after the page settles so the hero still stays the first paint.
     const idle = window.requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 600)
     const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; update() })
     io.observe(section)
@@ -44,7 +58,7 @@ export default function HeroSwell() {
     pin()
     return () => {
       dead = true
-      window.cancelIdleCallback?.(idle); clearTimeout(idle)
+      window.cancelIdleCallback?.(idle); clearTimeout(idle); clearTimeout(giveUp)
       cancelAnimationFrame(raf)
       io.disconnect()
       document.removeEventListener('visibilitychange', update)
@@ -61,6 +75,7 @@ export default function HeroSwell() {
   }
 
   return <>
+    {fallback && <OceanScene src="/ocean-editorial-dawn.webp" fit="hero" />}
     <div className={`hero-swell${shown ? ' is-shown' : ''}`} aria-hidden="true">
       <video ref={videoRef} muted loop playsInline preload="none"
         onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
