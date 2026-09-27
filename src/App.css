@@ -620,3 +620,7 @@ footer .brand-logo { background: transparent; }
 @media (max-width: 800px) { .answer-layout > div:first-child { position: static; } }
 
 
+
+/* Breaking wave: the clip's view drops as the wave passes, so the returning sun sat ~5% lower
+   than in the hero. Scale from the bottom edge to lift it back to the hero's sun line. */
+.method-section .wave-video, .method-section .wave-image { transform: scale(1.08); transform-origin: 50% 100%; }
