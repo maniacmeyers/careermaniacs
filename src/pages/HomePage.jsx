@@ -49,6 +49,7 @@ const HomePage = () => {
       <section id="method" className="method-section" aria-labelledby="method-title">
         <div className="wave-image" aria-hidden="true" />
         <WaveMotion />
+        <div className="wave-sun" aria-hidden="true" />
         <div className="wrap method-content">
           <div className="method-heading">
             <TextGradient as="h2" id="method-title">The story is the method.</TextGradient>

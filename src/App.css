@@ -620,3 +620,15 @@ footer .brand-logo { background: transparent; }
 @media (max-width: 800px) { .answer-layout > div:first-child { position: static; } }
 
 
+
+/* The sun keeps rising: same disc as the hero, a little higher, sitting in the sky above the
+   breaking wave (the clip's own low sun is painted out of the video). */
+.wave-sun {
+  position: absolute; z-index: -1; left: 50%; top: 20%; width: 54px; height: 54px; margin: -27px 0 0 -27px;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle at 50% 45%, #fdd08a 0%, #fcc46c 45%, #f6984a 100%);
+  box-shadow: 0 0 22px 6px #ff9a5566, 0 0 90px 40px #ff7a4a33;
+}
+@media (max-width: 800px) {
+  .wave-sun { left: 80%; top: 21%; width: 42px; height: 42px; margin: -21px 0 0 -21px; box-shadow: 0 0 14px 4px #ff9a5566, 0 0 50px 22px #ff7a4a33; }
+}
