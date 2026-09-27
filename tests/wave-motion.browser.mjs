@@ -16,7 +16,7 @@ try {
   assert.equal(await video.evaluate(v => v.currentTime), pausedAt, 'Pause stops playback')
   await page.getByRole('button', { name: 'Play wave video', exact: true }).click()
   await page.waitForFunction(time => document.querySelector('.wave-video').currentTime > time, pausedAt)
-  assert((await video.evaluate(v => v.duration)) >= 17, 'Wave gives readers a longer cycle')
+  assert((await video.evaluate(v => v.duration)) >= 5, 'Wave loop is the full break, not a clip')
   await page.waitForFunction(() => {
     const v = document.querySelector('.wave-video')
     return v.currentTime > v.duration - 0.5

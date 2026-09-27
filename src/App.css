@@ -282,8 +282,8 @@
 .method-section::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(ellipse 55% 60% at 18% 28%, #0b1d2cd9, transparent 70%),
-    linear-gradient(180deg, var(--background) 0%, #10222d26 24%, #10222d99 62%, var(--background) 100%);
+    radial-gradient(ellipse 40% 48% at 20% 30%, #0b1d2ca6, transparent 72%),
+    linear-gradient(180deg, var(--background) 0%, transparent 12%, transparent 62%, #15232cb3 84%, var(--background) 100%);
 }
 .method-content { padding-block: 96px 64px; }
 .method-heading { max-width: 560px; }
@@ -573,11 +573,11 @@ footer .brand-logo { background: transparent; }
   .deal-list { grid-template-columns: 1fr; gap: 12px; }
 
   .method-section { min-height: auto; }
-  .method-section .wave-image { background-position: 62% top; background-size: auto 650px; background-repeat: no-repeat; }
-  .method-section .wave-media { bottom: auto; height: 650px; }
-  .method-section .wave-video { object-position: 62% top; }
+  .method-section .wave-image { background-position: center top; background-size: auto 650px; background-repeat: no-repeat; }
+  .method-section .wave-media { bottom: 0; height: auto; }
+  .method-section .wave-video { object-position: center 30%; }
   .wave-control, .scene-control { right: 20px; bottom: 16px; }
-  .method-section::before { background: linear-gradient(180deg, #10232ab3 0px, #10232a80 270px, #15232cf0 530px, var(--background) 650px); }
+  .method-section::before { background: linear-gradient(180deg, #0b1d2c99 0%, #0b1d2c59 45%, #0b1d2c40 70%, var(--background) 100%); }
   .method-content { padding-block: 48px 56px; }
   .method-heading h2 { font-size: clamp(2.5rem, 12vw, 3.5rem); }
 

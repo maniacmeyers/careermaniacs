@@ -18,3 +18,6 @@ Higgsfield Seedance 2.5, omni_reference from ocean-editorial-dawn (as JPG upload
 
 ## 2026-09-26 loop revision
 Jeff: the hold-and-scrub version read as the animation stopping. Replaced with a 12s ping-pong loop of 0-6s (rise, cover the sun, settle), 1080p 3.5MB / 960px 0.66MB, playing whenever the hero is visible; frame still pinned during scroll. No new credits.
+
+## maniac-wave-motion.mp4 / -960 / maniac-wave.webp (2026-09-26 replacement)
+Replaces the Sept 11 daytime emerald wave (17.7s stretch with ~44% duplicate frames, read as choppy). Higgsfield Seedance 2.5 omni_reference from hero-swell frame 6.2s (upload 62e7a750), 10s 1080p, 120 credits; take 1 (start frame 7.6s) rejected for fire-like spray, also 120 credits. Used 3.6-10.0s, 1s crossfade loop = 5.46s at native 24fps. 1080p 1.87MB, 960px 0.26MB. Still = loop frame 0.6s, 27KB webp. Same sunrise, camera and palette as the hero swell.
