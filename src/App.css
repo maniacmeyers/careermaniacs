@@ -224,7 +224,7 @@
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(90deg, #0b1d2ce6 0%, #0b1d2c99 42%, #0b1d2c1a 80%), linear-gradient(0deg, var(--background), transparent 24%);
 }
-.hero-copy { position: relative; padding-block: 140px 100px; }
+.hero-copy { position: relative; padding-block: 90px 150px; }
 /* Owner direction: headline holds the left column so the sun stays clear. */
 .hero-copy h1 {
   max-width: 11.5ch;
