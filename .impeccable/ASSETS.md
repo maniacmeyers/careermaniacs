@@ -24,3 +24,6 @@ Replaces the Sept 11 daytime emerald wave (17.7s stretch with ~44% duplicate fra
 
 ## 2026-09-26 hero swell removed
 Jeff: the swell rose too high and hid the sun, and his phone still showed a still frame. Removed hero-swell video and component; the hero now uses the live WebGL water (OceanScene), the same effect he confirmed moving on his phone. Higgsfield swell source kept in scratch only.
+
+## 2026-09-26 sunlit wave (replaces CSS sun)
+Jeff: CSS sun looked fake. Higgsfield Nano Banana Pro edit of swell frame (upload 62e7a750) adds a golden risen sun above the crest (2 credits, upload 4f53bc4a), then Seedance 2.5 10s 1080p break (120 credits, hf_20260927_020434). Used 2.6-10.04s, 1s crossfade loop 6.46s. 1080p 2.0MB, 960px 0.32MB, poster 41KB. One fixed sun, backlit lip and spray.
