@@ -21,3 +21,6 @@ Jeff: the hold-and-scrub version read as the animation stopping. Replaced with a
 
 ## maniac-wave-motion.mp4 / -960 / maniac-wave.webp (2026-09-26 replacement)
 Replaces the Sept 11 daytime emerald wave (17.7s stretch with ~44% duplicate frames, read as choppy). Higgsfield Seedance 2.5 omni_reference from hero-swell frame 6.2s (upload 62e7a750), 10s 1080p, 120 credits; take 1 (start frame 7.6s) rejected for fire-like spray, also 120 credits. Used 3.6-10.0s, 1s crossfade loop = 5.46s at native 24fps. 1080p 1.87MB, 960px 0.26MB. Still = loop frame 0.6s, 27KB webp. Same sunrise, camera and palette as the hero swell.
+
+## 2026-09-26 hero swell removed
+Jeff: the swell rose too high and hid the sun, and his phone still showed a still frame. Removed hero-swell video and component; the hero now uses the live WebGL water (OceanScene), the same effect he confirmed moving on his phone. Higgsfield swell source kept in scratch only.

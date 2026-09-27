@@ -17,7 +17,7 @@ precision highp float;
 #else
 precision mediump float;
 #endif
-uniform sampler2D uTex;uniform vec2 uRes;uniform vec4 uDraw;uniform float uTime;uniform float uHorizon;uniform float uSwell;
+uniform sampler2D uTex;uniform vec2 uRes;uniform vec4 uDraw;uniform float uTime;uniform float uHorizon;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
   return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
@@ -25,32 +25,19 @@ float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.03+ve
 void main(){
   vec2 uv=(vec2(gl_FragCoord.x,uRes.y-gl_FragCoord.y)-uDraw.xy)/uDraw.zw;
   if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.){gl_FragColor=vec4(0.);return;}
-  float t=uTime;vec2 s=uv;float glint=0.;float d=uv.y-uHorizon;float cloud=0.;float shade=0.;float crestL=0.;
+  float t=uTime;vec2 s=uv;float glint=0.;float d=uv.y-uHorizon;float cloud=0.;
   if(d>0.){
     float depth=d/(1.-uHorizon);
     float persp=1./(depth+.06);
     float w1=sin(uv.y*22.*persp-t*1.35+sin(uv.x*6.+t*.35)*1.8);
     float w2=sin(uv.x*38.+uv.y*28.*persp-t*2.1);
     float w3=sin(uv.x*11.-uv.y*12.*persp+t*1.);
-    float swell=sin(uv.y*6.*persp-t*.55+uv.x*2.);
+    float roll=sin(uv.y*6.*persp-t*.55+uv.x*2.);
     float amp=mix(.0009,.0105,depth);
-    if(uSwell>0.){
-      // A swell line forming in the distance and rolling closer: lifted body, shadowed front face, lit crest.
-      float p=uSwell;
-      float cc=mix(.10,.62,p)+.012*sin(uv.x*4.+t*.3)+.015*sin(t*.35);
-      float w=mix(.04,.14,p);
-      float x=(depth-cc)/w;
-      float lift=(.6+.4*fbm(vec2(uv.x*3.+t*.05,1.)))*mix(.008,.05,p*p);
-      float body=exp(-x*x*(x>0.?2.4:.7));
-      s.y-=lift*body;
-      shade=smoothstep(-.2,1.,x)*exp(-x*x*.8)*mix(.32,.6,p);
-      float k=(x+.3)/.18;
-      crestL=exp(-k*k)*mix(.16,.4,p);
-    }
-    s.y+=amp*(w1*.55+w2*.3+swell*.45);
+    s.y+=amp*(w1*.55+w2*.3+roll*.45);
     s.x+=amp*.9*(w3*.6+w2*.3);
     s.y=max(s.y,uHorizon+.0015);
-    glint=max(w1*w2,0.)+.35*max(swell,0.);
+    glint=max(w1*w2,0.)+.35*max(roll,0.);
   }else{
     // Sky: drift and gently billow the existing clouds, keep the sun disc still.
     float sky=smoothstep(0.,.06,-d);
@@ -66,14 +53,12 @@ void main(){
   vec4 c=texture2D(uTex,s);
   float lum=dot(c.rgb,vec3(.299,.587,.114));
   c.rgb+=c.rgb*glint*smoothstep(.4,.9,lum)*.5;
-  c.rgb*=1.-shade;
-  c.rgb+=vec3(1.,.82,.66)*crestL*(.4+lum);
   c.rgb=mix(c.rgb,c.rgb*1.1+vec3(.11,.1,.09),cloud*.8);
   gl_FragColor=vec4(c.rgb,1.);
 }`
 
 // ponytail: one WebGL context per scene, 30fps cap, runs only while visible; the CSS still is the fallback.
-export default function OceanScene({ src, fit = 'center', className = '', swell = false }) {
+export default function OceanScene({ src, fit = 'center', className = '' }) {
   const canvasRef = useRef(null)
   const paused = useRef(false)
   const [live, setLive] = useState(false)
@@ -100,9 +85,8 @@ export default function OceanScene({ src, fit = 'center', className = '', swell 
     const loc = gl.getAttribLocation(program, 'p')
     gl.enableVertexAttribArray(loc)
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
-    const u = Object.fromEntries(['uRes', 'uDraw', 'uTime', 'uHorizon', 'uSwell'].map(n => [n, gl.getUniformLocation(program, n)]))
+    const u = Object.fromEntries(['uRes', 'uDraw', 'uTime', 'uHorizon'].map(n => [n, gl.getUniformLocation(program, n)]))
     gl.uniform1f(u.uHorizon, HORIZON[src] ?? 0.4)
-    gl.uniform1f(u.uSwell, 0)
 
     let image, raf = 0, visible = false, last = 0, dead = false
     const start = performance.now()
@@ -123,14 +107,7 @@ export default function OceanScene({ src, fit = 'center', className = '', swell 
       raf = requestAnimationFrame(frame)
       if (now - last < 33) return
       last = now
-      const seconds = (now - start) / 1000
-      gl.uniform1f(u.uTime, seconds)
-      if (swell) {
-        // Forms on its own over ~9s, then scrolling toward the breaking wave carries it the rest of the way.
-        const rect = canvas.getBoundingClientRect()
-        const scrolled = Math.min(1, Math.max(0, -rect.top / (rect.height * 0.7)))
-        gl.uniform1f(u.uSwell, Math.min(1, 0.5 * Math.min(1, seconds / 9) + 0.5 * scrolled) || 0.001)
-      }
+      gl.uniform1f(u.uTime, (now - start) / 1000)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
     }
     const update = () => {
@@ -175,7 +152,7 @@ export default function OceanScene({ src, fit = 'center', className = '', swell 
       reduced.removeEventListener('change', update)
       mobile.removeEventListener('change', size)
     }
-  }, [src, fit, swell])
+  }, [src, fit])
 
   return <>
     <div className={`ocean-scene ${className}`} aria-hidden="true">
